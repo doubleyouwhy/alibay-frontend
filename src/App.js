@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import './App.css'
-import Shipping from './Shipping.js'
-import Payment from './Payment.js'
-import Confirmation from './Confirmation.js'
 import ProductDetail from './ProductDetail.js'
 import Landing from './landing.js'
 
@@ -11,12 +8,8 @@ class App extends Component {
     return (
       <div className='App'>
         <Landing/>
-        {/* <ProductDetail />
-        <Shipping />
-        <Payment />
-        <Confirmation /> */}
+        <ProductDetail />
       </div>
-
     )
   }
 }
