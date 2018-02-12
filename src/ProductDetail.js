@@ -15,6 +15,10 @@ class ProductDetail extends Component {
         this.setState({ hidden: true })
     }
 
+    addToCart = () => {
+        console.log('you added to cart')
+    }
+
     render() {
         if (this.state.hidden === false) {
             return (
@@ -25,6 +29,8 @@ class ProductDetail extends Component {
                     <p>This curvaceous classic takes style to new heights. The retro-inspired Eiffel chair’s polypropylene seat feels molded to your body, while armrests allow for maximum relaxation.</p>
                     <h2>$49.99</h2>
                     <button onClick={this.buyProduct}>Buy</button>
+                    <button onClick={this.addToCart}>Add to Cart</button>
+
                 </div>
             )
         } else { return <Shipping /> }
