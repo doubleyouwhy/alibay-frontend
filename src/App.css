@@ -22,6 +22,7 @@
   font-size: large;
 }
 
+
 #Product {
 width: 80vw;
 padding: 25px;
@@ -43,4 +44,34 @@ background-color: #f2f2f2;
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* LANDING PAGE */
+.gallery{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+/* .thumbnail{
+  max-width: 30%;
+} */
+.login-div{
+  display: block;
+  text-align: right;
+}
+.search-div{
+  text-align: center;
+}
+.search-bar{
+  width: 30%
+}
+.header{
+  text-align: center;
+  font-size: 54px;
+}
+.product-preview{
+  max-width: 30%;
+  display: block;
+  text-align: center;
+
 }

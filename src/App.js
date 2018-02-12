@@ -4,15 +4,17 @@ import Shipping from './Shipping.js'
 import Payment from './Payment.js'
 import Confirmation from './Confirmation.js'
 import ProductDetail from './ProductDetail.js'
+import Landing from './landing.js'
 
 class App extends Component {
   render () {
     return (
       <div className='App'>
-        <ProductDetail />
+        <Landing/>
+        {/* <ProductDetail />
         <Shipping />
         <Payment />
-        <Confirmation />
+        <Confirmation /> */}
       </div>
 
     )
