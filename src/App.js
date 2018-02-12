@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import './App.css'
-import Shipping from './Shipping.js'
-import Payment from './Payment.js'
-import Confirmation from './Confirmation.js'
 import ProductDetail from './ProductDetail.js'
 
 class App extends Component {
@@ -10,11 +7,7 @@ class App extends Component {
     return (
       <div className='App'>
         <ProductDetail />
-        <Shipping />
-        <Payment />
-        <Confirmation />
       </div>
-
     )
   }
 }

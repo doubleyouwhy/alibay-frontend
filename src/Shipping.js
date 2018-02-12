@@ -1,30 +1,39 @@
 import React, { Component } from 'react'
 import './App.css'
+import Payment from './Payment.js'
 
 class Shipping extends Component {
 
+  constructor(){
+    super();
+    this.state = {
+      hidden: false
+    }
+  }
+
 shipInfo = () => {
+
+  this.setState({hidden: true})
 
   var userShipping = {
     userid: this.userid,
     shippingAddress: {
-      address: this.adress.value,
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      address: this.address.value,
       city: this.city.value,
-      state: this.province.value,
+      province: this.province.value,
       zip: this.zip.value,
       country: this.country.value,
       phone: this.phone.value
     }
   }
-
-  console.log(userShipping);
-  console.log(this.adress.value)
-  console.log('you logged shipping address')
   return userShipping;
 }
 
-
   render () {
+
+    if(this.state.hidden === false){
     return (
       <div id='Product'>
         <div>
@@ -33,7 +42,7 @@ shipInfo = () => {
           <input type='text' ref={r => this.lastName = r} placeholder='Last Name' />
         </div>
         <div>
-          <input type='text' ref={r => this.adress = r} placeholder='Address' />
+          <input type='text' ref={r => this.address = r} placeholder='Address' />
           <input type='text' ref={r => this.city = r} placeholder='City' />
         </div>
         <div>
@@ -47,6 +56,7 @@ shipInfo = () => {
         <button onClick={this.shipInfo}>Continue</button>
       </div>
     )
+  } else {return <Payment />}
   }
 }
 

@@ -1,27 +1,35 @@
 import React, { Component } from 'react'
 import './App.css'
+import Confirmation from './Confirmation.js'
 
 class Payment extends Component {
 
+    constructor() {
+        super()
+        this.state = {
+            hidden: false
+        }
+    }
+
     submitOrder = () => {
-        console.log('order submitted')
+        this.setState({ hidden: true })
     }
 
     render() {
+
+        if(this.state.hidden === false){
         return (
             <div id='Product'>
                 <h1>Payment Information</h1>
                 <div>
                     <div>
-                        <input type="radio" id="creditCard" name="payment" value="creditCard" checked/>
-                        <label for="creditCard">Credit Card</label>
-                        <input type="radio" id="payPal" name="payment" value="payPal" />
-                        <label for="payPal">PayPal</label>
+                        <input type="radio" id="creditCard" name="payment" value="creditCard" checked /> <label for="creditCard">Credit Card</label>
+                        <input type="radio" id="payPal" name="payment" value="payPal" /> <label for="payPal">PayPal</label>
                     </div>
-                    <input placeholder='Card Holder' />
-                    <input placeholder='Card Number' />
+                    <input ref={r => this.cardHolder = r} placeholder='Card Holder' />
+                    <input ref={r => this.cardNumber = r} placeholder='Card Number' />
                 </div>
-                <select name='months'>
+                <select ref={r => this.cardMonth = r} name='months'>
                     <option value='01 - January'> 01 - January</option>
                     <option value='02 - February'> 02 - February</option>
                     <option value='03 - March'> 03 - March</option>
@@ -35,7 +43,7 @@ class Payment extends Component {
                     <option value='11 - November'> 11 - November</option>
                     <option value='12 - December'> 12 - December</option>
                 </select>
-                <select name='year'>
+                <select ref={r => this.cardYear = r} name='year'>
                     <option value='2018'>2018</option>
                     <option value='2019'>2019</option>
                     <option value='2020'>2020</option>
@@ -45,12 +53,13 @@ class Payment extends Component {
                     <option value='2024'>2024</option>
                     <option value='2025'>2025</option>
                 </select>
-                <input placeholder='CVV' maxLength='4' />
+                <input ref={r => this.cardCVV = r} placeholder='CVV' maxLength='4' />
                 <div>
                     <button onClick={this.submitOrder}>Place Order</button>
                 </div>
             </div>
         )
+    } else {return <Confirmation />}
     }
 }
 
