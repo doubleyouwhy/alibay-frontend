@@ -45,16 +45,29 @@ background-color: #f2f2f2;
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
+/* MEGAN'S SECTION  */
 /* LANDING PAGE */
+
+#bannerImage{
+  width: 80vw !important;
+  height: auto !important;
+}
+
 .gallery{
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-/* .thumbnail{
+.product-preview{
   max-width: 30%;
-} */
+  display: block;
+  text-align: center;
+
+}
+.thumbnail{
+  max-width: 100%;
+  height: auto;
+}
 .login-div{
   display: block;
   text-align: right;
@@ -69,9 +82,12 @@ background-color: #f2f2f2;
   text-align: center;
   font-size: 54px;
 }
-.product-preview{
-  max-width: 30%;
-  display: block;
-  text-align: center;
+
+/* NAV */
+
+.navWrapper{
+  max-width: 100%;
 
 }
+
+
