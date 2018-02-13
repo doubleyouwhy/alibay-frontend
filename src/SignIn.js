@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import './App.css'
 import Login from './Login.js'
 
-import ProductDetail from './ProductDetail.js'
+import Landing from './landing.js'
 
 class SignIn extends Component {
     constructor() {
         super();
         this.state = {
           loginPage: false,
-          ProductDetailPage: false 
+          landingPage: false 
         };
         
       }
@@ -19,7 +19,7 @@ class SignIn extends Component {
         var pwd = this.password.value;
         console.log("username", usr);
         console.log("password", pwd);
-        this.setState({ ProductDetailPage: true })
+        this.setState({ landingPage: true })
       }
       goToLogin = () => {
 
@@ -28,7 +28,7 @@ class SignIn extends Component {
 
 
     render() {
-      if (this.state.loginPage === false && this.state.ProductDetailPage === false){
+      if (this.state.loginPage === false && this.state.landingPage === false){
         return (
           <div id='Product'>
     <h1> Sign In Form</h1>
@@ -40,7 +40,7 @@ class SignIn extends Component {
   </div>
       )
       
-    } else if (this.state.ProductDetailPage === true) { return <ProductDetail /> }
+    } else if (this.state.landingPage === true) { return <Landing/> }
     else if (this.state.loginPage === true) { return <Login /> }
         
        
