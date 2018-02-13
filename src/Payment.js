@@ -21,7 +21,6 @@ class Payment extends Component {
         if(this.state.hidden === false){
         return (
             <div id='Product'>
-            <Nav />
                 <h1>Payment Information</h1>
                 <div>
                     <div>

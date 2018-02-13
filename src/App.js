@@ -5,15 +5,21 @@ import SignIn from './SignIn.js'
 import Landing from './landing.js'
 import Search from './search.js'
 import AddItems from './addItems.js'
+import Dashboard from './dashboard.js';
+import Nav from './nav.js'
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state ={}
+  }
   render () {
     return (
       <div className='App'>
-        <Landing />
-        {/* <SignIn />
-        <ProductDetail />
-        <AddItems /> */}
+        < Nav goToLogin = {this.goToLogin} 
+              goToSignIn = {this.goToSignIn}
+         />            
+        < Landing/>
       </div>
     )
   }

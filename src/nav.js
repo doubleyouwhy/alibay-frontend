@@ -11,7 +11,7 @@ class Nav extends Component {
 
   render () {
     return (
-      <div className='navWrapper'>
+      <div id="Product" className='navWrapper'>
         <div className='login-div'>
           <div className='cart'> Cart {this.state.itemsInCart}</div>
           <button onClick={this.props.goToLogin}>Log in</button>
