@@ -3,6 +3,8 @@ import './App.css'
 import ProductDetail from './ProductDetail.js'
 import Landing from './landing.js'
 import Nav from './nav.js'
+import Login from './Login'
+import SignIn from './SignIn'
 
 class Search extends Component{
 
@@ -11,21 +13,26 @@ class Search extends Component{
         this.state = {
             hidden: false,
             ProductDetail: false,
+            landing: false, 
             loginPage: false,
             signUpPage: false,
         }
     }
 
-    logIn =()=>{
-        console.log("user is loggin in - take me to login page")
-        this.setState({hidden: true})
-        
-    }
-
-    signUp =()=>{
+    goToLogin =()=>{
         console.log('user wants to sign up - take me to sign up page')
-        this.setState({hidden: true})
+        this.setState({hidden: true, loginPage: true})
     }
+    goToSignIn =()=>{
+        console.log('user wants to sign up - take me to sign up page')
+        this.setState({hidden: true, signInPage: true})
+    }
+    goToLanding = ()=>{
+        this.setState({hidden:false, landing: true})
+    }
+   
+   
+   
 
     productPage=()=>{
         console.log('user clicked on image - take me to product page')
@@ -42,7 +49,11 @@ class Search extends Component{
         if (this.state.hidden === false){
         return(
             <div id= 'Product'>
-                <div> <Nav/> </div>
+                <div> <Nav
+                    goToLogin = {this.goToLogin} 
+                    goToSignIn = {this.goToSignIn}
+                    goToLanding ={this.goToLanding}/> 
+                </div>
                 <div className= "search-div">
                     <input className="search-bar" placeholder="search" ref={srch => this.searchInput = srch}></input>
                     <button onClick = {this.runSearch}>submit</button>
@@ -83,15 +94,20 @@ class Search extends Component{
                   
                  
                 </div>
-
-            </div>
-        
+            </div> 
         )  
-    } else {if (this.state.search){
-        return < Search />
         } else if (this.state.ProductDetail){
-            return < ProductDetail />}}   
+            return < ProductDetail />}
+        else if(this.state.landing){
+            return <Landing />
+        } else if (this.state.loginPage)
+        {
+            return < Login />
+         }else if (this.state.signInPage){
+             return < SignIn />
+         }
+    }   
   }
-}
+
 
 export default Search

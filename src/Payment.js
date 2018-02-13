@@ -16,7 +16,6 @@ class Payment extends Component {
     }
 
     render() {
-
         if(this.state.hidden === false){
         return (
             <div id='Product'>

@@ -3,6 +3,8 @@ import './App.css'
 import Search from './search.js'
 import ProductDetail from './ProductDetail.js'
 import Nav from './nav.js'
+import Login from './Login.js'
+import SignIn from './SignIn.js'
 
 class Landing extends Component{
 
@@ -13,7 +15,7 @@ class Landing extends Component{
             search: false,
             ProductDetail: false,
             loginPage: false,
-            signUpPage: false,
+            signInPage: false,
         }
     }
 
@@ -27,22 +29,26 @@ class Landing extends Component{
     runSearch =()=>{
         console.log('user is searching for:', this.searchInput.value)
         this.setState({hidden: true, search: true})    
-      
     }
 
     goToLogin =()=>{
         console.log('user wants to sign up - take me to sign up page')
         this.setState({hidden: true, loginPage: true})
     }
+    goToSignIn =()=>{
+        console.log('user wants to sign up - take me to sign up page')
+        this.setState({hidden: true, signInPage: true})
+    }
+ 
 
     render(){
         if (this.state.hidden === false){
         return(
             <div id= 'Product'>
                 <div> 
-                    < Nav
-                        goToLogin = {this.goToLogin}
-                    />
+                    < Nav goToLogin = {this.goToLogin} 
+                          goToSignIn = {this.goToSignIn}
+                          />
                 </div>
                 <div>
                 <img id ="bannerImage" alt='house' src='https://livingedge.com.au/cache/img/app/img/asset/29/93/52/2/herman-miller-eames-compact-sofa-lifestyle-01.jpg/w-1326_h-699_q-90_c-c/herman-miller-eames-compact-sofa-lifestyle-01.jpg' />  
@@ -96,7 +102,9 @@ class Landing extends Component{
         }
         else if (this.state.loginPage)
         {
-            return <div> LOGIN PAGE </div>
+            return < Login />
+         }else if (this.state.signInPage){
+             return < SignIn />
          }
   }}
 
