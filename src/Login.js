@@ -19,7 +19,21 @@ class Login extends Component {
     console.log("username :", usr);
     console.log("password :", pwd);
     console.log("submit")
-    this.setState( {submit: true} )
+
+    fetch('/login', {
+      method: "POST",
+      body: JSON.stringify({
+        username: usr,
+        password: pwd
+      })
+    })
+      .then(x => x.text())
+      .then(x => {
+      
+        this.setState({ submit: true,
+                          outcome: x})
+
+      })
     
   }
 

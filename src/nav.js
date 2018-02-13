@@ -16,6 +16,7 @@ class Nav extends Component {
           <div className='cart'> Cart {this.state.itemsInCart}</div>
           <button onClick={this.props.goToLogin}>Log in</button>
           <button onClick={this.props.goToSignIn}>Sign up</button>
+          <button onClick={this.props.goToAddItems}>AddItems</button>
         </div>
         {/* <h1 onClick={this.props.goToLanding} className='header' >MAIN NAV BAR</h1> */}
       </div>

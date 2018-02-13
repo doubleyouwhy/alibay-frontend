@@ -5,6 +5,7 @@ import ProductDetail from './ProductDetail.js'
 import Nav from './nav.js'
 import Login from './Login.js'
 import SignIn from './SignIn.js'
+import AddItems from './addItems.js'
 
 class Landing extends Component{
 
@@ -16,6 +17,7 @@ class Landing extends Component{
             ProductDetail: false,
             loginPage: false,
             signInPage: false,
+            AddItemsPage: false
         }
     }
 
@@ -32,7 +34,8 @@ class Landing extends Component{
     }
     goToProduct =()=>{
         this.setState({loginPage: false,
-                        signInPage: false})
+                        signInPage: false,
+                        AddItemsPage: false})
     }
     goToLogin =()=>{
         console.log('user wants to sign up - take me to sign up page')
@@ -42,15 +45,21 @@ class Landing extends Component{
         console.log('user wants to sign up - take me to sign up page')
         this.setState({signInPage: true})
     }
- 
+    goToAddItems =()=>{
+        console.log('user wants to sign up - take me to sign up page')
+        this.setState({AddItemsPage: true})
+    }
 
     render(){
+       
+       
         if (this.state.hidden === false){
         return(
             <div id= 'Product'>
                 <div> 
                     < Nav goToLogin = {this.goToLogin} 
                           goToSignIn = {this.goToSignIn}
+                          goToAddItems = {this.goToAddItems}
                           />
                 </div>
                 <div>
@@ -96,6 +105,7 @@ class Landing extends Component{
                 </div>
                 {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>< Login />  </div>}
                 {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn /> </div> }
+                {this.state.AddItemsPage && <div id="overlay" onClick={this.goToProduct}>< AddItems />  </div>}
             </div>
         
         )  
