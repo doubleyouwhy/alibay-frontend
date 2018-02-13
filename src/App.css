@@ -99,7 +99,7 @@ background-color: #f2f2f2;
   bottom: 0;
   background-color: rgba(0,0,0,0.1); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer; /* Add a pointer on hover */
+  
 }
 #loginStyle{
   width: 400px;
@@ -115,4 +115,8 @@ background-color: #f2f2f2;
   background-color: #f2f2f2;
   text-align: center;
     font-size: 24px;
+}
+
+button {
+  cursor: pointer; /* Add a pointer on hover */
 }
