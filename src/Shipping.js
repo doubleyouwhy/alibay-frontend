@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Payment from './Payment.js'
+import Nav from './nav.js'
 
 class Shipping extends Component {
 
@@ -33,6 +34,7 @@ shipInfo = () => {
     if(this.state.hidden === false){
     return (
       <div id='Product'>
+      <Nav />
         <div>
           <h1>Shipping Information</h1>
           <input type='text' ref={r => this.firstName = r} placeholder='First Name' />

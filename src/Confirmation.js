@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Landing from './landing.js'
-
+import Nav from './nav.js'
 
 let confirmationNumber = 10
 
@@ -21,6 +21,7 @@ class Confirmation extends Component {
       if (this.state.hidden === false){
     return (
       <div id='Product'>
+      <Nav />
         <h1>Order placed! </h1>
         <h4>Confirmation #00{confirmationNumber}</h4>
         <h4>Order Summary: 1 x Black Effile Chair  — $49.99</h4>

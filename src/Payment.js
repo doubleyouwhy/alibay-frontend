@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Confirmation from './Confirmation.js'
+import Nav from './nav.js'
 
 class Payment extends Component {
 
@@ -20,6 +21,7 @@ class Payment extends Component {
         if(this.state.hidden === false){
         return (
             <div id='Product'>
+            <Nav />
                 <h1>Payment Information</h1>
                 <div>
                     <div>
