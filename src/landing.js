@@ -102,9 +102,9 @@ class Landing extends Component{
         }
         else if (this.state.loginPage)
         {
-            return < Login />
+            return [<div id="overlay" >< Login />  </div>, <div>< Landing /> </div> ]
          }else if (this.state.signInPage){
-             return < SignIn />
+             return [<div id="overlay" >< SignIn /> </div>, <div>< Landing /> </div> ]
          }
   }}
 

@@ -5,46 +5,59 @@ import Login from './Login.js'
 import Landing from './landing.js'
 
 class SignIn extends Component {
-    constructor() {
-        super();
-        this.state = {
-          loginPage: false,
-          landingPage: false 
-        };
-        
-      }
+  constructor() {
+    super();
+    this.state = {
+      loginPage: false
 
-      submit = () => {
-        var usr = this.username.value;
-        var pwd = this.password.value;
-        console.log("username", usr);
-        console.log("password", pwd);
-        this.setState({ landingPage: true })
-      }
-      goToLogin = () => {
+    };
 
-        this.setState({ loginPage: true })
-      }
+  }
+
+  submit = () => {
+    var usr = this.username.value;
+    var pwd = this.password.value;
+    var confirmPwd = this.confirmPassword.value;
+    console.log("username", usr);
+    console.log("password", pwd);
+    console.log("confirm pass", confirmPwd)
+    console.log("submit")
+
+  }
+  goToLogin = () => {
+
+    this.setState({ loginPage: true })
+  }
 
 
-    render() {
-      if (this.state.loginPage === false && this.state.landingPage === false){
-        return (
-          <div id='Product'>
-    <h1> Sign In Form</h1>
-    <input ref={r => this.username = r} placeholder="username" name="username" />
-    <input ref={r => this.password = r} placeholder="password" name="password" />
-    <input ref={r => this.password = r} placeholder="re-type password" name="password" />
-    <button onClick={this.submit} > submit </button>
-    <button onClick={this.goToLogin} > Login </button>
-  </div>
+  render() {
+    if (this.state.loginPage === false) {
+      return (
+        <div id='loginStyle'>
+          <h1> SIGN UP </h1>
+          <div>
+            <input ref={r => this.username = r} placeholder="username" name="username" />
+          </div>
+          <div>
+            <input ref={r => this.password = r} placeholder="password" name="password" />
+          </div>
+          <div>
+            <input ref={r => this.confirmPassword = r} placeholder="re-type password" name="password" />
+          </div>
+          <div>
+            <button onClick={this.submit} > SUBMIT </button>
+          </div>
+          <div>
+            <button onClick={this.goToLogin} > LOGIN </button>
+          </div>
+        </div>
       )
-      
-    } else if (this.state.landingPage === true) { return <Landing/> }
-    else if (this.state.loginPage === true) { return <Login /> }
-        
-       
+
     }
+    else if (this.state.loginPage === true) { return <Login /> }
+
+
+  }
 }
 
 export default SignIn
