@@ -19,8 +19,6 @@ class Landing extends Component{
         }
     }
 
-
-
     productPage=()=>{
         console.log('user clicked on image - take me to product page')
         this.setState({hidden: true, ProductDetail: true})   
