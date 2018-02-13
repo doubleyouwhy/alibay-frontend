@@ -28,14 +28,17 @@ class Landing extends Component{
         console.log('user is searching for:', this.searchInput.value)
         this.setState({hidden: true, search: true})    
     }
-
+    goToProduct =()=>{
+        this.setState({loginPage: false,
+                        signInPage: false})
+    }
     goToLogin =()=>{
         console.log('user wants to sign up - take me to sign up page')
-        this.setState({hidden: true, loginPage: true})
+        this.setState({loginPage: true})
     }
     goToSignIn =()=>{
         console.log('user wants to sign up - take me to sign up page')
-        this.setState({hidden: true, signInPage: true})
+        this.setState({signInPage: true})
     }
  
 
@@ -89,7 +92,8 @@ class Landing extends Component{
                     </div>
                                    
                 </div>
-
+                {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>< Login />  </div>}
+                {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn /> </div> }
             </div>
         
         )  
@@ -98,12 +102,8 @@ class Landing extends Component{
         } else if (this.state.ProductDetail){
             return < ProductDetail />
         }
-        else if (this.state.loginPage)
-        {
-            return [<div id="overlay" >< Login />  </div>, <div>< Landing /> </div> ]
-         }else if (this.state.signInPage){
-             return [<div id="overlay" >< SignIn /> </div>, <div>< Landing /> </div> ]
-         }
+       
+       
   }}
 
 

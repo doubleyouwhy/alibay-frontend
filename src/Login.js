@@ -7,13 +7,10 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      signInpage: false
+
+      submit: false
     
     };
-  }
-  goToSignIn = () => {
-
-    this.setState({ signInpage: true })
   }
 
   submit = () => {
@@ -22,14 +19,15 @@ class Login extends Component {
     console.log("username :", usr);
     console.log("password :", pwd);
     console.log("submit")
+    this.setState( {submit: true} )
     
   }
 
 
   render() {
-    if (this.state.signInpage === false  ) {
+    
       return (
-        <div id='loginStyle'>
+        <div id='loginStyle' onClick={(i)=> i.stopPropagation()}>
           <h1> LOGIN </h1>
           <div>
             <input ref={r => this.username = r} placeholder="username" name="username" />
@@ -38,15 +36,15 @@ class Login extends Component {
             <input ref={r => this.password = r} placeholder="password" name="password" />
           </div>
           <button onClick={this.submit} > SUBMIT </button>
-          <button onClick={this.goToSignIn} > SIGN IN </button>
+         
         </div>
       );
     }
-    else if (this.state.signInpage === true) { return <SignIn /> }
+   
  
 
 
-  }
+  
 }
 
 export default Login
