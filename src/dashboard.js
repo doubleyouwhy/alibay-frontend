@@ -13,18 +13,11 @@ class Dashboard extends Component{
 
         }
     }
-    goToLanding = ()=>{
-        this.setState({hidden:false, landing: true})
-    }
+
     render(){
        
         if(!this.state.hidden ){
         return ( <div id= 'Product'>
-                    <div> 
-                        < Nav goToLogin = {this.goToLogin} 
-                            goToSignIn = {this.goToSignIn}
-                            />
-                    </div>
                     <div> Items for Sale</div>
                         <div className = "gallery">
                             <div className = "product-preview">

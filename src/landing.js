@@ -20,7 +20,6 @@ class Landing extends Component{
     }
 
 
-
     productPage=()=>{
         console.log('user clicked on image - take me to product page')
         this.setState({hidden: true, ProductDetail: true})   
@@ -93,12 +92,7 @@ class Landing extends Component{
         } else if (this.state.ProductDetail){
             return < ProductDetail />
         }
-        else if (this.state.loginPage)
-        {
-            return [<div id="overlay" >< Login />  </div>, <div>< Landing /> </div> ]
-         }else if (this.state.signInPage){
-             return [<div id="overlay" >< SignIn /> </div>, <div>< Landing /> </div> ]
-         }
+        
   }}
 
 

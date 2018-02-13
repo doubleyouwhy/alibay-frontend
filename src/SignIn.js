@@ -8,7 +8,7 @@ class SignIn extends Component {
   constructor() {
     super();
     this.state = {
-      loginPage: false
+      
 
     };
 
@@ -31,9 +31,9 @@ class SignIn extends Component {
 
 
   render() {
-    if (this.state.loginPage === false) {
+
       return (
-        <div id='loginStyle'>
+        <div id='loginStyle' onClick={(i)=> i.stopPropagation()}>
           <h1> SIGN UP </h1>
           <div>
             <input ref={r => this.username = r} placeholder="username" name="username" />
@@ -47,17 +47,15 @@ class SignIn extends Component {
           <div>
             <button onClick={this.submit} > SUBMIT </button>
           </div>
-          <div>
-            <button onClick={this.goToLogin} > LOGIN </button>
-          </div>
+    
         </div>
       )
 
     }
-    else if (this.state.loginPage === true) { return <Login /> }
+    
 
 
-  }
+  
 }
 
 export default SignIn
