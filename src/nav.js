@@ -12,6 +12,9 @@ class Nav extends Component {
   render () {
     return (
       <div className='navWrapper'>
+        <div>
+          <a href='http://localhost:3000'>Go Home</a>
+        </div>
         <div className='login-div'>
           <div className='cart'> Cart {this.state.itemsInCart}</div>
           <button onClick={this.props.goToLogin}>Log in</button>

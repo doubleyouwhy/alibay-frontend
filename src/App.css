@@ -85,6 +85,8 @@ background-color: #f2f2f2;
 
 .navWrapper{
   max-width: 100%;
+  display: flex;
+  justify-content: space-between;
 
 }
 
