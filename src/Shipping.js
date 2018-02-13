@@ -12,9 +12,7 @@ class Shipping extends Component {
   }
 
 shipInfo = () => {
-
   this.setState({hidden: true})
-
   var userShipping = {
     userid: this.userid,
     shippingAddress: {
@@ -32,7 +30,6 @@ shipInfo = () => {
 }
 
   render () {
-
     if(this.state.hidden === false){
     return (
       <div id='Product'>

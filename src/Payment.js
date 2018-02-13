@@ -7,7 +7,8 @@ class Payment extends Component {
     constructor() {
         super()
         this.state = {
-            hidden: false
+            hidden: false,
+            selected: true
         }
     }
 
@@ -22,8 +23,8 @@ class Payment extends Component {
                 <h1>Payment Information</h1>
                 <div>
                     <div>
-                        <input type="radio" id="creditCard" name="payment" value="creditCard" checked /> <label for="creditCard">Credit Card</label>
-                        <input type="radio" id="payPal" name="payment" value="payPal" /> <label for="payPal">PayPal</label>
+                        <input type="radio" id="creditCard" name="payment" value="creditCard" defaultChecked/> <label htmlFor="creditCard">Credit Card</label>
+                        <input type="radio" id="payPal" name="payment" value="payPal" /> <label htmlFor="payPal">PayPal</label>
                     </div>
                     <input ref={r => this.cardHolder = r} placeholder='Card Holder' />
                     <input ref={r => this.cardNumber = r} placeholder='Card Number' />
@@ -52,7 +53,7 @@ class Payment extends Component {
                     <option value='2024'>2024</option>
                     <option value='2025'>2025</option>
                 </select>
-                <input ref={r => this.cardCVV = r} placeholder='CVV' maxLength='4' />
+                <input ref={r => this.cardCVV = r} id='cvv' placeholder='CVV' maxLength='4' />
                 <div>
                     <button onClick={this.submitOrder}>Place Order</button>
                 </div>

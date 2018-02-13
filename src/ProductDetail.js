@@ -30,7 +30,6 @@ class ProductDetail extends Component {
                     <h2>$49.99</h2>
                     <button onClick={this.buyProduct}>Buy</button>
                     <button onClick={this.addToCart}>Add to Cart</button>
-
                 </div>
             )
         } else { return <Shipping /> }
