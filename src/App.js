@@ -32,12 +32,6 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-<<<<<<< HEAD
-        <Landing />
-        {/* <SignIn />
-        <ProductDetail />
-         */}
-=======
           < Nav goToLogin = {this.goToLogin} 
                 goToSignIn = {this.goToSignIn}
           />            
@@ -46,7 +40,6 @@ class App extends Component {
               {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>< Login />  </div>}
               {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn /> </div> }
           </div>
->>>>>>> 9358157c0cf130db1ea106703094d049dc51f0ad
       </div>
     )
   }
