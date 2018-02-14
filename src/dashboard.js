@@ -1,23 +1,19 @@
 import React, { Component } from 'react'
 import './App.css'
-import Nav from './nav.js'
 
 class Dashboard extends Component{
 
     constructor(){
         super ();
         this.state ={
-            hidden:false,
-            addProduct:false,
-            landing:false,
-
         }
     }
 
     render(){
        
-        if(!this.state.hidden ){
+        if(this.state.dashboard===true){
         return ( <div id= 'Product'>
+                   <button onClick={this.props.goToAddItems}>AddItems</button> 
                     <div> Items for Sale</div>
                         <div className = "gallery">
                             <div className = "product-preview">

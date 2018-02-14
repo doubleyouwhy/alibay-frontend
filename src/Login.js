@@ -19,6 +19,7 @@ class Login extends Component {
     console.log("username :", usr);
     console.log("password :", pwd);
     console.log("submit")
+    this.setState({hidden:true, dashboard: true})
 
     fetch('/login', {
       method: "POST",
@@ -31,11 +32,14 @@ class Login extends Component {
       .then(x => {
       
         this.setState({ submit: true,
-                          outcome: x})
+                          outcome: x,
+                        dashboard: true, hidden:true})
 
-      })
-    
+      }
+    )
   }
+    
+  
 
 
   render() {

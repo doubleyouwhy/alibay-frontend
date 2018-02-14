@@ -15,11 +15,15 @@ class App extends Component {
     this.state ={}
   }
 
-  goToProduct =()=>{
-    this.setState({loginPage: false,
-                    signInPage: false,
-                    AddItemsPage: false})
-    }
+  goToDashboard=()=>{
+    this.setState({Dashboard: true})
+  }
+
+  // goToProduct =()=>{
+  //   this.setState({loginPage: false,
+  //                   signInPage: false,
+  //                   AddItemsPage: false})
+  //   }
     goToLogin =()=>{
         console.log('user wants to sign up - take me to sign up page')
         this.setState({loginPage: true})
