@@ -49,7 +49,7 @@ runSearch =()=>{
         console.log("this is y:" , y); 
         this.setState({hidden: true, search: true, items:y})    
    
-})
+})}
 
     productPage=(element)=>{
         console.log("product page function clicked")
@@ -88,8 +88,8 @@ runSearch =()=>{
         } else if (this.state.ProductDetail){
             return < ProductDetail item={this.state.ProductDetail} />
         }
-        
-  }}
+    }
+  }
 
 
 export default Landing
