@@ -17,11 +17,37 @@ class SignIn extends Component {
   submit = () => {
     var usr = this.username.value;
     var pwd = this.password.value;
-    var confirmPwd = this.confirmPassword.value;
+   
     console.log("username", usr);
     console.log("password", pwd);
-    console.log("confirm pass", confirmPwd)
     console.log("submit")
+
+    fetch('/signUp', {
+      method: "POST",
+      body: JSON.stringify({
+        username: usr,
+        password: pwd
+      })
+    })
+      .then(x => x.text())
+      .then(x => {
+        console.log(x)
+      //   if (x === "success") {
+      //     this.setState({
+      //       submit: true,
+      //     })
+      //     this.props.changeLoginPageState()
+
+
+      //   }
+      //   else {
+      //     this.setState({
+      //       wrongPassword: true,
+
+      //     })
+      //     console.log("Login faill !!!")
+      //   }
+       })
 
   }
   goToLogin = () => {
@@ -41,9 +67,9 @@ class SignIn extends Component {
           <div>
             <input ref={r => this.password = r} placeholder="password" name="password" />
           </div>
-          <div>
+          {/* <div>
             <input ref={r => this.confirmPassword = r} placeholder="re-type password" name="password" />
-          </div>
+          </div> */}
           <div>
             <button onClick={this.submit} > SUBMIT </button>
           </div>

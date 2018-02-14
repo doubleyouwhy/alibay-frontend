@@ -30,18 +30,7 @@ class Landing extends Component{
         console.log('user is searching for:', this.searchInput.value)
         this.setState({hidden: true, search: true})    
     }
-    goToLogin =()=>{
-        console.log('user wants to sign up - take me to sign up page')
-        this.setState({hidden: true, loginPage: true})
-    }
-    goToSignIn =()=>{
-        console.log('user wants to sign up - take me to sign up page')
-        this.setState({hidden: true, signInPage: true})
-    }
-    goToAddItems =()=>{
-        console.log('user wants to sign up - take me to sign up page')
-        this.setState({AddItemsPage: true})
-    }
+  
 
     render(){
        
