@@ -28,6 +28,7 @@ componentWillMount(){
     })
     .then(x => x.json())
     .then(y => {
+        console.log(y)
         var keys = Object.keys(y);
 
         var itemArray = keys.map( element => {
@@ -41,9 +42,9 @@ componentWillMount(){
     })
 }
 
-    productPage=()=>{
+    productPage=(element)=>{
         console.log("product page function clicked")
-        this.setState({hidden: true, ProductDetail: true, search: false})   
+        this.setState({hidden: true, ProductDetail: element, search: false})   
    
     }
     runSearch =()=>{
@@ -52,7 +53,7 @@ componentWillMount(){
 
     drawItem = (element, index, arr) => {
         return <div className = "product-preview" key={index}>
-            <img onClick = {this.productPage} className ="thumbnail" alt='boat' src= {element.image}/>
+            <img onClick = {() => this.productPage(element)} className ="thumbnail" alt='boat' src= {element.image}/>
             <div>{element.prodName}</div>
             <div>{element.price}</div>
         </div>
@@ -78,7 +79,7 @@ componentWillMount(){
     } else if (this.state.search){
         return < Search productPage = {this.productPage} />
         } else if (this.state.ProductDetail){
-            return < ProductDetail />
+            return < ProductDetail item={this.state.ProductDetail} />
         }
         
   }}
