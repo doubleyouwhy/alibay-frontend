@@ -8,8 +8,9 @@ class Login extends Component {
     super();
     this.state = {
 
-      submit: false
-    
+      submit: false,
+      wrongPassword: false
+
     };
   }
 
@@ -30,39 +31,57 @@ class Login extends Component {
     })
       .then(x => x.text())
       .then(x => {
-      
-        this.setState({ submit: true,
-                          outcome: x,
-                        dashboard: true, hidden:true})
+        console.log(x)
+        if (x === "success") {
+          this.setState({
+            submit: true,
+          })
+          this.props.changeLoginPageState()
 
-      }
-    )
+
+        }
+        else {
+          this.setState({
+            wrongPassword: true,
+
+          })
+          console.log("Login faill !!!")
+        }
+      })
+
   }
     
   
 
 
+
   render() {
-    
-      return (
-        <div id='loginStyle' onClick={(i)=> i.stopPropagation()}>
-          <h1> LOGIN </h1>
-          <div>
-            <input ref={r => this.username = r} placeholder="username" name="username" />
-          </div>
-          <div>
-            <input ref={r => this.password = r} placeholder="password" name="password" />
-          </div>
-          <button onClick={this.submit} > SUBMIT </button>
-         
+
+    return (
+      <div id='loginStyle' onClick={(i) => i.stopPropagation()}>
+        <h1> LOGIN </h1>
+        <div>
+          <input ref={r => this.username = r} placeholder="username" name="username" />
         </div>
-      );
-    }
-   
- 
+        <div>
+          <input ref={r => this.password = r} placeholder="password" name="password" />
+        </div>
+        <button onClick={this.submit} > SUBMIT </button>
+        {this.state.wrongPassword && <div> login fail</div>}
+
+      </div>
+    );
 
 
-  
+
+
+
+  }
+
+
+
+
+
 }
 
 export default Login

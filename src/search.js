@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
-import ProductDetail from './ProductDetail.js'
-import Nav from './nav.js'
+// import ProductDetail from './ProductDetail.js'
+// import Nav from './nav.js'
 
 
 class Search extends Component{

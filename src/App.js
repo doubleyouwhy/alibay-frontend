@@ -19,11 +19,6 @@ class App extends Component {
     this.setState({Dashboard: true})
   }
 
-  // goToProduct =()=>{
-  //   this.setState({loginPage: false,
-  //                   signInPage: false,
-  //                   AddItemsPage: false})
-  //   }
     goToLogin =()=>{
         console.log('user wants to sign up - take me to sign up page')
         this.setState({loginPage: true})
@@ -46,7 +41,6 @@ class App extends Component {
           </div>
       </div>
     )
-  }
-}
+
 
 export default App
