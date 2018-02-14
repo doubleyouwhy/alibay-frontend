@@ -49,7 +49,7 @@ runSearch =()=>{
         console.log("this is y:" , y); 
         this.setState({hidden: true, search: true, items:y})    
    
-})
+})}
 
     productPage=(element)=>{
         console.log("product page function clicked")
