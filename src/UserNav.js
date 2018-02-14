@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 
-class Nav extends Component {
+class UserNav extends Component {
   constructor () {
     super()
     this.state = {
@@ -14,8 +14,8 @@ class Nav extends Component {
       <div id="Product" className='navWrapper'>
         <div className='login-div'>
           <div className='cart'> Cart {this.state.itemsInCart}</div>
-          <button onClick={this.props.goToLogin}>Log in</button>
-          <button onClick={this.props.goToSignIn}>Sign up</button>
+          <button onClick={this.props.addItem}>ADD ITEM</button>
+       
          </div>
         {/* <h1 onClick={this.props.goToLanding} className='header' >MAIN NAV BAR</h1> */}
       </div>
@@ -23,4 +23,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav
+export default UserNav 

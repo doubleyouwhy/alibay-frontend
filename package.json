@@ -15,6 +15,6 @@
     "eject": "react-scripts eject"
   },
   
-  "proxy" : "http://10.65.107.137:4000"
+  "proxy" : "http://165.227.36.155:4000"
   
 }

@@ -8,38 +8,60 @@ import Search from './search.js'
 import AddItems from './addItems.js'
 import Dashboard from './dashboard.js';
 import Nav from './nav.js'
+import UserNav from './UserNav.js'
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.state ={}
+    this.state = {
+      navBarOff: true
+    }
   }
 
-  goToProduct =()=>{
-    this.setState({loginPage: false,
-                    signInPage: false,
-                    AddItemsPage: false})
-    }
-    goToLogin =()=>{
-        console.log('user wants to sign up - take me to sign up page')
-        this.setState({loginPage: true})
-    }
-    goToSignIn =()=>{
-        console.log('user wants to sign up - take me to sign up page')
-        this.setState({signInPage: true})
-    }
+  goToProduct = () => {
+    this.setState({
+      loginPage: false,
+      signInPage: false,
+      addItempage: false
+    })
+  }
+  goToLogin = () => {
+    console.log('user wants to sign up - take me to sign up page')
+    this.setState({ loginPage: true })
+  }
+  goToSignIn = () => {
+    console.log('user wants to sign up - take me to sign up page')
+    this.setState({ signInPage: true })
+  }
 
-  render () {
+  changeLoginPageState = () => {
+    this.setState({ loginPage: !this.state.loginPage,
+                    navBarOff: false })
+  }
+  addItem = () => {
+    console.log('user wants to sign up - take me to sign up page')
+    this.setState({ addItempage: true })
+  }
+
+  render() {          
     return (
       <div className='App'>
-          < Nav goToLogin = {this.goToLogin} 
-                goToSignIn = {this.goToSignIn}
-          />            
-          < Landing/>
-          <div>
-              {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>< Login />  </div>}
-              {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn /> </div> }
-          </div>
+      
+       {this.state.navBarOff && <div>< Nav goToLogin={this.goToLogin}
+          goToSignIn={this.goToSignIn}
+        /></div>}
+
+        {!this.state.navBarOff && <div>< UserNav addItem={this.addItem}
+       
+        /></div>}
+
+
+        < Landing /> 
+        <div>
+          {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login  changeLoginPageState={this.changeLoginPageState} />       </div>}
+          {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn changeLoginPageState={this.changeLoginPageState} /> </div>}
+          {this.state.addItempage && <div id="overlay" onClick={this.goToProduct}><  AddItems/> </div>}
+        </div>
       </div>
     )
   }
