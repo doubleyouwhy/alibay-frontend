@@ -32,23 +32,31 @@ componentWillMount(){
 
         var itemArray = keys.map( element => {
             return y[element];
-        });
-        
-        this.setState({
-            items: itemArray
-         })
-
+        });   
+        console.log("item array:", itemArray)  
+        this.setState({ items: itemArray})
+    }) 
+    }    
+runSearch =()=>{
+    console.log(this.searchInput.value)
+    fetch ('/search',{
+        method: "POST",
+        body: this.searchInput.value
     })
-}
+    .then(x=>x.json())
+    .then(y=> {
+        console.log("this is y:" , y); 
+        this.setState({hidden: true, search: true, items:y})    
+   
+})
 
+}
     productPage=()=>{
         console.log("product page function clicked")
         this.setState({hidden: true, ProductDetail: true, search: false})   
    
     }
-    runSearch =()=>{
-        this.setState({hidden: true, search: true})    
-    }
+
 
     drawItem = (element, index, arr) => {
         return <div className = "product-preview" key={index}>
@@ -76,7 +84,7 @@ componentWillMount(){
         
         )  
     } else if (this.state.search){
-        return < Search productPage = {this.productPage} />
+        return < Search productPage = {this.productPage} drawItem = {this.drawItem} itemState = {this.state.items} />
         } else if (this.state.ProductDetail){
             return < ProductDetail />
         }
