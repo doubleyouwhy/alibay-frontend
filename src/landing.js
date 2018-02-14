@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import Search from './search.js'
 import ProductDetail from './ProductDetail.js'
-import Nav from './nav.js'
-import Login from './Login.js'
-import SignIn from './SignIn.js'
-import AddItems from './addItems.js'
+
 
 class Landing extends Component{
 
@@ -17,24 +14,51 @@ class Landing extends Component{
             ProductDetail: false,
             loginPage: false,
             signInPage: false,
-            AddItemsPage: false
+            dashboard: false, 
+            items: []
+
         }
     }
 
+
+componentWillMount(){
+    fetch ('/getAllItems',{
+        method: "POST",
+        body: 'test'
+    })
+    .then(x => x.json())
+    .then(y => {
+        var keys = Object.keys(y);
+
+        var itemArray = keys.map( element => {
+            return y[element];
+        });
+        
+        this.setState({
+            items: itemArray
+         })
+
+    })
+}
+
     productPage=()=>{
-        console.log('user clicked on image - take me to product page')
-        this.setState({hidden: true, ProductDetail: true})   
+        console.log("product page function clicked")
+        this.setState({hidden: true, ProductDetail: true, search: false})   
    
     }
     runSearch =()=>{
-        console.log('user is searching for:', this.searchInput.value)
         this.setState({hidden: true, search: true})    
     }
-  
 
+    drawItem = (element, index, arr) => {
+        return <div className = "product-preview" key={index}>
+            <img onClick = {this.productPage} className ="thumbnail" alt='boat' src= {element.image}/>
+            <div>{element.prodName}</div>
+            <div>{element.price}</div>
+        </div>
+    }
+ 
     render(){
-       
-       
         if (this.state.hidden === false){
         return(
             <div id= 'Product'>  
@@ -46,43 +70,13 @@ class Landing extends Component{
                         <button onClick = {this.runSearch}>submit</button>
                     </div>
                     <div className = "gallery">
-                        <div className = "product-preview">
-                            <img onClick = {this.productPage} className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                            <div>Cool chair </div>
-                            <div>$450</div>
-                        </div>
-                        <div className = "product-preview">
-                            <img onClick = {this.productPage} className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                            <div>Cool chair </div>
-                            <div>$450</div>
-                        </div>
-                        <div className = "product-preview">
-                            <img onClick = {this.productPage} className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                            <div>Cool chair </div>
-                            <div>$450</div>
-                        </div>
-                        <div className = "product-preview">
-                            <img onClick = {this.productPage} className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                            <div>Cool chair </div>
-                            <div>$450</div>
-                        </div>
-                        <div className = "product-preview">
-                            <img onClick = {this.productPage} className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                            <div>Cool chair </div>
-                            <div>$450</div>
-                        </div>
-                        <div className = "product-preview">
-                            <img onClick = {this.productPage} className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                            <div>Cool chair </div>
-                            <div>$450</div>
-                        </div>
-                                    
+                        {this.state.items.map(this.drawItem)}   
                     </div>
             </div>
         
         )  
     } else if (this.state.search){
-        return < Search />
+        return < Search productPage = {this.productPage} />
         } else if (this.state.ProductDetail){
             return < ProductDetail />
         }

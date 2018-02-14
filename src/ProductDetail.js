@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
 import Shipping from './Shipping.js'
-import Nav from './nav.js'
 
 class ProductDetail extends Component {
 
@@ -15,7 +14,7 @@ class ProductDetail extends Component {
             productTitle: '',
             price: '',
             blurb: '',
-            productImage: 'url.com'
+            productImage: '',
         }
     }
 
@@ -48,10 +47,9 @@ class ProductDetail extends Component {
 
     render() {
         if (this.state.hidden === false) {
-            console.log(this.state)
             return (
                 <div id='Product'>
-                    <h1>Product Title</h1>
+                    <h1>{this.state.productTitle}</h1>
                     <p>Seller: <a href='http://localhost:3000'>User123</a></p>
                     <img alt='chair' src={this.state.productImage} />
                     <p>{this.state.blurb}</p>

@@ -36,7 +36,7 @@ class SignIn extends Component {
       //     this.setState({
       //       submit: true,
       //     })
-      //     this.props.changeLoginPageState()
+      this.props.changeLoginPageState()
 
 
       //   }
@@ -48,11 +48,8 @@ class SignIn extends Component {
       //     console.log("Login faill !!!")
       //   }
        })
+       
 
-  }
-  goToLogin = () => {
-
-    this.setState({ loginPage: true })
   }
 
 
@@ -67,9 +64,7 @@ class SignIn extends Component {
           <div>
             <input ref={r => this.password = r} placeholder="password" name="password" />
           </div>
-          {/* <div>
-            <input ref={r => this.confirmPassword = r} placeholder="re-type password" name="password" />
-          </div> */}
+
           <div>
             <button onClick={this.submit} > SUBMIT </button>
           </div>

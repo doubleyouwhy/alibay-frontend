@@ -25,12 +25,32 @@ class AddItems extends Component {
     var name = this.name.value;
     var description = this.description.value;
     var price = this.price.value;
+    var photo = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg" 
     console.log("name", name);
-    console.log("description", description);
+    console.log("blurb", description);
     console.log("price :", price);
 
+    fetch('/newListing', {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        price: price,
+        blurb: description,
+        image: photo
+
+      })
+    })
+      .then(x => x.text())
+      .then(x => {
+        console.log(x)
+        this.props.addItemSignInOff()
+       
+        
+      })
 
   }
+
+  
 
 
   render() {

@@ -1,32 +1,12 @@
 import React, { Component } from 'react'
 import './App.css'
 import Confirmation from './Confirmation.js'
-import Nav from './nav.js'
 
-class Payment extends Component {
-
-    constructor() {
-        super()
-        this.state = {
-            hidden: false,
-            selected: true
-        }
-    }
-
-    submitOrder = () => {
-        this.setState({ hidden: true })
-    }
-
+class CreditCard extends Component {
     render() {
-        if(this.state.hidden === false){
         return (
-            <div id='Product'>
-                <h1>Payment Information</h1>
+            <div>
                 <div>
-                    <div>
-                        <input type="radio" id="creditCard" name="payment" value="creditCard" defaultChecked/> <label htmlFor="creditCard">Credit Card</label>
-                        <input type="radio" id="payPal" name="payment" value="payPal" /> <label htmlFor="payPal">PayPal</label>
-                    </div>
                     <input ref={r => this.cardHolder = r} placeholder='Card Holder' />
                     <input ref={r => this.cardNumber = r} placeholder='Card Number' />
                 </div>
@@ -55,12 +35,41 @@ class Payment extends Component {
                     <option value='2025'>2025</option>
                 </select>
                 <input ref={r => this.cardCVV = r} id='cvv' placeholder='CVV' maxLength='4' />
-                <div>
-                    <button onClick={this.submitOrder}>Place Order</button>
-                </div>
             </div>
         )
-    } else {return <Confirmation />}
+    }
+}
+
+class Payment extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            hidden: false,
+            selected: true,
+            creditCardInput: true
+        }
+    }
+
+    submitOrder = () => {
+        this.setState({ hidden: true })
+    }
+
+    render() {
+        if (this.state.hidden === false) {
+            return (
+                <div>
+                    <h1>Payment Information</h1>
+                    <div>
+                        <div>
+                            <input type="radio" id="creditCard" name="payment" value="creditCard" defaultChecked /> <label htmlFor="creditCard">Credit Card</label>
+                            <input type="radio" id="payPal" name="payment" value="payPal" /> <label htmlFor="payPal">PayPal</label>
+                        </div>
+                        <CreditCard />
+                    </div>
+                </div>
+            )
+        } else { return <Confirmation /> }
     }
 }
 
