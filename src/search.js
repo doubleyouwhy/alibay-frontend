@@ -30,9 +30,7 @@ class Search extends Component{
     goToLanding = ()=>{
         this.setState({hidden:false, landing: true})
     }
-   
-   
-   
+    
 
     productPage=()=>{
         console.log('user clicked on image - take me to product page')
@@ -49,11 +47,6 @@ class Search extends Component{
         if (this.state.hidden === false){
         return(
             <div id= 'Product'>
-                <div> <Nav
-                    goToLogin = {this.goToLogin} 
-                    goToSignIn = {this.goToSignIn}
-                    goToLanding ={this.goToLanding}/> 
-                </div>
                 <div className= "search-div">
                     <input className="search-bar" placeholder="search" ref={srch => this.searchInput = srch}></input>
                     <button onClick = {this.runSearch}>submit</button>

@@ -51,8 +51,12 @@ class ProductDetail extends Component {
             console.log(this.state)
             return (
                 <div id='Product'>
+<<<<<<< HEAD
                     < Nav />
                     <h1>{this.state.productTitle}</h1>
+=======
+                    <h1>Product Title</h1>
+>>>>>>> 64de3127eaea62cbdb80d129977ac1c30c405634
                     <p>Seller: <a href='http://localhost:3000'>User123</a></p>
                     <img alt='chair' src={this.state.productImage} />
                     <p>{this.state.blurb}</p>
