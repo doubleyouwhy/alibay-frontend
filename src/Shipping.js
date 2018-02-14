@@ -5,8 +5,8 @@ import Confirmation from './Confirmation.js'
 
 class Shipping extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hidden: false,
       formError: '',
@@ -79,6 +79,12 @@ class Shipping extends Component {
     if (this.state.hidden === false) {
       return (
         <div id='Product'>
+        <div>
+        <h1>Order Summary</h1>
+        <h3>Red Boat</h3>
+        <h3>Total: $25.00</h3>
+        </div>
+
           <div>
             <h1>Shipping Information</h1>
             <div id='formError'>{this.state.formError}</div>
