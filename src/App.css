@@ -85,9 +85,6 @@ background-color: #f2f2f2;
 
 .navWrapper{
   max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-
 }
 
 #overlay {
@@ -122,3 +119,11 @@ background-color: #f2f2f2;
 button {
   cursor: pointer; /* Add a pointer on hover */
 }
+
+
+/*------------- WESLEY'S STYLING HERE */
+#formError{
+  font-size: 14px;
+  color: red;
+}
+
