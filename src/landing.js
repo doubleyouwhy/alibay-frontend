@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import './App.css'
 import Search from './search.js'
 import ProductDetail from './ProductDetail.js'
+import SearchGallery from './SearchGallery';
 
 
 class Landing extends Component{
@@ -73,6 +73,7 @@ runSearch =()=>{
                     <div>
                         <img id ="bannerImage" alt='house' src='https://livingedge.com.au/cache/img/app/img/asset/29/93/52/2/herman-miller-eames-compact-sofa-lifestyle-01.jpg/w-1326_h-699_q-90_c-c/herman-miller-eames-compact-sofa-lifestyle-01.jpg' />  
                     </div>
+                    {/* <SearchGallery /> */}
                     <div className= "search-div">
                         <input className="search-bar" placeholder="search" ref={srch => this.searchInput = srch}></input>
                         <button onClick = {this.runSearch}>submit</button>
@@ -84,9 +85,16 @@ runSearch =()=>{
         
         )  
     } else if (this.state.search){
-        return < Search productPage = {this.productPage} drawItem = {this.drawItem} itemState = {this.state.items} />
-        } else if (this.state.ProductDetail){
-            return < ProductDetail item={this.state.ProductDetail} />
+        return < Search 
+            productPage = {this.productPage} 
+            drawItem = {this.drawItem} 
+            items = {this.state.items}
+            searchInput = {this.searchInput.value}
+             />
+        
+            } else if (this.state.ProductDetail){
+                  return < ProductDetail 
+                        item={this.state.ProductDetail} />
         }
     }
   }

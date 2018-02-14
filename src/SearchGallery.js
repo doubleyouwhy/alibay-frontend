@@ -8,9 +8,30 @@ class Search extends Component{
             items: []
         } 
     }
+
+    runSearch =()=>{
+        console.log(this.searchInput.value)
+        fetch ('/search',{
+            method: "POST",
+            body: this.searchInput.value
+        })
+        .then(x=>x.json())
+        .then(y=> {
+            console.log("this is y:" , y); 
+            this.setState({hidden: true, search: true, items:y})    
+       
+    })}
+    
+    drawItem = (element, index, arr) => {
+        return <div className = "product-preview" key={index}>
+            <img onClick = {() => this.productPage(element)} className ="thumbnail" alt='boat' src= {element.image}/>
+            <div>{element.prodName}</div>
+            <div>{element.price}</div>
+        </div>
+    }
     render(){
         return(
-            <div id= 'Product'>
+            <div>
                 <div className= "search-div">
                     <input className="search-bar" placeholder="search" ref={srch => this.searchInput = srch}></input>
                     <button onClick = {this.runSearch}>submit</button>
