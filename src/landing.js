@@ -88,8 +88,8 @@ runSearch =()=>{
         } else if (this.state.ProductDetail){
             return < ProductDetail item={this.state.ProductDetail} />
         }
-        
-  }}
+    }
+  }
 
 
 export default Landing
