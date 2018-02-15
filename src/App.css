@@ -84,9 +84,30 @@ background-color: #f2f2f2;
 /* NAV */
 
 .navWrapper{
-  max-width: 100%;
+  /* max-width: 100%; */
   /* display: flex;
   justify-content: space-between; */
+}
+
+/* DASHBOARD */
+
+.profile{
+  text-align: center;
+
+}
+.profile-gallery{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 25px;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: rgb(212, 212, 212);
+  border-width: 1px;
+  border-radius: 10px;
+  background-color: white;
 
 }
 
@@ -169,3 +190,16 @@ button {
   color: red;
 }
 
+.checkOutWrapper{
+  display: flex;
+  justify-content: space-around;
+}
+
+.confirmation li{
+  list-style-type: none;
+  text-transform: capitalize;
+}
+
+#postalCode{
+  text-transform: uppercase;
+}
