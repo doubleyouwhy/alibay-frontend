@@ -15,6 +15,7 @@ class UserNav extends Component {
         <div className='login-div'>
           <div className='cart'> Cart {this.state.itemsInCart}</div>
           <button onClick={this.props.addItem}>ADD ITEM</button>
+          <button onClick={this.props.goToProfile}>My Profile</button>
        
          </div>
         {/* <h1 onClick={this.props.goToLanding} className='header' >MAIN NAV BAR</h1> */}

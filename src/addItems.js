@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react'
 import './App.css'
 
@@ -13,10 +11,20 @@ class AddItems extends Component {
   }
 
 
-  addPhoto = () => {
-
-    console.log("add photo");
-
+  uploadFile = (x) => {
+    var randomName = Math.floor((Math.random() * 1000000) + 1);
+    var fullName = x.type
+    var splitName = fullName.split("/")
+    var almostThere = splitName[1]
+    var fileExtension = "." + almostThere
+    fetch('/upics?name=' + randomName + fileExtension, { method: "POST", body: x })
+      .then(x => x.text())
+      .then(x => {
+        // this.setState({ photo: x})
+        console.log(x)
+        this.setState({ number: randomName + fileExtension })
+        console.log("the number   :", this.state.number)
+      })
 
   }
 
@@ -25,10 +33,8 @@ class AddItems extends Component {
     var name = this.name.value;
     var description = this.description.value;
     var price = this.price.value;
-    var photo = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg" 
-    console.log("name", name);
-    console.log("blurb", description);
-    console.log("price :", price);
+    var image = this.state.number
+
 
     fetch('/newListing', {
       method: "POST",
@@ -36,32 +42,27 @@ class AddItems extends Component {
         name: name,
         price: price,
         blurb: description,
-        image: photo
-
+        image: image
       })
     })
       .then(x => x.text())
       .then(x => {
         console.log(x)
         this.props.addItemSignInOff()
-       
-        
       })
-
   }
 
-  
+
 
 
   render() {
-
     return (
-      <div id='loginStyle' onClick={(i)=> i.stopPropagation()} >
+      <div id='loginStyle' onClick={(i) => i.stopPropagation()} >
         <h1> Add items </h1>
         <div><input ref={r => this.name = r} placeholder="name" /> </div>
         <div><input ref={r => this.description = r} placeholder="description" /> </div>
         <div><input ref={r => this.price = r} placeholder="Price" /> </div>
-        <div> <button onClick={this.addPhoto} > add photo </button> </div>
+        <input type="file" id="input" onChange={e => this.uploadFile(e.target.files[0])} />
         <div> <button onClick={this.submit} > submit </button> </div>
       </div>
     );

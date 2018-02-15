@@ -14,28 +14,37 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      navBarOff: true
+      navBarOff: true,
+      Landing: true
     }
   }
 
+
+///// clicking outside remove login / sing in / user additem page  
   goToProduct = () => {
     this.setState({
       loginPage: false,
       signInPage: false,
-      addItempage: false
+      addItempage: false,
+      addItemSign: false
     })
   }
-  goToDashboard = () => {
-    this.setState({ Dashboard: true })
-  }
+  
+  
+  
+  
   goToLogin = () => {
     this.setState({ loginPage: true })
   }
+
+
   goToSignIn = () => {
     this.setState({
       signInPage: true
     })
   }
+
+  // get you from login to sign in
   loginToSignIn = () => {
     this.setState({
       signInPage: true,
@@ -44,7 +53,7 @@ class App extends Component {
     })
 
   }
-
+// remove (addItem after login) page after submit or clicking outside off the box
   addItemSignInOff = () => {
     this.setState({
       addItemSign: false,
@@ -52,7 +61,7 @@ class App extends Component {
     })
   }
 
-
+// remove Login, signIn and addItem page after submit 
   changeLoginPageState = () => {
     this.setState({
       loginPage: false,
@@ -64,6 +73,7 @@ class App extends Component {
   }
 
 
+ // Login and add items
 
   addItemLogin = () => {
     this.setState({
@@ -71,37 +81,45 @@ class App extends Component {
       addItemSign: true
     })
   }
+ 
+ // add items on user nav bar
   addItem = () => {
 
     this.setState({ addItempage: true })
   }
 
+  goToProfile = () => {
+
+    this.setState({ Landing: false })
+  }
+
   render() {
-    console.log("item sign", this.addItemSign)
+    
     return (
 
       <div className='App'>
 
-        {this.state.navBarOff && <div>< Nav goToLogin={this.goToLogin}
-          goToSignIn={this.goToSignIn} addItemLogin={this.addItemLogin}
-        /></div>}
-
-        {(!this.state.navBarOff && this.state.isLoggin) && <div>< UserNav addItem={this.addItem}
-
-
-
-        /></div>}
+        {/* non-user nav bar */}
+        {this.state.navBarOff && <div>< Nav goToLogin={this.goToLogin} 
+          goToSignIn={this.goToSignIn} addItemLogin={this.addItemLogin} /></div>}
+         {/* user nav bar */}
+        {(!this.state.navBarOff && this.state.isLoggin) && <div>< UserNav addItem={this.addItem} goToProfile={this.goToProfile} /></div>} 
 
 
+       {/* Landing Page */}
+       {(this.state.Landing) && <div> < Landing /> </div>}
+       {/* dashboard Page */}
+       {(!this.state.Landing) && <div> < Login /> </div>}
 
-        < Landing />
+       
         <div>
+           {/*  login */}
           {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login changeLoginPageState={this.changeLoginPageState} loginToSignIn={this.loginToSignIn} />       </div>}
+          {/* sign in */}
           {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn changeLoginPageState={this.changeLoginPageState} /> </div>}
-
+          {/*login and add items*/}
           {(this.state.addItemSign && this.state.isLoggin) && <div id="overlay" onClick={this.addItemSignInOff}><  AddItems addItemSignInOff={this.addItemSignInOff} /> </div>}
-
-
+          {/* add items */}
           {this.state.addItempage && <div id="overlay" onClick={this.goToProduct}><  AddItems addItemSignInOff={this.addItemSignInOff} /> </div>}
         </div>
       </div>
