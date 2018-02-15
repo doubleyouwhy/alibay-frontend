@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      navBarOff: true,
+      navLandingNoLogin: true,
       Landing: true
     }
   }
@@ -65,7 +65,7 @@ class App extends Component {
     this.setState({
       loginPage: false,
       signInPage: false,
-      navBarOff: false,
+      navLandingNoLogin: false,
       addItempage: false,
       isLoggin: true,
     })
@@ -91,19 +91,19 @@ class App extends Component {
 
     this.setState({ Landing: false })
   }
+  goToLanding = () => {
+    this.setState({ Landing: true })
+  }
 
   render() {
-    
+    console.log(this.state.Landing)
     return (
 
       <div className='App'>
-
         {/* non-user nav bar */}
-        {this.state.navBarOff && <div>< Nav goToLogin={this.goToLogin} 
-          goToSignIn={this.goToSignIn} addItemLogin={this.addItemLogin} /></div>}
-         {/* user nav bar */}
-        {(!this.state.navBarOff && this.state.isLoggin) && <div>< UserNav addItem={this.addItem} goToProfile={this.goToProfile} /></div>} 
-
+         <div>< Nav goToLogin={this.goToLogin} goToLanding={this.goToLanding}  goToProfile={this.goToProfile} goToSignIn={this.goToSignIn} addItem={this.addItem} addItemLogin={this.addItemLogin} navLandingNoLogin={this.state.navLandingNoLogin} Landing={this.state.Landing}  /></div>
+    
+       
 
        {/* Landing Page */}
        {(this.state.Landing) && <div> < Landing /> </div>}
@@ -111,10 +111,10 @@ class App extends Component {
        {(!this.state.Landing) && <div> < Dashboard /> </div>}
 
        
-      
+       
         <div>
            {/*  login */}
-          {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login changeLoginPageState={this.changeLoginPageState} loginToSignIn={this.loginToSignIn} />       </div>}
+          {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login changeLoginPageState={this.changeLoginPageState} loginToSignIn={this.loginToSignIn} addItemSign={this.state.addItemSign} />  </div>}
           {/* sign in */}
           {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn changeLoginPageState={this.changeLoginPageState} /> </div>}
           {/*login and add items*/}

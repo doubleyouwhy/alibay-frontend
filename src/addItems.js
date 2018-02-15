@@ -63,7 +63,7 @@ class AddItems extends Component {
         <div><input ref={r => this.description = r} placeholder="description" /> </div>
         <div><input ref={r => this.price = r} placeholder="Price" /> </div>
         <input type="file" id="input" onChange={e => this.uploadFile(e.target.files[0])} />
-        <div> <button onClick={this.submit} > submit </button> </div>
+        <div> <button onClick={this.submit} className="btn-outline-light" > submit </button> </div>
       </div>
     );
 

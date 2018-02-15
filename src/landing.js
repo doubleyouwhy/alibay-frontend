@@ -3,6 +3,7 @@ import ProductDetail from './ProductDetail.js'
 
 
 
+
 class Landing extends Component{
 
     constructor(){

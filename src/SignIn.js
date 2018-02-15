@@ -66,7 +66,7 @@ class SignIn extends Component {
           </div>
 
           <div>
-            <button onClick={this.submit} > SUBMIT </button>
+            <button onClick={this.submit} className="btn-outline-light" > SUBMIT </button>
           </div>
     
         </div>
