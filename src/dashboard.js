@@ -1,68 +1,58 @@
 import React, { Component } from 'react'
-import './App.css'
 
 class Dashboard extends Component{
 
     constructor(){
-        super ();
-        this.state ={
+        super();
+        this.state = {
+            itemsForSale:[],
+            itemsSold:[],
+            itemsBought:[]        
         }
     }
 
+
+    componentWillMount=()=>{
+        fetch ('/itemsForSale?uid=12345')
+        .then(x => x.json())
+        .then(y => console.log(y))
+
+        fetch('/itemsSold?uid=12345')
+        .then(x => x.json())
+        .then(y => console.log(y))
+
+        fetch('/itemsBought?uid=12345')
+        .then(x => x.json())
+        .then(y => console.log(y))
+    }
+    // dashBoardDrawItem = (element, index, arr) => {
+    //     return    
+    //         <div  className = "product-preview" key={index}>
+    //         <img  className ="thumbnail" alt= {element.prodName} 
+    //               src= {element.image}/>  
+
+    //         <div>{element.prodName}</div>
+    //         <div>{element.price}</div>
+    //     </div>
+    // }
+
     render(){
        
-        if(this.state.dashboard===true){
-        return ( <div id= 'Product'>
-                   <button onClick={this.props.goToAddItems}>AddItems</button> 
-                    <div> Items for Sale</div>
-                        <div className = "gallery">
-                            <div className = "product-preview">
-                                <img className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                                <div>Cool chair </div>
-                                <div>$450</div>
-                             </div>
-                        <div className = "gallery">
-                            <div className = "product-preview">
-                                <img className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                                <div>Cool chair </div>
-                                <div>$450</div>
-                            </div>
-                        <div className = "gallery">
-                            <div className = "product-preview">
-                                <img className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                                <div>Cool chair </div>
-                                <div>$450</div>
-                             </div>
-                        </div> 
-                     </div>            
-                    </div>
-                    <div> Items Bought</div>
-                        <div className = "gallery">
-                            <div className = "product-preview">
-                                <img className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                                <div>Cool chair </div>
-                                <div>$450</div>
-                             </div>
-                        <div className = "gallery">
-                            <div className = "product-preview">
-                                <img className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                                <div>Cool chair </div>
-                                <div>$450</div>
-                            </div>
-                        <div className = "gallery">
-                            <div className = "product-preview">
-                                <img className ="thumbnail" alt='chair' src='https://static.structube.com/media/catalog/product/cache/1/thumbnail/900x698/75682affa62b5fff039e968bba255800/0/2/02-90.12.14.20_armchair_eiffel-90.12.14.20.jpg' />  
-                                <div>Cool chair </div>
-                                <div>$450</div>
-                             </div>
-                        </div> 
-                     </div>            
-                    </div>
-                </div>
-        )
+        return (
+             <div id= 'Product'> dashboard
+                    {/* <div className = "gallery"> Items for Sale
+                        {this.state.itemsForSale.map(this.dashBoardDrawItem)}   
+                    </div>  
+                    <div className = "gallery"> Sold items
+                        {this.state.itemsSold.map(this.dashboardDrawItem)}   
+                    </div> 
+                    <div className = "gallery"> Items bought
+                        {this.state.itemsBought.map(this.dashboardDrawItem)}   
+                    </div>        */}
+            </div>
+            )
+        }
     }
 
-    }
-}
 
 export default Dashboard
