@@ -30,9 +30,7 @@ class ProductDetail extends Component {
     }
 
     componentWillMount = () => {
-        // console.log('object element that mounted', this.props.item)
         let product = this.props.item
-        // console.log('obj in variable', product)
     }
     //     fetch('./productdetail', {
     //         method: 'POST',

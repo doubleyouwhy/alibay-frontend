@@ -84,10 +84,9 @@ background-color: #f2f2f2;
 /* NAV */
 
 .navWrapper{
-  max-width: 100%;
+  /* max-width: 100%; */
   /* display: flex;
   justify-content: space-between; */
-
 }
 
 /* DASHBOARD */
@@ -152,3 +151,16 @@ button {
   color: red;
 }
 
+.checkOutWrapper{
+  display: flex;
+  justify-content: space-around;
+}
+
+.confirmation li{
+  list-style-type: none;
+  text-transform: capitalize;
+}
+
+#postalCode{
+  text-transform: uppercase;
+}
