@@ -90,6 +90,28 @@ background-color: #f2f2f2;
 
 }
 
+/* DASHBOARD */
+
+.profile{
+  text-align: center;
+
+}
+.profile-gallery{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 25px;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: rgb(212, 212, 212);
+  border-width: 1px;
+  border-radius: 10px;
+  background-color: white;
+
+}
+
 #overlay {
   position: fixed; /* Sit on top of the page content */
   display: block; /* Hidden by default */
