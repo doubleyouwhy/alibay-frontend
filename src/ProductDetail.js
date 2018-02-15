@@ -20,7 +20,6 @@ class ProductDetail extends Component {
 
     buyProduct = () => {
         this.setState({ hidden: true })
-        console.log('buy button log ',this.props.item)
         return (<div>{this.props.item.prodName}<div><Shipping /></div></div>)
     }
 

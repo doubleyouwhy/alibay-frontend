@@ -45,7 +45,6 @@ class Shipping extends Component {
     //     this.setState({ hidden: false, userShipping: {shippingInfo} })
     //   })
     // .then(z => this.setState({shippingInfo: {z}}))
-    setTimeout(console.log('updated state log', this.state), 1000)
   }
 
   formValidation = () => {
