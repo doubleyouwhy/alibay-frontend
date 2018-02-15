@@ -4,9 +4,9 @@ import Landing from './landing.js'
 
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 var date = new Date()
-var year = date.getUTCFullYear()
-var month = months[date.getUTCMonth()]	
-var day = date.getUTCDate()
+var year = date.getFullYear()
+var month = months[date.getMonth()]	
+var day = date.getDate()
 var fullDate = month + ' ' + day + ' ' + year
 
 class Confirmation extends Component {
@@ -22,6 +22,7 @@ class Confirmation extends Component {
   }
 
   componentDidMount = () => {
+    console.log(date)
   }
 
   render() {

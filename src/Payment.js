@@ -8,7 +8,7 @@ class CreditCard extends Component {
             <div>
                 <div>
                     <input ref={r => this.cardHolder = r} placeholder='Card Holder' />
-                    <input ref={r => this.cardNumber = r} placeholder='•••• •••• •••• ••••' />
+                    <input ref={r => this.cardNumber = r} placeholder='•••• •••• •••• 8302' />
                 </div>
                 <select ref={r => this.cardMonth = r} name='months'>
                     <option value='01 - January'> 01 - January</option>

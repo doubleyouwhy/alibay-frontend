@@ -59,7 +59,7 @@ class ProductDetail extends Component {
                     <img alt='chair' src={this.props.item.image} />
                     <p>{this.props.item.blurb}</p>
                     <h2>${this.props.item.price}</h2>
-                    <button onClick={this.buyProduct}>Buy</button>
+                    <button onClick={this.buyProduct}>Buy Now</button>
                     <button onClick={this.addToCart}>Add to Cart</button>
                 </div>
             )
