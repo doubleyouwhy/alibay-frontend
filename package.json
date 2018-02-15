@@ -2,7 +2,7 @@
   "name": "alibay-frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy" : "http://10.65.107.70:4000",
+  "proxy" : "http://165.227.36.155:4000",
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

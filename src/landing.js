@@ -23,7 +23,6 @@ componentWillMount=()=>{
     .then(x => x.json())
     .then(y => {
 
-        console.log(y)
         var keys = Object.keys(y);
 
         var itemArray = keys.map( element => {
@@ -31,7 +30,7 @@ componentWillMount=()=>{
         });    
         this.setState({ items: itemArray, searchValue:""})
     }) 
-}    
+}   
 runSearch =()=>{
     fetch ('/search',{
         method: "POST",
@@ -55,7 +54,7 @@ runSearch =()=>{
     }
 
     drawItem = (element, index, arr) => {
-        return 
+        return (
         
             <div className = "product-preview" key={index}>
             <img onClick = {() => this.productPage(element)} 
@@ -64,7 +63,7 @@ runSearch =()=>{
 
             <div>{element.prodName}</div>
             <div>{element.price}</div>
-        </div>
+        </div>)
     }
  
     render(){
