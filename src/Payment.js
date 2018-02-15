@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Confirmation from './Confirmation.js'
+import PayPal from './Paypal.js'
 
 class CreditCard extends Component {
     render() {
@@ -47,12 +48,17 @@ class Payment extends Component {
         this.state = {
             hidden: false,
             selected: true,
-            creditCardInput: true
+            creditCardInput: true,
+            selectedOption: 'creditCard'
         }
     }
 
     submitOrder = () => {
         this.setState({ hidden: true })
+    }
+
+    handleChange = (event) => {
+        this.setState({selectedOption: event.target.value})
     }
 
     render() {
@@ -61,11 +67,11 @@ class Payment extends Component {
                 <div>
                     <h1>Payment Information</h1>
                     <div>
-                        <div>
-                            <input type="radio" id="creditCard" name="payment" value="creditCard" defaultChecked /> <label htmlFor="creditCard">Credit Card</label>
-                            <input type="radio" id="payPal" name="payment" value="payPal" /> <label htmlFor="payPal">PayPal</label>
-                        </div>
-                        <CreditCard />
+                        <form>
+                            <input type="radio" id="creditCard" name="payment" value="creditCard" defaultChecked onChange={this.handleChange}/> <label htmlFor="creditCard">Credit Card</label>
+                            <input type="radio" id="payPal" name="payment" value="payPal" onChange={this.handleChange}/> <label htmlFor="payPal">PayPal</label>
+                        </form>
+                        {this.state.selectedOption === 'creditCard' ? <CreditCard /> : <PayPal />}
                     </div>
                 </div>
             )

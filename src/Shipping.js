@@ -23,11 +23,12 @@ class Shipping extends Component {
       province: this.province.value,
       zip: this.zip.value,
       country: this.country.value,
-      phone: this.phone.value
+      phone: this.phone.value,
+      order: this.props.item
     }
 
-    this.setState({ hidden: true, userShipping: {shippingInfo} })
-    
+    setTimeout(() => this.setState({ hidden: true, userShipping: { shippingInfo } }), 1500)
+
     // fetch('./shipping', {
     //   method: 'POST',
     //   body: JSON.stringify({
@@ -69,40 +70,43 @@ class Shipping extends Component {
     if (this.state.hidden === false) {
       return (
         <div id='Product'>
-          <div>
-            <h1>Your Order Summary</h1>
-            <h3>1 x {this.props.item.prodName}</h3>
-            <h4>Subtotal: ${this.props.item.price}</h4>
-            <h4>Tax: ${(this.props.item.price * 0.15).toFixed(2)}</h4>
-            <h4>Shipping: $15.00</h4>
-            <h4>Total: ${(this.props.item.price * 1.15 + 15).toFixed(2)}</h4>
-          </div>
+          <div className='checkOutWrapper'>
+            <div className='checkOutInfo'>
+              <div>
+                <h1>Shipping Information</h1>
+                <div id='formError'>{this.state.formError}</div>
+                <input type='text' ref={r => this.firstName = r} placeholder='First Name' />
+                <input type='text' ref={r => this.lastName = r} placeholder='Last Name' />
+              </div>
+              <div>
+                <input type='text' ref={r => this.address = r} placeholder='Address' />
+                <input type='text' ref={r => this.city = r} placeholder='City' />
+              </div>
+              <div>
+                <input type='text' ref={r => this.province = r} placeholder='State/Province' />
+                <input type='text' ref={r => this.zip = r} placeholder='Zip / Postal Code' />
+              </div>
+              <div>
+                <input type='text' ref={r => this.country = r} placeholder='Country' />
+                <input type='number' ref={r => this.phone = r} placeholder='Phone Number' maxLength='10' />
+              </div>
+              <Payment />
+            </div>
 
-          <div>
-            <h1>Shipping Information</h1>
-            <div id='formError'>{this.state.formError}</div>
-            <input type='text' ref={r => this.firstName = r} placeholder='First Name' />
-            <input type='text' ref={r => this.lastName = r} placeholder='Last Name' />
+            <div className='orderSummary'>
+              <h1>Order Summary</h1>
+              <h3>1 x {this.props.item.prodName}</h3>
+              <h4>Subtotal: ${this.props.item.price}</h4>
+              <h4>Tax: ${(this.props.item.price * 0.15).toFixed(2)}</h4>
+              <h4>Shipping: $25.00</h4>
+              <h4>Total: ${(this.props.item.price * 1.15 + 25).toFixed(2)}</h4>
+              <button onClick={this.formValidation}>Place Order</button>
+            </div>
           </div>
-          <div>
-            <input type='text' ref={r => this.address = r} placeholder='Address' />
-            <input type='text' ref={r => this.city = r} placeholder='City' />
-          </div>
-          <div>
-            <input type='text' ref={r => this.province = r} placeholder='State/Province' />
-            <input type='text' ref={r => this.zip = r} placeholder='Zip / Postal Code' />
-          </div>
-          <div>
-            <input type='text' ref={r => this.country = r} placeholder='Country' />
-            <input type='number' ref={r => this.phone = r} placeholder='Phone Number' maxLength='10' />
-          </div>
-          <Payment />
-          <button onClick={this.formValidation}>Place Order</button>
         </div>
       )
-    } else { return <Confirmation item={this.state.userShipping}/> }
+    } else { return <Confirmation item={this.state.userShipping} /> }
   }
 }
-
 
 export default Shipping
