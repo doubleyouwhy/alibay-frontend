@@ -62,8 +62,6 @@ class Shipping extends Component {
       this.setState({ formError: (<div>Error, <b>Zip</b> missing</div>) })
     } else if (this.country.value.length < 1) {
       this.setState({ formError: (<div>Error, <b>Country</b> missing</div>) })
-    } else if (this.phone.value.length < 1) {
-      this.setState({ formError: (<div>Error, <b>Phone</b> missing</div>) })
     } else this.shipInfo()
   }
 
@@ -99,7 +97,7 @@ class Shipping extends Component {
             <input type='number' ref={r => this.phone = r} placeholder='Phone Number' maxLength='10' />
           </div>
           <Payment />
-          <button onClick={this.shipInfo}>Place Order</button>
+          <button onClick={this.formValidation}>Place Order</button>
         </div>
       )
     } else { return <Confirmation item={this.state.userShipping}/> }
