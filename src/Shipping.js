@@ -10,15 +10,27 @@ class Shipping extends Component {
     this.state = {
       hidden: false,
       formError: '',
-      shippingInfo: {}
+      userShipping: {}
     }
   }
 
   shipInfo = () => {
-    // this.setState({ hidden: true })
-    // var userShipping = {
-    //   userid: this.userid,
-    //   shippingAddress: {
+    let shippingInfo = {
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      address: this.address.value,
+      city: this.city.value,
+      province: this.province.value,
+      zip: this.zip.value,
+      country: this.country.value,
+      phone: this.phone.value
+    }
+
+    this.setState({ hidden: true, userShipping: {shippingInfo} })
+    
+    // fetch('./shipping', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
     //     firstName: this.firstName.value,
     //     lastName: this.lastName.value,
     //     address: this.address.value,
@@ -27,32 +39,12 @@ class Shipping extends Component {
     //     zip: this.zip.value,
     //     country: this.country.value,
     //     phone: this.phone.value
-    //   }
-    // }
-    fetch('./shipping', {
-      method: 'POST',
-      body: JSON.stringify({
-        firstName: this.firstName.value,
-        lastName: this.lastName.value,
-        address: this.address.value,
-        city: this.city.value,
-        province: this.province.value,
-        zip: this.zip.value,
-        country: this.country.value,
-        phone: this.phone.value
-      })
-    }).then(x => x.json())
-      // .then(y => JSON.parse(y))
-      .then(y => {
-        console.log('first log', y)
-        this.setState({
-          hidden: true ,
-          shippingInfo: y
-        })
-      })
-      // .then(z => this.setState({shippingInfo: {z}}))
-      console.log('updated state log', this.state.shippingInfo)
-    // return userShipping;
+    //   })
+    // }).then(x => x.json())
+    //   .then(y => {
+    //     this.setState({ hidden: false, userShipping: {shippingInfo} })
+    //   })
+    // .then(z => this.setState({shippingInfo: {z}}))
   }
 
   formValidation = () => {
@@ -70,8 +62,6 @@ class Shipping extends Component {
       this.setState({ formError: (<div>Error, <b>Zip</b> missing</div>) })
     } else if (this.country.value.length < 1) {
       this.setState({ formError: (<div>Error, <b>Country</b> missing</div>) })
-    } else if (this.phone.value.length < 1) {
-      this.setState({ formError: (<div>Error, <b>Phone</b> missing</div>) })
     } else this.shipInfo()
   }
 
@@ -79,11 +69,14 @@ class Shipping extends Component {
     if (this.state.hidden === false) {
       return (
         <div id='Product'>
-        <div>
-        <h1>Order Summary</h1>
-        <h3>Red Boat</h3>
-        <h3>Total: $25.00</h3>
-        </div>
+          <div>
+            <h1>Your Order Summary</h1>
+            <h3>1 x {this.props.item.prodName}</h3>
+            <h4>Subtotal: ${this.props.item.price}</h4>
+            <h4>Tax: ${(this.props.item.price * 0.15).toFixed(2)}</h4>
+            <h4>Shipping: $15.00</h4>
+            <h4>Total: ${(this.props.item.price * 1.15 + 15).toFixed(2)}</h4>
+          </div>
 
           <div>
             <h1>Shipping Information</h1>
@@ -104,10 +97,10 @@ class Shipping extends Component {
             <input type='number' ref={r => this.phone = r} placeholder='Phone Number' maxLength='10' />
           </div>
           <Payment />
-          <button onClick={this.shipInfo}>Place Order</button>
+          <button onClick={this.formValidation}>Place Order</button>
         </div>
       )
-    } else { return <Confirmation /> }
+    } else { return <Confirmation item={this.state.userShipping}/> }
   }
 }
 

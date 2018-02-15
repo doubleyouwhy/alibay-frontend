@@ -20,15 +20,20 @@ class ProductDetail extends Component {
 
     buyProduct = () => {
         this.setState({ hidden: true })
+        return (<div>{this.props.item.prodName}<div><Shipping /></div></div>)
     }
 
     addToCart = () => {
         this.setState({ cart: this.props.cart + 1 })
-        console.log(this.props.cart)
-        console.log('you added to cart')
+        // console.log(this.props.cart)
+        // console.log('you added to cart')
     }
 
-    // componentWillMount = () => {
+    componentWillMount = () => {
+        // console.log('object element that mounted', this.props.item)
+        let product = this.props.item
+        // console.log('obj in variable', product)
+    }
     //     fetch('./productdetail', {
     //         method: 'POST',
     //         body: 'test'
@@ -54,11 +59,11 @@ class ProductDetail extends Component {
                     <img alt='chair' src={this.props.item.image} />
                     <p>{this.props.item.blurb}</p>
                     <h2>${this.props.item.price}</h2>
-                    <button onClick={this.buyProduct}>Buy</button>
+                    <button onClick={this.buyProduct}>Buy Now</button>
                     <button onClick={this.addToCart}>Add to Cart</button>
                 </div>
             )
-        } else { return <Shipping /> }
+        } else { return <Shipping item={this.props.item}/> }
     }
 }
 export default ProductDetail

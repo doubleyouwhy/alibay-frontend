@@ -4,9 +4,8 @@ import ProductDetail from './ProductDetail.js'
 import SignIn from './SignIn.js'
 import Login from './Login.js'
 import Landing from './landing.js'
-import Search from './search.js'
 import AddItems from './addItems.js'
-import Dashboard from './dashboard.js';
+import Dashboard from './dashboard.js'
 import Nav from './nav.js'
 import UserNav from './UserNav.js'
 
@@ -109,9 +108,10 @@ class App extends Component {
        {/* Landing Page */}
        {(this.state.Landing) && <div> < Landing /> </div>}
        {/* dashboard Page */}
-       {(!this.state.Landing) && <div> < Login /> </div>}
+       {(!this.state.Landing) && <div> < Dashboard /> </div>}
 
        
+      
         <div>
            {/*  login */}
           {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login changeLoginPageState={this.changeLoginPageState} loginToSignIn={this.loginToSignIn} />       </div>}
