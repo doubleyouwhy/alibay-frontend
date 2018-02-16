@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import './App.css'
 import Payment from './Payment.js'
 import Confirmation from './Confirmation.js'
-
+const emailjs = require('emailjs-com');
+let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+let date = new Date()
+let year = date.getFullYear()
+let month = months[date.getMonth()]
+let day = date.getDate()
+let fullDate = month + ' ' + day + ', ' + year
 class Shipping extends Component {
 
   constructor(props) {
@@ -24,7 +30,11 @@ class Shipping extends Component {
       zip: this.zip.value,
       country: this.country.value,
       email: this.email.value,
-      order: this.props.item
+      itemId: this.props.item.itemId,
+      sellerId: this.props.item.sellerID,
+      orderDate: new Date(),
+      confirmation: this.props.item.confirmation,
+      totalPrice: this.props.item.price * 1.15 + 25
     }
 
     setTimeout(() => this.setState({ hidden: true, userShipping: { shippingInfo } }), 1500)
@@ -51,6 +61,33 @@ class Shipping extends Component {
         // this.setState({ hidden: false, userShipping: {shippingInfo} })
       })
     .then(z => this.setState({shippingInfo: {z}}))
+  
+    this.sendEmailConfirmation()
+  
+  }
+
+  sendEmailConfirmation = () => {
+    emailjs.init("user_FNLRvsmgagvJUJfXdNCsP");
+
+    emailjs.send("gmail","template_f1rdYR9G",{
+      order_number: this.props.item.confirmation,
+      firstName: this.firstName.value,
+      fullName: this.firstName.value + ' ' + this.lastName.value,
+      price: (this.props.item.price * 1.15 + 25).toFixed(2),
+      date: fullDate,
+      address: this.address.value,
+      city: this.city.value,
+      province: this.province.value,
+      zip: this.zip.value,
+      country: this.country.value,
+      email: this.email.value,
+      product: this.props.item.prodName
+    })
+       .then(function(response) {
+          console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+       }, function(err) {
+          console.log("FAILED. error=", err);
+       });
   }
 
   formValidation = () => {
@@ -74,9 +111,10 @@ class Shipping extends Component {
   }
 
   componentDidMount(){
-    console.log('shipping detail props', this.props)
-    console.log( this.props.item.itemId)
-    console.log( this.props.item.sellerID)
+    console.log('shipping detail props: ', this.props)
+    console.log('itemID: ', this.props.item.itemId)
+    console.log('seller ID: ', this.props.item.sellerID)
+    console.log('item price: ', this.props.item.price)
     
   }
 

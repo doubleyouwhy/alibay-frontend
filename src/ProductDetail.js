@@ -8,7 +8,6 @@ class ProductDetail extends Component {
         super(props)
         this.state = {
             hidden: false,
-            itemsInCart: 0,
             loginPage: false,
             signInPage: false,
             productTitle: '',
@@ -21,12 +20,6 @@ class ProductDetail extends Component {
     buyProduct = () => {
         this.setState({ hidden: true })
         return (<div>{this.props.item.prodName}<div><Shipping /></div></div>)
-    }
-
-    addToCart = () => {
-        this.setState({ cart: this.props.cart + 1 })
-        // console.log(this.props.cart)
-        // console.log('you added to cart')
     }
 
     componentWillMount = () => {
@@ -55,7 +48,7 @@ class ProductDetail extends Component {
                 <div id='Product'>
                     <div className='productWrapper'>
                         <div className='productImage'>
-                            <img src={this.props.item.image} />
+                            <img alt='product' src={this.props.item.image} />
                         </div>
                         <div className='productInfo'>
                             <h1>{this.props.item.prodName}</h1>
@@ -63,7 +56,6 @@ class ProductDetail extends Component {
                             <p>{this.props.item.blurb}</p>
                             <h2>${this.props.item.price}</h2>
                             <button onClick={this.buyProduct}>Buy Now</button>
-                            <button onClick={this.addToCart}>Add to Cart</button>
                         </div>
                     </div>
                 </div>

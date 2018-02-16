@@ -2,8 +2,9 @@
   "name": "alibay-frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://10.65.105.226:4000",
+  "proxy": "http://165.227.36.155:4000",
   "dependencies": {
+    "emailjs-com": "^1.5.14",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-paypal-express-checkout": "^1.0.3",
