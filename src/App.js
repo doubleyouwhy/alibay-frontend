@@ -103,7 +103,7 @@ class App extends Component {
 }
 
   render() {
-    console.log(this.state.Landing)
+   
     return (
 
       <div className='App'>
