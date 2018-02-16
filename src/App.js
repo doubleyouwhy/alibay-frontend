@@ -8,13 +8,16 @@ import AddItems from './addItems.js'
 import Dashboard from './dashboard.js'
 import Nav from './nav.js'
 import UserNav from './UserNav.js'
+import DrawImage from './DrawImage'
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       navLandingNoLogin: true,
-      Landing: true
+      Landing: true,
+      ProductDetail: false,
     }
   }
 
@@ -89,11 +92,15 @@ class App extends Component {
 
   goToProfile = () => {
 
-    this.setState({ Landing: false })
+    this.setState({ Landing: false})
   }
   goToLanding = () => {
     this.setState({ Landing: true })
   }
+  goToProductPage=(element)=>{
+    this.setState({Landing: false, ProductDetail: element})   
+
+}
 
   render() {
     console.log(this.state.Landing)
@@ -103,13 +110,19 @@ class App extends Component {
         {/* non-user nav bar */}
          <div>< Nav goToLogin={this.goToLogin} goToLanding={this.goToLanding}  goToProfile={this.goToProfile} goToSignIn={this.goToSignIn} addItem={this.addItem} addItemLogin={this.addItemLogin} navLandingNoLogin={this.state.navLandingNoLogin} Landing={this.state.Landing}  /></div>
     
-       
+       {/* NOE I ADDED SOME CONDITIONALS HERE - megan */}
 
-       {/* Landing Page */}
-       {(this.state.Landing) && <div> < Landing /> </div>}
-       {/* dashboard Page */}
-       {(!this.state.Landing) && <div> < Dashboard /> </div>}
-
+       {/* Landing Page / dashboard / product detail */}
+       {this.state.Landing
+       ? <div> < Landing goToProductPage={this.goToProductPage}  /> </div>
+          :((!this.state.Landing && !this.state.ProductDetail)
+            ?<div>< Dashboard goToProductPage={this.goToProductPage} /> </div>
+            :(!this.state.Landing && this.state.ProductDetail
+              ? <div> <ProductDetail item ={this.state.ProductDetail} /></div>
+              :null))}
+      
+      
+   
        
        
         <div>
