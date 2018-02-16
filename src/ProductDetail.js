@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Shipping from './Shipping.js'
+import Login from './Login.js'
 
 class ProductDetail extends Component {
 
@@ -18,8 +19,15 @@ class ProductDetail extends Component {
         console.log(this.props);
     };
     buyProduct = () => {
+       if (this.props.userIsLogin === false){
         this.setState({ hidden: true })
-        return (<div>{this.props.item.prodName}<div><Shipping /></div></div>)
+       } 
+       else this.props.goToLogin()
+    //     return (
+        
+    //     <div>{this.props.item.prodName}<div><Shipping /></div></div>
+    
+    // )
     }
 
     componentWillMount = () => {
@@ -44,6 +52,8 @@ class ProductDetail extends Component {
     render() {
         if (this.state.hidden === false) {
             return (
+               
+                
                 <div id='Product'>
                     <div className='productWrapper'>
                         <div className='productImage'>
@@ -59,7 +69,8 @@ class ProductDetail extends Component {
                     </div>
                 </div>
             )
-        } else { return <Shipping item={this.props.item} /> }
+        } else  { return <Shipping item={this.props.item} /> }
+        
     }
 }
 export default ProductDetail

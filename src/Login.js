@@ -26,22 +26,20 @@ class Login extends Component {
       .then(x => x.text())
       .then(x => {
         console.log(x)
-        this.props.changeLoginPageState()      ////// remove this line on reel server
        
-       
-        // if (x === "success") {
-        //   this.setState({
-        //     submit: true,
-        //   })
-        //   this.props.changeLoginPageState()
-        // }
-        // else {
-        //   this.setState({
-        //     wrongPassword: true,
+        if (x === "success") {
+          this.setState({
+            submit: true,
+          })
+          this.props.changeLoginPageState()
+        }
+        else {
+          this.setState({
+            wrongPassword: true,
 
-        //   })
+          })
          
-        // }
+        }
       })
 
   }

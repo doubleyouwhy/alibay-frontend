@@ -156,7 +156,7 @@ class App extends Component {
                   : ((!this.state.Landing && !this.state.ProductDetail)
                     ? <div>< Dashboard goToProductPage={this.goToProductPage} /> </div>
                     : (!this.state.Landing && this.state.ProductDetail
-                      ? <div> <ProductDetail item={this.state.ProductDetail} /></div>
+                      ? <div> <ProductDetail  goToLogin={this.goToLogin} userIsLogin={this.state.userIsLogin} item={this.state.ProductDetail} /></div>
                       : null))}
 
 
