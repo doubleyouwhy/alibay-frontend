@@ -16,8 +16,8 @@ class ProductDetail extends Component {
             blurb: '',
             productImage: '',
         }
-    }
-
+        console.log(this.props);
+    };
     buyProduct = () => {
         this.setState({ hidden: true })
         return (<div>{this.props.item.prodName}<div><Shipping /></div></div>)
