@@ -19,6 +19,7 @@ class Landing extends Component{
 componentWillMount=()=>{
     fetch ('/getAllItems',{
         method: "POST",
+        credentials: 'include',  
         body: 'test'
     })
     .then(x => x.json())
@@ -35,6 +36,7 @@ componentWillMount=()=>{
 runSearch =()=>{
     fetch ('/search',{
         method: "POST",
+        credentials: 'include',
         body: this.searchInput.value
     })
     .then(x=>x.json())

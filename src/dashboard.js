@@ -13,7 +13,9 @@ class Dashboard extends Component{
     }
      componentWillMount=()=>{
 
-        fetch ('/itemsForSale?uid=12345')
+        fetch ('/itemsForSale?uid=12345',{
+            credentials: 'include'
+        })
         .then(x => x.json())
         .then(y =>{
             console.log(y)
@@ -25,7 +27,9 @@ class Dashboard extends Component{
             this.setState({ itemsForSale: itemsForSaleArr})
             })     
 
-        fetch('/itemsSold?uid=12345')
+        fetch('/itemsSold?uid=12345',{
+            credentials: 'include'
+        })
         .then(x => x.json())
         .then(y => {
             console.log(y)
@@ -37,7 +41,9 @@ class Dashboard extends Component{
             this.setState({itemsSold: itemsSoldArr })
         })
 
-        fetch('/itemsBought?uid=12345')
+        fetch('/itemsBought?uid=12345',{
+            credentials: 'include'
+        })
         .then(x => x.json())
         .then(y => {
             console.log(y)
