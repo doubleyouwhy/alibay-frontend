@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './App.css'
 import Landing from './landing.js'
 
-
 let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 let date = new Date()
 let year = date.getFullYear()

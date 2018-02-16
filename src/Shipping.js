@@ -61,9 +61,9 @@ class Shipping extends Component {
         // this.setState({ hidden: false, userShipping: {shippingInfo} })
       })
     .then(z => this.setState({shippingInfo: {z}}))
-  
+
     this.sendEmailConfirmation()
-  
+
   }
 
   sendEmailConfirmation = () => {
@@ -115,7 +115,6 @@ class Shipping extends Component {
     console.log('itemID: ', this.props.item.itemId)
     console.log('seller ID: ', this.props.item.sellerID)
     console.log('item price: ', this.props.item.price)
-    
   }
 
   render() {

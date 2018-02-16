@@ -58,7 +58,7 @@ class Payment extends Component {
     }
 
     handleChange = (event) => {
-        this.setState({selectedOption: event.target.value})
+        this.setState({ selectedOption: event.target.value })
     }
 
     render() {
@@ -68,9 +68,10 @@ class Payment extends Component {
                     <h1>Payment Information</h1>
                     <div>
                         <form>
-                            <input type="radio" id="creditCard" name="payment" value="creditCard" defaultChecked onChange={this.handleChange}/> <label htmlFor="creditCard">Credit Card</label>
-                            <input type="radio" id="payPal" name="payment" value="payPal" onChange={this.handleChange}/> <label htmlFor="payPal">PayPal</label>
+                            <input type="radio" id="creditCard" name="payment" value="creditCard" defaultChecked onChange={this.handleChange} /> <label htmlFor="creditCard">Credit Card</label>
+                            <input type="radio" id="payPal" name="payment" value="payPal" onChange={this.handleChange} /> <label htmlFor="payPal">PayPal</label>
                         </form>
+                        <button onClick={() => console.log('payment check clicked')}>Check Payment</button>
                         {this.state.selectedOption === 'creditCard' ? <CreditCard /> : <PayPal />}
                     </div>
                 </div>

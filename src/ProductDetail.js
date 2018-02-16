@@ -23,7 +23,6 @@ class ProductDetail extends Component {
     }
 
     componentWillMount = () => {
-        let product = this.props.item
         console.log('product detail props', this.props)
     }
     //     fetch('./productdetail', {
