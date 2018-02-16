@@ -26,19 +26,22 @@ class Login extends Component {
       .then(x => x.text())
       .then(x => {
         console.log(x)
-        if (x === "success") {
-          this.setState({
-            submit: true,
-          })
-          this.props.changeLoginPageState()
-        }
-        else {
-          this.setState({
-            wrongPassword: true,
+        this.props.changeLoginPageState()      ////// remove this line on reel server
+       
+       
+        // if (x === "success") {
+        //   this.setState({
+        //     submit: true,
+        //   })
+        //   this.props.changeLoginPageState()
+        // }
+        // else {
+        //   this.setState({
+        //     wrongPassword: true,
 
-          })
-          console.log("Login faill !!!")
-        }
+        //   })
+         
+        // }
       })
 
   }
@@ -53,7 +56,7 @@ class Login extends Component {
         <h1> LOGIN </h1>
         {this.props.addItemSign && <h1 className="loginBeforeAddItems" > please login first </h1>}
         <div>
-          <input ref={r => this.username = r} placeholder="username" name="username" />
+          <input ref={r => this.username = r}  placeholder="username" name="username" />
         </div>
         <div>
           <input ref={r => this.password = r} placeholder="password" name="password" />
