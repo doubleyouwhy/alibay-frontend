@@ -7,11 +7,8 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-
       submit: false,
       wrongPassword: false,
-
-
     };
   }
 
