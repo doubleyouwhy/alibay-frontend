@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DrawImage from './DrawImage'
 
 class Dashboard extends Component{
 
@@ -12,7 +13,9 @@ class Dashboard extends Component{
     }
      componentWillMount=()=>{
 
-        fetch ('/itemsForSale?uid=12345')
+        fetch ('/itemsForSale?uid=12345',{
+            credentials: 'include'
+        })
         .then(x => x.json())
         .then(y =>{
             console.log(y)
@@ -24,7 +27,9 @@ class Dashboard extends Component{
             this.setState({ itemsForSale: itemsForSaleArr})
             })     
 
-        fetch('/itemsSold?uid=12345')
+        fetch('/itemsSold?uid=12345',{
+            credentials: 'include'
+        })
         .then(x => x.json())
         .then(y => {
             console.log(y)
@@ -36,7 +41,9 @@ class Dashboard extends Component{
             this.setState({itemsSold: itemsSoldArr })
         })
 
-        fetch('/itemsBought?uid=12345')
+        fetch('/itemsBought?uid=12345',{
+            credentials: 'include'
+        })
         .then(x => x.json())
         .then(y => {
             console.log(y)
@@ -51,19 +58,6 @@ class Dashboard extends Component{
     }
 
  
-    dashBoardDrawItem = (element, index, arr) => {
-        return(    
-            <div  className = "product-preview" key={index}>
-            <img onClick = {()=>this.productPage(element)} 
-                 className ="thumbnail" 
-                 alt= {element.prodName} 
-                 src= {element.image}/>  
-
-            <div>{element.prodName}</div>
-            <div>{element.price}</div>
-         </div>
-            
-        )}
 
     render(){
        
@@ -72,15 +66,21 @@ class Dashboard extends Component{
                     <h1>Your Profile</h1>
                     <div>Items you're selling</div>
                     <div className="profile-gallery"> 
-                        {this.state.itemsForSale.map(this.dashBoardDrawItem)}   
+                        {this.state.itemsForSale.map(item => <DrawImage 
+                            item = {item} 
+                            goToProductPage={this.props.goToProductPage}/>)}   
                     </div>  
                     <div>Items you've sold</div>
                     <div className="profile-gallery"> 
-                        {this.state.itemsSold.map(this.dashBoardDrawItem)}   
+                        {this.state.itemsSold.map(item => <DrawImage 
+                            item = {item} 
+                            goToProductPage={this.props.goToProductPage}/>)}   
                     </div> 
                     <div>Items you've purchased</div>
-                    <div className="profile-gallery"> 
-                        {this.state.itemsBought.map(this.dashBoardDrawItem)}   
+                    <div className="profile-gallery">  
+                        {this.state.itemsBought.map(item => <DrawImage
+                             item = {item} 
+                             goToProductPage={this.props.goToProductPage}/>)}   
                     </div>       
             </div>
             )

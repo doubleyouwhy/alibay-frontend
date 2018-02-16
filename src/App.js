@@ -8,13 +8,16 @@ import AddItems from './addItems.js'
 import Dashboard from './dashboard.js'
 import Nav from './nav.js'
 import UserNav from './UserNav.js'
+import DrawImage from './DrawImage'
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       navLandingNoLogin: true,
-      Landing: true
+      Landing: true,
+      ProductDetail: false,
     }
   }
 componentWillMount = () => {
@@ -89,12 +92,16 @@ componentWillMount = () => {
 
   goToProfile = () => {
 
-    this.setState({ Landing: false })
+    this.setState({ Landing: false})
   }
 
   goToLanding = () => {
     this.setState({ Landing: true })
   }
+  goToProductPage=(element)=>{
+    this.setState({Landing: false, ProductDetail: element})   
+
+}
 
   render() {
     
@@ -109,6 +116,25 @@ componentWillMount = () => {
 
         {/* dashboard Page */}
         {(!this.state.Landing) && <div> < Dashboard /> </div>}
+         
+         
+      
+    
+       {/* NOE I ADDED SOME CONDITIONALS HERE - megan */}
+
+       {/* Landing Page / dashboard / product detail */}
+       {this.state.Landing
+       ? <div> < Landing goToProductPage={this.goToProductPage}  /> </div>
+          :((!this.state.Landing && !this.state.ProductDetail)
+            ?<div>< Dashboard goToProductPage={this.goToProductPage} /> </div>
+            :(!this.state.Landing && this.state.ProductDetail
+              ? <div> <ProductDetail item ={this.state.ProductDetail} /></div>
+              :null))}
+      
+      
+   
+       
+       
         <div>
           {/*  login */}
           {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login changeLoginPageState={this.changeLoginPageState} loginToSignIn={this.loginToSignIn} addItemSign={this.state.addItemSign} />  </div>}

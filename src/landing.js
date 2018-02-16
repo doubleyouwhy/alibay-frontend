@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ProductDetail from './ProductDetail.js'
+import DrawImage from './DrawImage.js'
 
 
 
@@ -9,8 +10,7 @@ class Landing extends Component{
     constructor(){
         super();
         this.state = {
-            hidden: false,
-            ProductDetail: false,      
+            hidden: false,    
             items: [],
             searchValue: "",
             displayBanner: true
@@ -19,6 +19,7 @@ class Landing extends Component{
 componentWillMount=()=>{
     fetch ('/getAllItems',{
         method: "POST",
+        credentials: 'include',  
         body: 'test'
     })
     .then(x => x.json())
@@ -35,6 +36,7 @@ componentWillMount=()=>{
 runSearch =()=>{
     fetch ('/search',{
         method: "POST",
+        credentials: 'include',
         body: this.searchInput.value
     })
     .then(x=>x.json())
@@ -49,24 +51,6 @@ runSearch =()=>{
    
 })}
 
-    productPage=(element)=>{
-        this.setState({hidden: true, ProductDetail: element, search: false})   
-   
-    }
-
-    drawItem = (element, index, arr) => {
-        return (
-        
-            <div className = "product-preview" key={index}>
-            <img onClick = {() => this.productPage(element)} 
-                className ="thumbnail" alt={element.prodName}
-                src= {element.image}/>
-
-            <div>{element.prodName}</div>
-            <div>{element.price}</div>
-        </div>)
-    }
- 
     render(){
         if (this.state.hidden === false){
         return(
@@ -83,14 +67,12 @@ runSearch =()=>{
                                 ?"Displaying: no results found"
                                 :"Displaying: " + this.state.searchValue)}</div>
                     <div className = "gallery">
-                        {this.state.items.map(this.drawItem)}   
+                        {this.state.items.map(item => <DrawImage item = {item} goToProductPage={this.props.goToProductPage}  />)}   
                     </div>
             </div>       
         )         
-            } else if (this.state.ProductDetail){
-                  return < ProductDetail 
-                        item={this.state.ProductDetail} />
-        }
+            } 
+       
     }
   }
 export default Landing
