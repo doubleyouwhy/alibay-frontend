@@ -31,6 +31,7 @@ class ProductDetail extends Component {
 
     componentWillMount = () => {
         let product = this.props.item
+        console.log('product detail props', this.props)
     }
     //     fetch('./productdetail', {
     //         method: 'POST',
@@ -52,16 +53,22 @@ class ProductDetail extends Component {
         if (this.state.hidden === false) {
             return (
                 <div id='Product'>
-                    <h1>{this.props.item.prodName}</h1>
-                    <p>Seller: <a href='http://localhost:3000'>{this.props.item.sellerID}</a></p>
-                    <img alt='chair' src={this.props.item.image} />
-                    <p>{this.props.item.blurb}</p>
-                    <h2>${this.props.item.price}</h2>
-                    <button onClick={this.buyProduct}>Buy Now</button>
-                    <button onClick={this.addToCart}>Add to Cart</button>
+                    <div className='productWrapper'>
+                        <div className='productImage'>
+                            <img src={this.props.item.image} />
+                        </div>
+                        <div className='productInfo'>
+                            <h1>{this.props.item.prodName}</h1>
+                            <p>Sold by: <a href='http://localhost:3000'>{this.props.item.sellerID}</a></p>
+                            <p>{this.props.item.blurb}</p>
+                            <h2>${this.props.item.price}</h2>
+                            <button onClick={this.buyProduct}>Buy Now</button>
+                            <button onClick={this.addToCart}>Add to Cart</button>
+                        </div>
+                    </div>
                 </div>
             )
-        } else { return <Shipping item={this.props.item}/> }
+        } else { return <Shipping item={this.props.item} /> }
     }
 }
 export default ProductDetail

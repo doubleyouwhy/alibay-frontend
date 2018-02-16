@@ -23,7 +23,7 @@ class Shipping extends Component {
       province: this.province.value,
       zip: this.zip.value,
       country: this.country.value,
-      phone: this.phone.value,
+      email: this.email.value,
       order: this.props.item
     }
 
@@ -39,7 +39,7 @@ class Shipping extends Component {
     //     province: this.province.value,
     //     zip: this.zip.value,
     //     country: this.country.value,
-    //     phone: this.phone.value
+    //     email: this.email.value
     //   })
     // }).then(x => x.json())
     //   .then(y => {
@@ -50,19 +50,21 @@ class Shipping extends Component {
 
   formValidation = () => {
     if (this.firstName.value.length < 1) {
-      this.setState({ formError: (<div>Error, <b>First Name</b> missing</div>) })
+      this.setState({ formError: <div>Please enter a valid <b>first name</b></div> })
     } else if (this.lastName.value.length < 1) {
-      this.setState({ formError: (<div>Error, <b>Last Name</b> missing</div>) })
+      this.setState({ formError: <div>Please enter a valid <b>last name</b></div> })
     } else if (this.address.value.length < 1) {
-      this.setState({ formError: (<div>Error, <b>Address</b> missing</div>) })
+      this.setState({ formError: (<div>Please enter a valid <b>address</b></div>) })
     } else if (this.city.value.length < 1) {
-      this.setState({ formError: (<div>Error, <b>City</b> missing</div>) })
+      this.setState({ formError: (<div>Please enter a valid <b>city</b></div>) })
     } else if (this.province.value.length < 1) {
-      this.setState({ formError: (<div>Error, <b>Province</b> missing</div>) })
+      this.setState({ formError: (<div>Please enter a valid <b>province</b></div>) })
     } else if (this.zip.value.length < 1) {
-      this.setState({ formError: (<div>Error, <b>Zip</b> missing</div>) })
+      this.setState({ formError: (<div>Please enter a valid <b>postal code</b></div>) })
     } else if (this.country.value.length < 1) {
-      this.setState({ formError: (<div>Error, <b>Country</b> missing</div>) })
+      this.setState({ formError: (<div>Please enter a valid <b>country</b></div>) })
+    } else if (this.email.value.length < 1) {
+      this.setState({ formError: (<div>Please enter a valid <b>email address</b></div>) })
     } else this.shipInfo()
   }
 
@@ -84,11 +86,11 @@ class Shipping extends Component {
               </div>
               <div>
                 <input type='text' ref={r => this.province = r} placeholder='State/Province' />
-                <input type='text' ref={r => this.zip = r} placeholder='Zip / Postal Code' />
+                <input type='email' ref={r => this.zip = r} placeholder='Zip / Postal Code' />
               </div>
               <div>
                 <input type='text' ref={r => this.country = r} placeholder='Country' />
-                <input type='number' ref={r => this.phone = r} placeholder='Phone Number' maxLength='10' />
+                <input type='text' ref={r => this.email = r} placeholder='Email' />
               </div>
               <Payment />
             </div>

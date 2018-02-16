@@ -33,9 +33,10 @@ class Confirmation extends Component {
         <div id='Product'>
           <div className='confirmation'>
           <h1>Thank you for your order!</h1>
-          <h4>Confirmation #{Math.floor(Math.random() * 5000)}</h4>
-          <h4>Order Placed on: {fullDate}</h4>
-          <h4>Order Summary: 1 x {this.props.item.shippingInfo.order.prodName} — ${(this.props.item.shippingInfo.order.price * 1.15 + 25).toFixed(2)}</h4>
+          <h4>Order #{Math.floor(Math.random() * 5000)}</h4>
+          <p>A confirmation email has been sent to <a href='/'>{this.props.item.shippingInfo.email}</a></p>
+          <h4>Order Placed on: <br/>{fullDate}</h4>
+          <h4>You paid ${(this.props.item.shippingInfo.order.price * 1.15 + 25).toFixed(2)}</h4>
           <h3>Shipping to</h3>
               <li>{this.props.item.shippingInfo.firstName + ' ' + this.props.item.shippingInfo.lastName}</li>
               <li>{this.props.item.shippingInfo.address}</li>
