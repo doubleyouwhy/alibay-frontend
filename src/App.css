@@ -203,3 +203,16 @@ button {
 #postalCode{
   text-transform: uppercase;
 }
+
+.productWrapper{
+  display: flex;
+}
+
+.productImage{
+  display: flex;
+  align-items: center;
+}
+
+.productInfo{
+  padding: 10px;
+}

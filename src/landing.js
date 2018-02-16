@@ -63,7 +63,7 @@ runSearch =()=>{
                 src= {element.image}/>
 
             <div>{element.prodName}</div>
-            <div>{element.price}</div>
+            <div>${element.price}</div>
         </div>)
     }
  
