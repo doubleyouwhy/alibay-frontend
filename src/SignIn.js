@@ -13,12 +13,16 @@ class SignIn extends Component {
   submit = () => {
     var usr = this.username.value;
     var pwd = this.password.value;
+    var email = this.email.value;
+    var phoneNumber = this.phoneNumber.value;
     fetch('/signUp', {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({
         username: usr,
-        password: pwd
+        password: pwd,
+        email: email,
+        phoneNumber: phoneNumber
       })
     })
       .then(x => x.text())
@@ -50,6 +54,16 @@ class SignIn extends Component {
         <div>
           <input ref={r => this.password = r} placeholder="password" name="password" />
         </div>
+
+         <div>
+          <input ref={r => this.email = r} placeholder="email" name="email" />
+        </div>
+
+         <div>
+          <input maxLength="10" minLength="10" ref={r => this.phoneNumber = r} placeholder="phoneNumber" name="phoneNumber" />
+        </div>
+
+
         <div>
           <button onClick={this.submit} className="btn-outline-light" > SUBMIT </button>
         </div>

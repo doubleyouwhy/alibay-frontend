@@ -29,23 +29,27 @@ class Shipping extends Component {
 
     setTimeout(() => this.setState({ hidden: true, userShipping: { shippingInfo } }), 1500)
 
-    // fetch('./shipping', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     firstName: this.firstName.value,
-    //     lastName: this.lastName.value,
-    //     address: this.address.value,
-    //     city: this.city.value,
-    //     province: this.province.value,
-    //     zip: this.zip.value,
-    //     country: this.country.value,
-    //     email: this.email.value
-    //   })
-    // }).then(x => x.json())
-    //   .then(y => {
-    //     this.setState({ hidden: false, userShipping: {shippingInfo} })
-    //   })
-    // .then(z => this.setState({shippingInfo: {z}}))
+    fetch('./shipping', {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify({
+        firstName: this.firstName.value,
+        lastName: this.lastName.value,
+        address: this.address.value,
+        city: this.city.value,
+        province: this.province.value,
+        zip: this.zip.value,
+        country: this.country.value,
+        email: this.email.value,
+        itemId: this.props.item.itemId,
+        sellerId: this.props.item.sellerID,
+      })
+    }).then(x => x.json())
+      .then(y => {
+        console.log('confirmation number ', y)
+        // this.setState({ hidden: false, userShipping: {shippingInfo} })
+      })
+    .then(z => this.setState({shippingInfo: {z}}))
   }
 
   formValidation = () => {
@@ -66,6 +70,13 @@ class Shipping extends Component {
     } else if (this.email.value.length < 1) {
       this.setState({ formError: (<div>Please enter a valid <b>email address</b></div>) })
     } else this.shipInfo()
+  }
+
+  componentDidMount(){
+    console.log('shipping detail props', this.props)
+    console.log( this.props.item.itemId)
+    console.log( this.props.item.sellerID)
+    
   }
 
   render() {
