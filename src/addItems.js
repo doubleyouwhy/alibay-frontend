@@ -17,7 +17,8 @@ class AddItems extends Component {
     var splitName = fullName.split("/")
     var almostThere = splitName[1]
     var fileExtension = "." + almostThere
-    fetch('/upics?name=' + randomName + fileExtension, { method: "POST", body: x })
+    
+    fetch('/upics?name=' + randomName + fileExtension, { method: "POST",credentials: "include", body: x })
       .then(x => x.text())
       .then(x => {
         // this.setState({ photo: x})
@@ -38,11 +39,13 @@ class AddItems extends Component {
 
     fetch('/newListing', {
       method: "POST",
+      credentials: "include",
       body: JSON.stringify({
         name: name,
         price: price,
         blurb: description,
         image: image
+       
       })
     })
       .then(x => x.text())

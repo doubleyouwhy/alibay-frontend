@@ -20,9 +20,17 @@ class App extends Component {
       ProductDetail: false,
     }
   }
+componentWillMount = () => {
+  fetch('/firstCookie', {
+    method: "GET",
+    credentials: "include"
+  })
+  .then(x => x.text())
+  .then(x => {
+    console.log(x)
+  })}
 
-
-///// clicking outside remove login / sing in / user additem page  
+  ///// clicking outside remove login / sing in / user additem page  
   goToProduct = () => {
     this.setState({
       loginPage: false,
@@ -31,15 +39,9 @@ class App extends Component {
       addItemSign: false
     })
   }
-  
-  
-  
-  
   goToLogin = () => {
     this.setState({ loginPage: true })
   }
-
-
   goToSignIn = () => {
     this.setState({
       signInPage: true
@@ -55,7 +57,7 @@ class App extends Component {
     })
 
   }
-// remove (addItem after login) page after submit or clicking outside off the box
+  // remove (addItem after login) page after submit or clicking outside off the box
   addItemSignInOff = () => {
     this.setState({
       addItemSign: false,
@@ -63,7 +65,7 @@ class App extends Component {
     })
   }
 
-// remove Login, signIn and addItem page after submit 
+  // remove Login, signIn and addItem page after submit 
   changeLoginPageState = () => {
     this.setState({
       loginPage: false,
@@ -74,17 +76,15 @@ class App extends Component {
     })
   }
 
-
- // Login and add items
-
+  // Login and add items
   addItemLogin = () => {
     this.setState({
       loginPage: true,
       addItemSign: true
     })
   }
- 
- // add items on user nav bar
+
+  // add items on user nav bar
   addItem = () => {
 
     this.setState({ addItempage: true })
@@ -94,6 +94,7 @@ class App extends Component {
 
     this.setState({ Landing: false})
   }
+
   goToLanding = () => {
     this.setState({ Landing: true })
   }
@@ -104,11 +105,14 @@ class App extends Component {
 
   render() {
    
+    
     return (
 
       <div className='App'>
         {/* non-user nav bar */}
-         <div>< Nav goToLogin={this.goToLogin} goToLanding={this.goToLanding}  goToProfile={this.goToProfile} goToSignIn={this.goToSignIn} addItem={this.addItem} addItemLogin={this.addItemLogin} navLandingNoLogin={this.state.navLandingNoLogin} Landing={this.state.Landing}  /></div>
+        <div>< Nav goToLogin={this.goToLogin} goToLanding={this.goToLanding} goToProfile={this.goToProfile} goToSignIn={this.goToSignIn} addItem={this.addItem} addItemLogin={this.addItemLogin} navLandingNoLogin={this.state.navLandingNoLogin} Landing={this.state.Landing} /></div>
+
+      
     
        {/* NOE I ADDED SOME CONDITIONALS HERE - megan */}
 
@@ -126,7 +130,7 @@ class App extends Component {
        
        
         <div>
-           {/*  login */}
+          {/*  login */}
           {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login changeLoginPageState={this.changeLoginPageState} loginToSignIn={this.loginToSignIn} addItemSign={this.state.addItemSign} />  </div>}
           {/* sign in */}
           {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn changeLoginPageState={this.changeLoginPageState} /> </div>}

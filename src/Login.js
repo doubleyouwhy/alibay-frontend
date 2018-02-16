@@ -10,7 +10,7 @@ class Login extends Component {
 
       submit: false,
       wrongPassword: false,
-     
+
 
     };
   }
@@ -18,13 +18,9 @@ class Login extends Component {
   submit = () => {
     var usr = this.username.value;
     var pwd = this.password.value;
-    console.log("username :", usr);
-    console.log("password :", pwd);
-    console.log("submit")
-
-
     fetch('/login', {
       method: "POST",
+      credentials: "include",
       body: JSON.stringify({
         username: usr,
         password: pwd
@@ -38,8 +34,6 @@ class Login extends Component {
             submit: true,
           })
           this.props.changeLoginPageState()
-
-
         }
         else {
           this.setState({
@@ -54,26 +48,27 @@ class Login extends Component {
   goToSing = () => {
     this.props.loginToSignIn()
   }
-  
+
   render() {
 
-  return (
-    <div id='loginStyle' onClick={(i) => i.stopPropagation()}>
-      <h1> LOGIN </h1>
-      {this.props.addItemSign && <h1 className="loginBeforeAddItems" > please login first </h1>}
-      <div>
-        <input ref={r => this.username = r} placeholder="username" name="username" />
-      </div>
-      <div>
-        <input ref={r => this.password = r} placeholder="password" name="password" />
-      </div>
-      
-      <button onClick={this.submit} className="btn-outline-light" > SIGN IN </button>
-      <button onClick={this.goToSing} className="btn-outline-light" > SIGN UP </button>
-      {this.state.wrongPassword && <div className="loginFail"> wrong user name or password </div>} 
+    return (
+      <div id='loginStyle' onClick={(i) => i.stopPropagation()}>
+        <h1> LOGIN </h1>
+        {this.props.addItemSign && <h1 className="loginBeforeAddItems" > please login first </h1>}
+        <div>
+          <input ref={r => this.username = r} placeholder="username" name="username" />
+        </div>
+        <div>
+          <input ref={r => this.password = r} placeholder="password" name="password" />
+        </div>
 
-    </div>
-  ); }
+        <button onClick={this.submit} className="btn-outline-light" > SIGN IN </button>
+        <button onClick={this.goToSing} className="btn-outline-light" > SIGN UP </button>
+        {this.state.wrongPassword && <div className="loginFail"> wrong user name or password </div>}
+
+      </div>
+    );
+  }
 }
 
 export default Login
