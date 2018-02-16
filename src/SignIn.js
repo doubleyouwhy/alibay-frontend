@@ -22,7 +22,7 @@ class SignIn extends Component {
       })
     })
       .then(x => x.text())
-      .then(x => { console.log(x)})
+      .then(x => { console.log(x)
 
         if (x === "success") {
           this.setState({
@@ -35,8 +35,8 @@ class SignIn extends Component {
             wrongPassword: true
           })
         }
-      }
-  
+      })
+    }
 
 
   render() {
