@@ -43,6 +43,7 @@ class Shipping extends Component {
         email: this.email.value,
         itemId: this.props.item.itemId,
         sellerId: this.props.item.sellerID,
+        orderDate: new Date()
       })
     }).then(x => x.json())
       .then(y => {
