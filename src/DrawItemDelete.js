@@ -28,7 +28,7 @@ render (){
         className='thumbnail' alt={this.props.item.prodName}
         src={this.props.item.image} />
 
-      <div>{this.props.item.prodName}</div>
+      <div className ="title" >{this.props.item.prodName}</div>
       <div>${this.props.item.price}</div>
       <button onClick= {this.props.deleteItem} >Delete Item</button>
     </div>)

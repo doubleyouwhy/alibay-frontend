@@ -124,7 +124,26 @@ background-color: #f2f2f2; */
   color: white;
   opacity: 0.75;
   padding: 6px;
+
+}
+
+.title{
+    line-height: 1.8;
+    font-size: 18px;
+    color: #777575;
+    font-weight: 500;
   
+}
+#price{
+  color: white;
+  font-weight: bold;
+  position: relative;
+  top: 260px;
+  left: 85px;
+  z-index: 2;
+  opacity: 0.85;
+  padding: 6px;
+  font-size: 22px;
   
 
 }
@@ -174,22 +193,7 @@ background-color: #f2f2f2; */
 }
 
 
-.gif{
-  color: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-}
 
-.gifText{
-  FONT-SIZE: 104%;
-}
-.gifImage{
-  margin-top: 44vh;
-  width: 25%;
-
-}
 
 
 

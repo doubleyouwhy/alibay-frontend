@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import SignIn from './SignIn.js'
-import Landing from './landing.js'
-import GifLogin from './GifLogin.js'
+
 class Login extends Component {
   constructor() {
     super();

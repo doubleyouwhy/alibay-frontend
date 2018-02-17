@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Login from './Login.js'
 import './App.css'
 
 class GifLogin extends Component {

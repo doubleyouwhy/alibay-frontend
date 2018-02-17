@@ -7,8 +7,6 @@ import Landing from './landing.js'
 import AddItems from './addItems.js'
 import Dashboard from './dashboard.js'
 import Nav from './nav.js'
-import UserNav from './UserNav.js'
-import DrawImage from './DrawImage'
 import GifLogin from './GifLogin'
 
 class App extends Component {

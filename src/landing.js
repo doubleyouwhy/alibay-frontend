@@ -44,9 +44,9 @@ componentWillMount=()=>{
     })
         this.setState({currentSellers: sellers})
     
-})
+    })
+} 
 
-}   
 sortSelection=(event)=>{
     var body = {sellerId:  event.target.value};
    
@@ -68,14 +68,14 @@ sortByPrice=(event)=>{
     
     var low = "Low To High"
     var high ="High To Low"
-    if (event.target.value == low) {
+    if (event.target.value === low) {
         var sortLowToHigh = this.state.items.sort(function (a, b) {
         return a.price - b.price 
        
     })
     this.setState({items: sortLowToHigh})
 
-} else if (event.target.value == high){
+} else if (event.target.value === high){
         var sortHighToLow = this.state.items.sort(function (a, b) {
         return b.price - a.price
         })   
@@ -103,6 +103,8 @@ runSearch =()=>{
 
 
 
+
+
     render(){
         if (this.state.hidden === false){
         return(
@@ -119,7 +121,7 @@ runSearch =()=>{
                     </div>
                     <div>  
                         <select value={this.state.sortUser} onChange={this.sortSelection}>
-                             <option value="Sort by Seller">Sort By Seller</option>
+                             {/* <option value="Sort by Seller">Sort By Seller</option> */}
                             {this.state.currentSellers.map(seller => <option value={seller.sellerId}>{seller.sellerName}</option>)}
                         </select>
                         <select value={this.state.sortPrice} onChange={this.sortByPrice}>
