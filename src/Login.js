@@ -63,7 +63,7 @@ class Login extends Component {
           <input type ='password' ref={r => this.password = r} placeholder="Password" name="password" />
         </div>
 
-        <button onClick={this.submit} className="accountButton" > SIGN IN </button>
+        <button onClick={this.submit} className="accountButton" > LOG IN </button>
         <button onClick={this.goToSing} className="accountButton" > SIGN UP </button>
         {this.state.wrongPassword && <div id="formError"> wrong user name or password </div>}
 

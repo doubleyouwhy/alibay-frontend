@@ -96,7 +96,10 @@ runSearch =()=>{
         if (this.state.hidden === false){
         return(
             <div id= 'Product'>  
-                    <div>{!this.state.displayBanner?null:<img id ="bannerImage" alt='house' src='https://livingedge.com.au/cache/img/app/img/asset/29/93/52/2/herman-miller-eames-compact-sofa-lifestyle-01.jpg/w-1326_h-699_q-90_c-c/herman-miller-eames-compact-sofa-lifestyle-01.jpg' />}
+                    <div>{!this.state.displayBanner?null:
+                    <div id='bannerImage'></div>
+                    // <img id ="bannerImage" alt='house' src='https://livingedge.com.au/cache/img/app/img/asset/29/93/52/2/herman-miller-eames-compact-sofa-lifestyle-01.jpg/w-1326_h-699_q-90_c-c/herman-miller-eames-compact-sofa-lifestyle-01.jpg' />
+                    }
                     </div>
                     <div className= "search-div">
                         <input className="search-bar" placeholder="search" ref={srch => this.searchInput = srch}></input>

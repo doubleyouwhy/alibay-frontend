@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
 import Shipping from './Shipping.js'
-import Login from './Login.js'
 
 class ProductDetail extends Component {
 
@@ -62,9 +61,10 @@ class ProductDetail extends Component {
                         </div>
                         <div className='productInfo'>
                             <h1>{this.props.item.prodName}</h1>
-                            <p>Seller: <a href='http://localhost:3000'>{this.props.item.sellerID}</a></p>
+                            <p>Seller: <a href='http://localhost:3000'>{this.props.item.sellerName}</a></p>
                             <p>{this.props.item.blurb}</p>
-                            <button id='ctaButton' onClick={this.buyProduct}>Buy Now</button>
+                            
+                            {this.props.item.isSold ? <button id='soldOut'>SOLD OUT</button> : <button id='ctaButton' onClick={this.buyProduct}>Buy Now</button> }
                         </div>
                     </div>
                 </div>
