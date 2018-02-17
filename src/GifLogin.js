@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Login from './Login.js'
 import './App.css'
 
 class GifLogin extends Component {
@@ -12,9 +13,15 @@ class GifLogin extends Component {
 
 
   render() {
-
+    console.log("lalala" +this.username)
     return (
-        <img src="https://media1.giphy.com/media/3o7TKJMBbHCbCZ1fwY/200w.gif"></img>
+       
+        <div className="gif" >
+       <img src="https://media0.giphy.com/media/65mCMJDdABFYs/200w.gif" ></img>
+       <h1> Welcome in {this.props.username} </h1>
+          </div>
+
+          
     );
   }
 }

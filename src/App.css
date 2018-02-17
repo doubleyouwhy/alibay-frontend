@@ -110,6 +110,9 @@ background-color: #f2f2f2; */
   border-radius: 10px;
   background-color: white;
 }
+.sold-out{
+  background-color: grey;
+}
 
 /* noe style------------------------------------------------- */
 #overlay {
@@ -153,6 +156,20 @@ background-color: #f2f2f2; */
 .loginBeforeAddItems{
   font-size: 15px;
 }
+
+
+.gif{
+  color: white;
+    margin-top: 35vh;
+    margin-left: 41%;
+}
+.gifImg{
+  width: 20%;
+  height: 20%
+}
+
+
+
 #loginStyle{
   /* color: rgb(231, 231, 231);;
   width: 302px;

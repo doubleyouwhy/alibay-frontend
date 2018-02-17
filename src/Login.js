@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import './App.css'
 import SignIn from './SignIn.js'
 import Landing from './landing.js'
-
+import GifLogin from './GifLogin.js'
 class Login extends Component {
   constructor() {
     super();
     this.state = {
       submit: false,
       wrongPassword: false,
+      nerverTrue:false
     };
   }
 
@@ -25,12 +26,14 @@ class Login extends Component {
     })
       .then(x => x.text())
       .then(x => {
-        console.log(x)
+   
        
         if (x === "success") {
           this.setState({
             submit: true,
+            username: usr
           })
+          console.log("user",this.state.username)
           this.props.changeLoginPageState()
         }
         else {
@@ -48,7 +51,7 @@ class Login extends Component {
   }
 
   render() {
-
+   
     return (
       <div id='loginStyle' onClick={(i) => i.stopPropagation()}>
         <h1> LOGIN </h1>
@@ -65,6 +68,7 @@ class Login extends Component {
         {this.state.wrongPassword && <div id="formError"> wrong user name or password </div>}
 
       </div>
+
     );
   }
 }
