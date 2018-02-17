@@ -86,7 +86,8 @@ class App extends Component {
           addItemSignInOff = () => {
             this.setState({
               addItemSign: false,
-              addItempage: false
+              addItempage: false,
+              
             })
           }
 
@@ -137,7 +138,7 @@ class App extends Component {
           }
 
           render() {
-
+console.log(this.state.userName)
             return (
 
               <div className='App'>
@@ -165,14 +166,16 @@ class App extends Component {
 
                 <div>
                   {/*  login */}
-                  {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login changeLoginPageState={this.changeLoginPageState} loginToSignIn={this.loginToSignIn} addItemSign={this.state.addItemSign} />  </div>}
+                  {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login changeLoginPageState={this.changeLoginPageState} loginToSignIn={this.loginToSignIn} addItemSign={this.state.addItemSign} username={this.username} />  </div>}
                   {/* sign in */}
                   {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn changeLoginPageState={this.changeLoginPageState} /> </div>}
                   {/*login and add items*/}
                   {(this.state.addItemSign && this.state.isLoggin) && <div id="overlay" onClick={this.addItemSignInOff}><  AddItems addItemSignInOff={this.addItemSignInOff} /> </div>}
                   {/* add items */}
                   {this.state.addItempage && <div id="overlay" onClick={this.goToProduct}><  AddItems addItemSignInOff={this.addItemSignInOff} /> </div>}
-                  {this.state.GifLogin && <div id="overlay" ><  GifLogin/> </div>}
+                  
+                  {/* gif */}
+                  {this.state.GifLogin && <div id="overlay" ><  GifLogin   /> </div>}
                 </div>
               </div>
             )

@@ -151,7 +151,7 @@ class Shipping extends Component {
               <h4>Tax: ${(this.props.item.price * 0.15).toFixed(2)}</h4>
               <h4>Shipping: $25.00</h4>
               <h4>Total: ${(this.props.item.price * 1.15 + 25).toFixed(2)}</h4>
-              <button onClick={this.formValidation}>Place Order</button>
+              <button onClick={this.formValidation}>Place Order</button>    
             </div>
           </div>
         </div>

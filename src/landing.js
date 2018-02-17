@@ -14,6 +14,7 @@ class Landing extends Component{
             items: [],
             searchValue: "",
             displayBanner: true
+            
         }
     }
 componentWillMount=()=>{

@@ -51,6 +51,7 @@ class AddItems extends Component {
       .then(x => {
         console.log(x)
         this.props.addItemSignInOff()
+        document.location.reload(true);
       })
   }
 
