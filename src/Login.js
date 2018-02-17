@@ -26,6 +26,7 @@ class Login extends Component {
       .then(x => x.text())
       .then(x => {
         console.log(x)
+       
         if (x === "success") {
           this.setState({
             submit: true,
@@ -37,7 +38,7 @@ class Login extends Component {
             wrongPassword: true,
 
           })
-          console.log("Login faill !!!")
+         
         }
       })
 
@@ -53,15 +54,15 @@ class Login extends Component {
         <h1> LOGIN </h1>
         {this.props.addItemSign && <h1 className="loginBeforeAddItems" > please login first </h1>}
         <div>
-          <input ref={r => this.username = r} placeholder="username" name="username" />
+          <input type ='text' ref={r => this.username = r}  placeholder="Username" name="username" />
         </div>
         <div>
-          <input ref={r => this.password = r} placeholder="password" name="password" />
+          <input type ='password' ref={r => this.password = r} placeholder="Password" name="password" />
         </div>
 
-        <button onClick={this.submit} className="btn-outline-light" > SIGN IN </button>
-        <button onClick={this.goToSing} className="btn-outline-light" > SIGN UP </button>
-        {this.state.wrongPassword && <div className="loginFail"> wrong user name or password </div>}
+        <button onClick={this.submit} className="accountButton" > SIGN IN </button>
+        <button onClick={this.goToSing} className="accountButton" > SIGN UP </button>
+        {this.state.wrongPassword && <div id="formError"> wrong user name or password </div>}
 
       </div>
     );

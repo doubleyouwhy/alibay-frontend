@@ -3,12 +3,14 @@ import './App.css'
 import Payment from './Payment.js'
 import Confirmation from './Confirmation.js'
 const emailjs = require('emailjs-com');
+
 let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 let date = new Date()
 let year = date.getFullYear()
 let month = months[date.getMonth()]
 let day = date.getDate()
 let fullDate = month + ' ' + day + ', ' + year
+
 class Shipping extends Component {
 
   constructor(props) {
@@ -60,16 +62,16 @@ class Shipping extends Component {
         console.log('confirmation number ', y)
         // this.setState({ hidden: false, userShipping: {shippingInfo} })
       })
-    .then(z => this.setState({shippingInfo: {z}}))
+      .then(z => this.setState({ shippingInfo: { z } }))
 
-    this.sendEmailConfirmation()
+    // this.sendEmailConfirmation()
 
   }
 
   sendEmailConfirmation = () => {
     emailjs.init("user_FNLRvsmgagvJUJfXdNCsP");
 
-    emailjs.send("gmail","template_f1rdYR9G",{
+    emailjs.send("gmail", "template_f1rdYR9G", {
       order_number: this.props.item.confirmation,
       firstName: this.firstName.value,
       fullName: this.firstName.value + ' ' + this.lastName.value,
@@ -83,34 +85,34 @@ class Shipping extends Component {
       email: this.email.value,
       product: this.props.item.prodName
     })
-       .then(function(response) {
-          console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-       }, function(err) {
-          console.log("FAILED. error=", err);
-       });
+      .then(function (response) {
+        console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+      }, function (err) {
+        console.log("FAILED. error=", err);
+      });
   }
 
   formValidation = () => {
-    if (this.firstName.value.length < 1) {
-      this.setState({ formError: <div>Please enter a valid <b>first name</b></div> })
-    } else if (this.lastName.value.length < 1) {
-      this.setState({ formError: <div>Please enter a valid <b>last name</b></div> })
-    } else if (this.address.value.length < 1) {
-      this.setState({ formError: (<div>Please enter a valid <b>address</b></div>) })
+    if (this.firstName.value.length < 2) {
+      this.setState({ formError: <div id='form-error'>Please submit a valid <b id='uppercase'>name</b></div> })
+    } else if (this.lastName.value.length < 2) {
+      this.setState({ formError: <div div id='form-error'>Please submit a valid <b id='uppercase'>name</b></div> })
+    } else if (this.address.value.length < 4) {
+      this.setState({ formError: (<div div id='form-error'>Please submit a valid <b id='uppercase'>address</b></div>) })
     } else if (this.city.value.length < 1) {
-      this.setState({ formError: (<div>Please enter a valid <b>city</b></div>) })
-    } else if (this.province.value.length < 1) {
-      this.setState({ formError: (<div>Please enter a valid <b>province</b></div>) })
-    } else if (this.zip.value.length < 1) {
-      this.setState({ formError: (<div>Please enter a valid <b>postal code</b></div>) })
-    } else if (this.country.value.length < 1) {
-      this.setState({ formError: (<div>Please enter a valid <b>country</b></div>) })
-    } else if (this.email.value.length < 1) {
-      this.setState({ formError: (<div>Please enter a valid <b>email address</b></div>) })
+      this.setState({ formError: (<div div id='form-error'>Please submit a valid <b id='uppercase'>city</b></div>) })
+    } else if (this.province.value.length < 2) {
+      this.setState({ formError: (<div div id='form-error'>Please submit a valid <b id='uppercase'>state or province</b></div>) })
+    } else if (this.zip.value.length < 6) {
+      this.setState({ formError: (<div div id='form-error'>Please submit a valid <b id='uppercase'>zip or postal code</b></div>) })
+    } else if (this.country.value.length < 3) {
+      this.setState({ formError: (<div div id='form-error'>Please submit a valid <b id='uppercase'>country</b></div>) })
+    } else if (this.email.value.length < 6) {
+      this.setState({ formError: (<div div id='form-error'>Please submit a valid <b id='uppercase'>email address</b></div>) })
     } else this.shipInfo()
   }
 
-  componentDidMount(){
+  componentDidMount() {
     console.log('shipping detail props: ', this.props)
     console.log('itemID: ', this.props.item.itemId)
     console.log('seller ID: ', this.props.item.sellerID)
@@ -122,9 +124,10 @@ class Shipping extends Component {
       return (
         <div id='Product'>
           <div className='checkOutWrapper'>
+
             <div className='checkOutInfo'>
               <div>
-                <h1>Shipping Information</h1>
+                <h1><span id='numbered'>①</span> Shipping Information</h1>
                 <div id='formError'>{this.state.formError}</div>
                 <input type='text' ref={r => this.firstName = r} placeholder='First Name' />
                 <input type='text' ref={r => this.lastName = r} placeholder='Last Name' />
@@ -143,15 +146,16 @@ class Shipping extends Component {
               </div>
               <Payment />
             </div>
-
-            <div className='orderSummary'>
-              <h1>Order Summary</h1>
-              <h3>1 x {this.props.item.prodName}</h3>
-              <h4>Subtotal: ${this.props.item.price}</h4>
-              <h4>Tax: ${(this.props.item.price * 0.15).toFixed(2)}</h4>
-              <h4>Shipping: $25.00</h4>
-              <h4>Total: ${(this.props.item.price * 1.15 + 25).toFixed(2)}</h4>
-              <button onClick={this.formValidation}>Place Order</button>
+            <div>
+              <h1><span id='numbered'>③</span> Order Summary</h1>
+              <div className='orderSummary'>
+                <h3>1 x {this.props.item.prodName}</h3>
+                <h4 className='subTitle'>Subtotal: <span id='right-align'>${this.props.item.price}</span></h4>
+                <h4 className='subTitle'>Tax (15%): <span id='right-align'>${(this.props.item.price * 0.15).toFixed(2)}</span></h4>
+                <h4 className='subTitle'>Shipping: <span id='right-align'>$25.00</span></h4>
+                <h3>Total: <mark id='right-align'>${(this.props.item.price * 1.15 + 25).toFixed(2)}</mark></h3>
+                <button id='ctaButton' onClick={this.formValidation}>Place Order</button>
+              </div>
             </div>
           </div>
         </div>

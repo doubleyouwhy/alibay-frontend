@@ -33,17 +33,17 @@ class Confirmation extends Component {
       return (
         <div id='Product'>
           <div className='confirmation'>
-          <h1>Thank you for your order {this.props.item.shippingInfo.firstName}!</h1>
-          <h4>Order #{this.props.item.shippingInfo.confirmation}</h4>
+          <h1>Thank You for shopping {this.props.item.shippingInfo.firstName}!</h1>
           <p>A confirmation email has been sent to <a href='/'>{this.props.item.shippingInfo.email}</a></p>
+          <h4>Here's your order <mark>#{this.props.item.shippingInfo.confirmation}</mark></h4>
           <h4>Order Placed on: <br/>{fullDate}</h4>
           <h4>Total Amount Paid: ${this.props.item.shippingInfo.totalPrice.toFixed(2)}</h4>
-          <h3>Shipping to</h3>
+          <h3>Items will be shipped to:</h3>
               <li>{this.props.item.shippingInfo.firstName + ' ' + this.props.item.shippingInfo.lastName}</li>
               <li>{this.props.item.shippingInfo.address}</li>
               <li>{this.props.item.shippingInfo.city + ', ' + this.props.item.shippingInfo.province + ' ' + this.props.item.shippingInfo.zip}</li>
               <li>{this.props.item.shippingInfo.country}</li>
-          <button onClick={this.keepShopping}>Keep Shopping</button>
+          <button id='ctaButton' onClick={this.keepShopping}>Continue Shopping</button>
         </div>
         </div>
       )

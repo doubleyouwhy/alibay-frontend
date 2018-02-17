@@ -6,9 +6,9 @@ class PayPal extends Component {
   render () {
     const style = {
       label: 'checkout',
-      size: 'medium',    // small | medium | large | responsive
+      size: 'large',    // small | medium | large | responsive
       shape: 'rect',     // pill | rect
-      color: 'blue'      // gold | blue | silver | black
+      color: 'black'      // gold | blue | silver | black
     }
     // const client = {
     //   sandbox: 'YOUR-SANDBOX-APP-ID',

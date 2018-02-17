@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Shipping from './Shipping.js'
+import Login from './Login.js'
 
 class ProductDetail extends Component {
 
@@ -18,8 +19,15 @@ class ProductDetail extends Component {
         console.log(this.props);
     };
     buyProduct = () => {
+       if (this.props.userIsLogin === false){
         this.setState({ hidden: true })
-        return (<div>{this.props.item.prodName}<div><Shipping /></div></div>)
+       } 
+       else this.props.goToLogin()
+    //     return (
+        
+    //     <div>{this.props.item.prodName}<div><Shipping /></div></div>
+    
+    // )
     }
 
     componentWillMount = () => {
@@ -44,22 +52,25 @@ class ProductDetail extends Component {
     render() {
         if (this.state.hidden === false) {
             return (
+               
+                
                 <div id='Product'>
                     <div className='productWrapper'>
                         <div className='productImage'>
+                        <h2 id='productPrice'>${this.props.item.price}</h2>
                             <img alt='product' src={this.props.item.image} />
                         </div>
                         <div className='productInfo'>
                             <h1>{this.props.item.prodName}</h1>
-                            <p>Sold by: <a href='http://localhost:3000'>{this.props.item.sellerID}</a></p>
+                            <p>Seller: <a href='http://localhost:3000'>{this.props.item.sellerID}</a></p>
                             <p>{this.props.item.blurb}</p>
-                            <h2>${this.props.item.price}</h2>
-                            <button onClick={this.buyProduct}>Buy Now</button>
+                            <button id='ctaButton' onClick={this.buyProduct}>Buy Now</button>
                         </div>
                     </div>
                 </div>
             )
-        } else { return <Shipping item={this.props.item} /> }
+        } else  { return <Shipping item={this.props.item} /> }
+        
     }
 }
 export default ProductDetail

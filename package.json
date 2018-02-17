@@ -5,6 +5,7 @@
   "proxy": "http://165.227.36.155:4000",
   "dependencies": {
     "emailjs-com": "^1.5.14",
+    "paymentfont": "^1.2.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-paypal-express-checkout": "^1.0.3",

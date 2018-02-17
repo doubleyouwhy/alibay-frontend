@@ -49,25 +49,25 @@ class SignIn extends Component {
       <div id='loginStyle' onClick={(i) => i.stopPropagation()}>
         <h1> SIGN UP </h1>
         <div>
-          <input ref={r => this.username = r} placeholder="username" name="username" />
+          <input type='type' ref={r => this.username = r} placeholder="Username" name="username" />
         </div>
         <div>
-          <input ref={r => this.password = r} placeholder="password" name="password" />
+          <input type='password' ref={r => this.password = r} placeholder="Password" name="password" />
         </div>
 
          <div>
-          <input ref={r => this.email = r} placeholder="email" name="email" />
+          <input ref={r => this.email = r} placeholder="Email" name="email" />
         </div>
 
          <div>
-          <input maxLength="10" minLength="10" ref={r => this.phoneNumber = r} placeholder="phoneNumber" name="phoneNumber" />
+          <input maxLength="10" minLength="10"  type="number" ref={r => this.phoneNumber = r} placeholder="Phone Number" name="phoneNumber" />
         </div>
 
 
         <div>
-          <button onClick={this.submit} className="btn-outline-light" > SUBMIT </button>
+          <button onClick={this.submit} className="btn-outline-light accountButton" > SUBMIT </button>
         </div>
-        {this.state.wrongPassword && <div className="loginFail"> wrong user name or password </div>}
+        {this.state.wrongPassword && <div id="formError"> wrong user name or password </div>}
       </div>
     )
   }
