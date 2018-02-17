@@ -376,16 +376,16 @@ i{
   padding: 10px;
   padding-left: 35px;
   padding-right: 35px;
-  background-color: rgb(29, 26, 245);
+  background-color: #6d9472;
   color: white;
 }
 
 a:link {
-  color: rgb(29, 26, 245)
+  color: #6d9472
 }
 
 a:visited {
-  color: rgb(29, 26, 245)
+  color: #6d9472
 }
 
 a:hover {
@@ -438,7 +438,7 @@ button:focus{
 }
 
 #ctaButton {
-  background-color: rgb(29, 26, 245);
+  background-color: #6d9472;
   color: rgb(255, 255, 255);
   font-size: 14px;
   font-weight: 600;
@@ -448,8 +448,8 @@ button:focus{
 }
 
 #ctaButton:hover {
-  border-color: rgb(29, 26, 245);
-  background-color: rgb(29, 26, 245);
+  border-color: #6d9472;
+  background-color: #6d9472;
   color: rgb(255, 255, 255);
 }
 
@@ -491,7 +491,7 @@ CONFIRMATION PAGE
 
 #total{
   font-size: 18px;
-  color: rgb(29, 26, 245);
+  color: #6d9472;
 }
 
 .subTitle{
@@ -503,10 +503,10 @@ CONFIRMATION PAGE
 }
 
 #numbered{
-  color: rgb(29, 26, 245) !important;
+  color: #6d9472 !important;
 }
 
 ::selection {
   color: white; 
-  background: rgb(29, 26, 245);
+  background: #6d9472;
 }

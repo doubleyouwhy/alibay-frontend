@@ -64,7 +64,7 @@ class Shipping extends Component {
       })
       .then(z => this.setState({ shippingInfo: { z } }))
 
-    // this.sendEmailConfirmation()
+    this.sendEmailConfirmation()
 
   }
 
