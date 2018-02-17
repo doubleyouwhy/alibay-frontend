@@ -7,7 +7,7 @@ class Login extends Component {
     this.state = {
       submit: false,
       wrongPassword: false,
-      nerverTrue:false
+      nerverTrue: false
     };
   }
 
@@ -25,7 +25,6 @@ class Login extends Component {
       .then(x => x.text())
       .then(x => {
 
-       
         if (x === "success") {
           this.setState({
             submit: true,
@@ -39,7 +38,7 @@ class Login extends Component {
             wrongPassword: true,
 
           })
-         
+
         }
       })
 
@@ -50,22 +49,25 @@ class Login extends Component {
 
 
   render() {
-   
+
     return (
       <div id='loginStyle' onClick={(i) => i.stopPropagation()}>
+      <div>
         <h1> LOGIN </h1>
-        {this.props.addItemSign && <h1 className="loginBeforeAddItems" > please login first </h1>}
+        {this.state.wrongPassword && <h1 id="formError"> Incorrect User Name and Password </h1>}
+        {this.props.addItemSign && <h1 id="formError" > Please Login or Sign Up<br/> before posting an item for sale.</h1>}
         <div>
-          <input type ='text' ref={r => this.username = r}  placeholder="Username" name="username" />
+          <input type='text' ref={r => this.username = r} placeholder="Username" name="username" />
         </div>
         <div>
-          <input type ='password' ref={r => this.password = r} placeholder="Password" name="password" />
+          <input type='password' ref={r => this.password = r} placeholder="Password" name="password" />
         </div>
-
-        <button onClick={this.submit} className="accountButton" > LOG IN </button>
-        <button onClick={this.goToSing} className="accountButton" > SIGN UP </button>
-        {this.state.wrongPassword && <div id="formError"> wrong user name or password </div>}
-       
+        <div id="accountSubmit">
+          <button onClick={this.submit} className="accountButton" > LOG IN </button>
+          <button onClick={this.goToSing} className="accountButton" > SIGN UP </button>
+        </div>
+        {/* {this.state.wrongPassword && <div id="formError"> Incorrect User Name or Password </div>} */}
+      </div>
       </div>
 
     );
