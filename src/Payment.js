@@ -70,7 +70,7 @@ class Payment extends Component {
         if (this.state.hidden === false) {
             return (
                 <div>
-                    <h1><span id='numbered'>②</span> Payment Method</h1>
+                    <h1 className='flex'><span id='numbered'>2</span> Payment Method</h1>
                     <div>
                         <form className='paymentOptions'>
 

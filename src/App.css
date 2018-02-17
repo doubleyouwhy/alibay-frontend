@@ -50,11 +50,14 @@ background-color: #f2f2f2; */
 /* LANDING PAGE */
 
 #bannerImage{
-  width: 80vw !important;
-  height: auto !important;
+  width: 90vw !important;
+  height: 300px !important;
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  background-image: url("https://images.unsplash.com/photo-1502920924215-5646fe685bef?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=86f7d14c0dcb6d3956921550371a4d67&auto=format&fit=crop&w=1350&q=80");
+  background-position: center;
+  background-position-y: 543px;
 }
 
 .gallery{
@@ -145,6 +148,7 @@ background-color: #f2f2f2; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 4;
 }
 
 .navLogo img{
@@ -279,6 +283,7 @@ text-align: right;
 
 .productWrapper{
   display: flex;
+  justify-content: center;
 }
 
 .productImage{
@@ -297,6 +302,7 @@ text-align: right;
   padding: 20px;
   padding-left: 40px;
   padding-right: 40px;
+  min-width: 500px;
   background-color: white;
 }
 
@@ -358,6 +364,19 @@ select:active{
   outline: none;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* img{
+  max-width:180px;
+} */
+
+input[type=file]{
+padding:10px;
+}
 
 /*
 -------------------------
@@ -478,6 +497,17 @@ button:focus{
   color: rgb(255, 255, 255);
 }
 
+#soldOut {
+  background-color: #6d94712f !important;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 600;
+  width: 100px;
+  border-radius: 5px;
+  margin-top: 30px;
+  cursor: default; 
+}
+
 .paymentRadioButtons{
   margin-top: 0;
   display: flex;
@@ -527,11 +557,27 @@ CONFIRMATION PAGE
   padding-bottom: 15px;
 }
 
-#numbered{
-  color: #6d9472 !important;
+#numbered {
+  width: 39px !important;
+  height: 39px;
+  color: white;
+  background-color: #6d9472;
+  border-radius: 50%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-right: 10px;
 }
 
 ::selection {
   color: white; 
   background: #6d9472;
+}
+
+.flex{
+  display: flex;
 }
