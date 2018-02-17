@@ -110,8 +110,16 @@ background-color: #f2f2f2; */
   border-radius: 10px;
   background-color: white;
 }
-.sold-out{
-  background-color: grey;
+.img-wrapper {
+  display: flex;
+  align-items: center;
+}
+#sold-out {
+  position: absolute;
+  z-index: 2;
+  background-color: red;
+  
+
 }
 
 /* noe style------------------------------------------------- */
