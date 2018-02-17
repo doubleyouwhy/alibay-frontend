@@ -27,14 +27,13 @@ class Login extends Component {
       .then(x => x.text())
       .then(x => {
 
-
         if (x === "success") {
           this.setState({
             submit: true,
             username: usr
           })
-          console.log("user", this.state.username)
-          this.props.changeLoginPageState()
+          console.log("user",this.state.username)
+          this.props.changeLoginPageState(this.state.username)
         }
         else {
           this.setState({
@@ -49,6 +48,7 @@ class Login extends Component {
   goToSing = () => {
     this.props.loginToSignIn()
   }
+
 
   render() {
 

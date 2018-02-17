@@ -10,15 +10,17 @@ class GifLogin extends Component {
     };
   }
 
+saveUserName  = () => {
 
+}
 
   render() {
-    console.log("lalala" +this.username)
+    console.log("lalala" +this.props.username)
     return (
        
         <div className="gif" >
-       <img src="https://media0.giphy.com/media/65mCMJDdABFYs/200w.gif" ></img>
-       <h1> Welcome in {this.props.username} </h1>
+       <img className="gifImage" src="https://media.giphy.com/media/eumUGvgRP1H12au9jW/giphy.gif" ></img>
+       <h1 className="gifText"> Welcome in {this.props.username} </h1>
           </div>
 
           

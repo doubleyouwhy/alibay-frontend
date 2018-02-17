@@ -96,7 +96,7 @@ class AddItems extends Component {
     return (
       <div id='addItemStyle' onClick={(i) => i.stopPropagation()} >
         <div className='addItemsWrapper'>
-          <h1>Add an Item to Sell </h1>
+          <h1>Add an Item to Your Store </h1>
           <div id='addItemWindow'>
             <div><input ref={r => this.name = r} placeholder="Product Name" /> </div>
             <div><input type="number" ref={r => this.price = r} placeholder="Price" /> </div>

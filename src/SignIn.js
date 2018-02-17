@@ -31,8 +31,10 @@ class SignIn extends Component {
         if (x === "success") {
           this.setState({
             submit: true,
+            username: usr
+            
           })
-          this.props.changeLoginPageState()
+          this.props.changeLoginPageState(this.state.username)
         }
         else {
           this.setState({
