@@ -16,7 +16,7 @@ class Nav extends Component {
 
       <div id='NavBar' >
         <div className='navLogo'>
-          <img src='https://i.imgur.com/iaKmTFj.png' onClick={this.props.goToLanding} />
+          <img src='https://media.giphy.com/media/9PnSG1hB8QQfrRVyWt/giphy.gif' onClick={this.props.goToLanding} />
         </div>
         <div className='login-div'>
 
