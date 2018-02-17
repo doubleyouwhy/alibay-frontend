@@ -6,7 +6,6 @@ function DrawImage (props) {
       <img
 
         onClick={() => {
-          console.log('clicked on product')
           props.goToProductPage(props.item)
         }}
         className='thumbnail' alt={props.item.prodName}

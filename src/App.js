@@ -112,6 +112,8 @@ componentWillMount = () => {
         {/* non-user nav bar */}
         <div>< Nav goToLogin={this.goToLogin} goToLanding={this.goToLanding} goToProfile={this.goToProfile} goToSignIn={this.goToSignIn} addItem={this.addItem} addItemLogin={this.addItemLogin} navLandingNoLogin={this.state.navLandingNoLogin} Landing={this.state.Landing} /></div>
 
+     
+         
       
     
        {/* NOE I ADDED SOME CONDITIONALS HERE - megan */}
