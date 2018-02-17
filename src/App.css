@@ -120,7 +120,11 @@ background-color: #f2f2f2; */
 #sold-out {
   position: absolute;
   z-index: 2;
-  background-color: red;
+  background-color:#d64040;
+  color: white;
+  opacity: 0.75;
+  padding: 6px;
+  
   
 
 }

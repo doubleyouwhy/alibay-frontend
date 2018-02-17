@@ -58,23 +58,38 @@ class Dashboard extends Component{
         })
     }
 
+    deleteItem=()=>{
+        console.log('delete button has been clicked')
+        fetch('/deleteItem',{
+            method: "POST",
+            credentials: 'include',
+            body: this.props.item.itemId
+        })
+        .then(x=>x.text())
+        .then(y=>console.log("this is y for delete button ", y))
+    }
+
     render(){
        
         return (
              <div id= 'Product' className = "profile"> 
                     <h1>Your Profile</h1>
-                    <div>Items you're selling</div>
-                    <div className="profile-gallery"> 
-                        {this.state.itemsForSale.map(item => <DrawItemDelete 
-                            item = {item} 
-                            goToProductPage={this.props.goToProductPage}/>)}   
-                    </div>  
-                    <div>Items you've sold</div>
-                    <div className="profile-gallery"> 
-                        {this.state.itemsSold.map(item => <DrawItemDelete 
-                            item = {item} 
-                            goToProductPage={this.props.goToProductPage}/>)}   
-                    </div> 
+                            <div className="seller">
+                            <div>Items you're selling</div>
+                            <div className="profile-gallery"> 
+                                {this.state.itemsForSale.map(item => <DrawItemDelete 
+                                    deleteItem = {this.deleteItem}
+                                    item = {item} 
+                                    goToProductPage={this.props.goToProductPage}/>)}   
+                            </div>  
+                            <div>Items you've sold</div>
+                            <div className="profile-gallery"> 
+                                {this.state.itemsSold.map(item => <DrawItemDelete 
+                                    deleteItem = {this.deleteItem}
+                                    item = {item} 
+                                    goToProductPage={this.props.goToProductPage}/>)}   
+                            </div> 
+                    </div>
                     <div>Items you've purchased</div>
                     <div className="profile-gallery">  
                         {this.state.itemsBought.map(item => <DrawImage

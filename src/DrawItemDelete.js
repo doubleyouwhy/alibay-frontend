@@ -6,16 +6,16 @@ class DrawItemDelete extends Component {
         this.state={}
     }
 
-deleteItem=()=>{
-    console.log('delete button has been clicked')
-    fetch('/deleteItem',{
-        method: "POST",
-        credentials: 'include',
-        body: this.props.item.itemId
-    })
-    .then(x=>x.text())
-    .then(y=>y.text)
-}
+// deleteItem=()=>{
+//     console.log('delete button has been clicked')
+//     fetch('/deleteItem',{
+//         method: "POST",
+//         credentials: 'include',
+//         body: this.props.item.itemId
+//     })
+//     .then(x=>x.text())
+//     .then(y=>console.log("this is y for delete button ", y))
+// }
 render (){
   return (
     <div className='product-preview' >
@@ -30,7 +30,7 @@ render (){
 
       <div>{this.props.item.prodName}</div>
       <div>${this.props.item.price}</div>
-      <button onClick= {this.deleteItem} >Delete Item</button>
+      <button onClick= {this.props.deleteItem} >Delete Item</button>
     </div>)
 }
 }
