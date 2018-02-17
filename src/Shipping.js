@@ -127,7 +127,7 @@ class Shipping extends Component {
 
             <div className='checkOutInfo'>
               <div>
-                <h1><span id='numbered'>①</span> Shipping Information</h1>
+                <h1 className='flex'><span id='numbered'>1</span> Shipping Information</h1>
                 <div id='formError'>{this.state.formError}</div>
                 <input type='text' ref={r => this.firstName = r} placeholder='First Name' />
                 <input type='text' ref={r => this.lastName = r} placeholder='Last Name' />
@@ -147,7 +147,7 @@ class Shipping extends Component {
               <Payment />
             </div>
             <div>
-              <h1><span id='numbered'>③</span> Order Summary</h1>
+              <h1 className='flex'><div id='numbered'>3</div> Order Summary</h1>
               <div className='orderSummary'>
                 <h3>1 x {this.props.item.prodName}</h3>
                 <h4 className='subTitle'>Subtotal: <span id='right-align'>${this.props.item.price}</span></h4>

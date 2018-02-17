@@ -55,7 +55,7 @@ sortSelection=(event)=>{
     fetch('/itemsSoldby',{
         method: "POST",
         credentials: 'include',
-        body: event.target.value
+        body: JSON.stringify(body)
     })
     .then(x => x.json())
     .then(y => {
@@ -65,12 +65,23 @@ sortSelection=(event)=>{
 }
 
 sortByPrice=(event)=>{
-    console.log('this is the event targe value for sort by price', event.target.value)
-    console.log('all items', this.state.items)
-    var sorted = this.state.items.sort(function (a, b) {
-        return a.price - b.price;   
+    
+    var low = "Low To High"
+    var high ="High To Low"
+    if (event.target.value == low) {
+        var sortLowToHigh = this.state.items.sort(function (a, b) {
+        return a.price - b.price 
+       
     })
-    console.log('the sorted array' , sorted)
+    this.setState({items: sortLowToHigh})
+
+} else if (event.target.value == high){
+        var sortHighToLow = this.state.items.sort(function (a, b) {
+        return b.price - a.price
+        })   
+        this.setState({items: sortHighToLow})
+      
+}console.log('the sorted array of items ', this.state.items)
 }
 
 runSearch =()=>{
@@ -96,19 +107,24 @@ runSearch =()=>{
         if (this.state.hidden === false){
         return(
             <div id= 'Product'>  
-                    <div>{!this.state.displayBanner?null:<img id ="bannerImage" alt='house' src='https://livingedge.com.au/cache/img/app/img/asset/29/93/52/2/herman-miller-eames-compact-sofa-lifestyle-01.jpg/w-1326_h-699_q-90_c-c/herman-miller-eames-compact-sofa-lifestyle-01.jpg' />}
+                    <div>{!this.state.displayBanner?null:
+                    <div id='bannerImage'></div>
+                    // <img id ="bannerImage" alt='house' src='https://livingedge.com.au/cache/img/app/img/asset/29/93/52/2/herman-miller-eames-compact-sofa-lifestyle-01.jpg/w-1326_h-699_q-90_c-c/herman-miller-eames-compact-sofa-lifestyle-01.jpg' />
+                    }
                     </div>
                     <div className= "search-div">
                         <input className="search-bar" placeholder="search" ref={srch => this.searchInput = srch}></input>
                         <button onClick = {this.runSearch}>submit search</button>
                         <button onClick = {this.componentWillMount}>Browse All Products</button>
                     </div>
-                    <div> SORT BY:   
+                    <div>  
                         <select value={this.state.sortUser} onChange={this.sortSelection}>
+                             <option value="Sort by Seller">Sort By Seller</option>
                             {this.state.currentSellers.map(seller => <option value={seller.sellerId}>{seller.sellerName}</option>)}
                         </select>
                         <select value={this.state.sortPrice} onChange={this.sortByPrice}>
-                            <option value="Price Low To High">Price Low To High</option>
+                            <option value="Sort by Price">Sort By Price</option>
+                            <option value="Low To High">Price Low To High</option>
                             <option value="High To Low">Price High To Low</option>
                         </select>
                     </div>

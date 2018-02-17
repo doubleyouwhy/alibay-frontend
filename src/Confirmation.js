@@ -8,7 +8,6 @@ let year = date.getFullYear()
 let month = months[date.getMonth()]
 let day = date.getDate()
 let fullDate = month + ' ' + day + ', ' + year
-let confirmationNumber = 1000
 
 class Confirmation extends Component {
   constructor(props) {
