@@ -48,15 +48,19 @@ componentWillMount=()=>{
 
 }   
 sortSelection=(event)=>{
-   console.log('this is event target value' , event.target.value)
+    var body = {sellerId:  event.target.value};
+   
+    //console.log('this is event target value' , id.toString())
+ 
     fetch('/itemsSoldby',{
         method: "POST",
         credentials: 'include',
         body: event.target.value
     })
-    .then(x=>x.json())
-    .then(y=>{
-        console.log('this is y for sortSelection', y)})
+    .then(x => x.json())
+    .then(y => {
+        console.log('this is y for sortSelection', y)
+    })
 
 }
 

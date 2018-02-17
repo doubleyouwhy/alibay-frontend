@@ -60,7 +60,7 @@ class SignIn extends Component {
         </div>
 
          <div>
-          <input maxLength="10" minLength="10" ref={r => this.phoneNumber = r} placeholder="phoneNumber" name="phoneNumber" />
+          <input maxLength="10" minLength="10"  type="number" ref={r => this.phoneNumber = r} placeholder="phoneNumber" name="phoneNumber" />
         </div>
 
 

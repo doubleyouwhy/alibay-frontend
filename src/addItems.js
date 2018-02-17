@@ -21,7 +21,6 @@ class AddItems extends Component {
     fetch('/upics?name=' + randomName + fileExtension, { method: "POST",credentials: "include", body: x })
       .then(x => x.text())
       .then(x => {
-        // this.setState({ photo: x})
         console.log(x)
         this.setState({ number: randomName + fileExtension })
         console.log("the number   :", this.state.number)
@@ -64,7 +63,7 @@ class AddItems extends Component {
         <h1> Add items </h1>
         <div><input ref={r => this.name = r} placeholder="name" /> </div>
         <div><input ref={r => this.description = r} placeholder="description" /> </div>
-        <div><input ref={r => this.price = r} placeholder="Price" /> </div>
+        <div><input type="number" ref={r => this.price = r} placeholder="Price" /> </div>
         <input type="file" id="input" onChange={e => this.uploadFile(e.target.files[0])} />
         <div> <button onClick={this.submit} className="btn-outline-light" > submit </button> </div>
       </div>

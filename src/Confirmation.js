@@ -18,13 +18,14 @@ class Confirmation extends Component {
     }
   }
 
-  goHome = () => {
+  keepShopping = () => {
     this.setState({ hidden: true })
   }
 
   componentDidMount = () => {
     console.log(date)
-    console.log('props log', this.props)
+    console.log('confirmation props log', this.props)
+    console.log('item props ', this.props.item)
   }
 
   render() {
@@ -32,22 +33,21 @@ class Confirmation extends Component {
       return (
         <div id='Product'>
           <div className='confirmation'>
-          <h1>Thank you for your order!</h1>
-          <h4>Order #{Math.floor(Math.random() * 5000)}</h4>
+          <h1>Thank you for your order {this.props.item.shippingInfo.firstName}!</h1>
+          <h4>Order #{this.props.item.shippingInfo.confirmation}</h4>
           <p>A confirmation email has been sent to <a href='/'>{this.props.item.shippingInfo.email}</a></p>
           <h4>Order Placed on: <br/>{fullDate}</h4>
-          <h4>You paid ${(this.props.item.shippingInfo.order.price * 1.15 + 25).toFixed(2)}</h4>
+          <h4>Total Amount Paid: ${this.props.item.shippingInfo.totalPrice.toFixed(2)}</h4>
           <h3>Shipping to</h3>
               <li>{this.props.item.shippingInfo.firstName + ' ' + this.props.item.shippingInfo.lastName}</li>
               <li>{this.props.item.shippingInfo.address}</li>
               <li>{this.props.item.shippingInfo.city + ', ' + this.props.item.shippingInfo.province + ' ' + this.props.item.shippingInfo.zip}</li>
               <li>{this.props.item.shippingInfo.country}</li>
-          <button onClick={this.goHome}>Keep Shopping</button>
-          <button>View Order History</button>
+          <button onClick={this.keepShopping}>Keep Shopping</button>
         </div>
         </div>
       )
-    } else { return <Landing /> }
+    } else { return <Landing state={this.keepShopping}/> }
   }
 }
 
