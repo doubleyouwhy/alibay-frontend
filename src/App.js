@@ -18,6 +18,7 @@ class App extends Component {
       userIsLogin: true,
       Landing: true,
       ProductDetail: false,
+      displayBanner: false,
     }
   }
   componentWillMount = () => {
@@ -130,7 +131,8 @@ class App extends Component {
           }
 
           goToLanding = () => {
-            this.setState({ Landing: true })
+            console.log("icon clicked")
+            this.setState({ Landing: true, displayBanner: true })
           }
           goToProductPage = (element) => {
             this.setState({ Landing: false, ProductDetail: element })
@@ -138,22 +140,19 @@ class App extends Component {
           }
 
           render() {
-console.log(this.state.userName)
+
             return (
 
               <div className='App'>
                 {/* non-user nav bar */}
                 <div>< Nav logout={this.logout} goToLogin={this.goToLogin} goToLanding={this.goToLanding} goToProfile={this.goToProfile} goToSignIn={this.goToSignIn} addItem={this.addItem} addItemLogin={this.addItemLogin} userIsLogin={this.state.userIsLogin} Landing={this.state.Landing} /></div>
 
-
-
-
-
+ 
                 {/* NOE I ADDED SOME CONDITIONALS HERE - megan */}
 
                 {/* Landing Page / dashboard / product detail */}
                 {this.state.Landing
-                  ? <div> < Landing goToProductPage={this.goToProductPage} /> </div>
+                  ? <div> < Landing goToProductPage={this.goToProductPage} bannerState ={this.state.bannerState} /> </div>
                   : ((!this.state.Landing && !this.state.ProductDetail)
                     ? <div>< Dashboard goToProductPage={this.goToProductPage} /> </div>
                     : (!this.state.Landing && this.state.ProductDetail
