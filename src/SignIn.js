@@ -65,7 +65,7 @@ class SignIn extends Component {
 
 
         <div>
-          <button onClick={this.submit} className="btn-outline-light accountButton" > SUBMIT </button>
+          <button id='accountSubmit' onClick={this.submit} className="btn-outline-light accountButton" > SUBMIT </button>
         </div>
         {this.state.wrongPassword && <div id="formError"> wrong user name or password </div>}
       </div>

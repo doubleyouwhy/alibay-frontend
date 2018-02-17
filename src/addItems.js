@@ -21,7 +21,7 @@ class AddItems extends Component {
     var splitName = fullName.split("/")
     var almostThere = splitName[1]
     var fileExtension = "." + almostThere
-    
+
     fetch('/upics?name=' + randomName + fileExtension, { method: "POST", credentials: "include", body: x })
       .then(x => x.text())
       .then(x => {
@@ -32,33 +32,33 @@ class AddItems extends Component {
 
   }
 
-   updateImageDisplay = () => {
+  updateImageDisplay = () => {
     this.input.addEventListener('change', this.updateImageDisplay);
 
-    while(preview.firstChild) {
+    while (preview.firstChild) {
       preview.removeChild(preview.firstChild);
     }
-  
+
     var curFiles = input.files;
-    if(curFiles.length === 0) {
+    if (curFiles.length === 0) {
       var para = document.createElement('p');
       para.textContent = 'No files currently selected for upload';
       preview.appendChild(para);
     } else {
       var list = document.createElement('ol');
       preview.appendChild(list);
-      for(var i = 0; i < curFiles.length; i++) {
+      for (var i = 0; i < curFiles.length; i++) {
         var listItem = document.createElement('li');
         var para = document.createElement('p');
-        
-          var image = document.createElement('img');
-          image.src = window.URL.createObjectURL(curFiles[i]);
-  
-          listItem.appendChild(image);
-          listItem.appendChild(para);
-  
-    
-  
+
+        var image = document.createElement('img');
+        image.src = window.URL.createObjectURL(curFiles[i]);
+
+        listItem.appendChild(image);
+        listItem.appendChild(para);
+
+
+
         list.appendChild(listItem);
       }
     }
@@ -79,7 +79,6 @@ class AddItems extends Component {
         price: price,
         blurb: description,
         image: image
-
       })
     })
       .then(x => x.text())
@@ -95,15 +94,14 @@ class AddItems extends Component {
 
   render() {
     return (
-      <div id='loginStyle' onClick={(i) => i.stopPropagation()} >
+      <div id='addItemStyle' onClick={(i) => i.stopPropagation()} >
         <div className='addItemsWrapper'>
-          <h1>Sell an Item </h1>
-          <div><input ref={r => this.name = r} placeholder="Product Name" /> </div>
-          <div><input type="number" ref={r => this.price = r} placeholder="Price" /> </div>
-          <div><textarea ref={r => this.description = r} placeholder="Description" /> </div>
-          <div className="preview">
-            <p>No files currently selected for upload</p>
+          <h1>Add an Item to Sell </h1>
+          <div id='addItemWindow'>
+            <div><input ref={r => this.name = r} placeholder="Product Name" /> </div>
+            <div><input type="number" ref={r => this.price = r} placeholder="Price" /> </div>
           </div>
+          <div><textarea ref={r => this.description = r} placeholder="Description" /> </div>
           <input type="file" id="input" onChange={e => this.uploadFile(e.target.files[0])} />
           <div> <button onClick={this.submit} id='ctaButton' > Submit </button> </div>
         </div>
