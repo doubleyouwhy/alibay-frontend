@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import ProductDetail from './ProductDetail.js'
 import DrawImage from './DrawImage.js'
-
-
-
 
 class Landing extends Component{
 
@@ -13,7 +9,10 @@ class Landing extends Component{
             hidden: false,    
             items: [],
             searchValue: "",
-            displayBanner: true
+            displayBanner: true,
+            currentSellers: [],
+            sortUser:"all users",
+
             
         }
     }
@@ -25,15 +24,55 @@ componentWillMount=()=>{
     })
     .then(x => x.json())
     .then(y => {
-
         var keys = Object.keys(y);
 
         var itemArray = keys.map( element => {
             return y[element];
+        
         });    
         this.setState({ items: itemArray, searchValue:""})
     }) 
+    fetch('/getSellerNames',{
+        credentials: "include"
+    })
+    .then(x=>x.json())
+    .then(y=>{
+        var sellerIds = Object.keys(y);
+     
+        var sellers = sellerIds.map(element=> {
+        return {sellerName: y[element], sellerId: element}
+    })
+        this.setState({currentSellers: sellers})
+    
+})
+
 }   
+sortSelection=(event)=>{
+    var body = {sellerId:  event.target.value};
+   
+    //console.log('this is event target value' , id.toString())
+ 
+    fetch('/itemsSoldby',{
+        method: "POST",
+        credentials: 'include',
+        body: event.target.value
+    })
+    .then(x => x.json())
+    .then(y => {
+        console.log('this is y for sortSelection', y)
+    })
+
+}
+
+sortByPrice=(event)=>{
+    console.log('this is the event targe value for sort by price', event.target.value)
+    console.log('all items', this.state.items)
+    var sorted = this.state.items.sort(function (a, b) {
+        return a.price - b.price;   
+    })
+    console.log('the sorted array' , sorted)
+}
+
 runSearch =()=>{
     fetch ('/search',{
         method: "POST",
@@ -42,7 +81,6 @@ runSearch =()=>{
     })
     .then(x=>x.json())
     .then(y=> {
-        console.log("this is y:" , y); 
         this.setState({
             items:y, 
             searchValue: this.searchInput.value,
@@ -51,6 +89,8 @@ runSearch =()=>{
         this.searchInput.value = ""    
    
 })}
+
+
 
     render(){
         if (this.state.hidden === false){
@@ -62,6 +102,15 @@ runSearch =()=>{
                         <input className="search-bar" placeholder="search" ref={srch => this.searchInput = srch}></input>
                         <button onClick = {this.runSearch}>submit search</button>
                         <button onClick = {this.componentWillMount}>Browse All Products</button>
+                    </div>
+                    <div> SORT BY:   
+                        <select value={this.state.sortUser} onChange={this.sortSelection}>
+                            {this.state.currentSellers.map(seller => <option value={seller.sellerId}>{seller.sellerName}</option>)}
+                        </select>
+                        <select value={this.state.sortPrice} onChange={this.sortByPrice}>
+                            <option value="Price Low To High">Price Low To High</option>
+                            <option value="High To Low">Price High To Low</option>
+                        </select>
                     </div>
                     <div>{!this.state.searchValue?null
                             :(this.state.searchValue && this.state.items===null

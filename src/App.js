@@ -101,7 +101,7 @@ class App extends Component {
               
               GifLogin: true,
             })
-            setTimeout( this.closeGif, 3000);
+            setTimeout( this.closeGif, 700);
           }
 
           // Login and add items

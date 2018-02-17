@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DrawImage from './DrawImage'
+import DrawItemDelete from './DrawItemDelete'
 
 class Dashboard extends Component{
 
@@ -13,7 +14,7 @@ class Dashboard extends Component{
     }
      componentWillMount=()=>{
 
-        fetch ('/itemsForSale?uid=12345',{
+        fetch ('/itemsForSale',{
             credentials: 'include'
         })
         .then(x => x.json())
@@ -27,7 +28,7 @@ class Dashboard extends Component{
             this.setState({ itemsForSale: itemsForSaleArr})
             })     
 
-        fetch('/itemsSold?uid=12345',{
+        fetch('/itemsSold',{
             credentials: 'include'
         })
         .then(x => x.json())
@@ -41,7 +42,7 @@ class Dashboard extends Component{
             this.setState({itemsSold: itemsSoldArr })
         })
 
-        fetch('/itemsBought?uid=12345',{
+        fetch('/itemsBought',{
             credentials: 'include'
         })
         .then(x => x.json())
@@ -57,8 +58,6 @@ class Dashboard extends Component{
         })
     }
 
- 
-
     render(){
        
         return (
@@ -66,13 +65,13 @@ class Dashboard extends Component{
                     <h1>Your Profile</h1>
                     <div>Items you're selling</div>
                     <div className="profile-gallery"> 
-                        {this.state.itemsForSale.map(item => <DrawImage 
+                        {this.state.itemsForSale.map(item => <DrawItemDelete 
                             item = {item} 
                             goToProductPage={this.props.goToProductPage}/>)}   
                     </div>  
                     <div>Items you've sold</div>
                     <div className="profile-gallery"> 
-                        {this.state.itemsSold.map(item => <DrawImage 
+                        {this.state.itemsSold.map(item => <DrawItemDelete 
                             item = {item} 
                             goToProductPage={this.props.goToProductPage}/>)}   
                     </div> 
