@@ -54,9 +54,10 @@ class Login extends Component {
 
     return (
       <div id='loginStyle' onClick={(i) => i.stopPropagation()}>
+      <div>
         <h1> LOGIN </h1>
-        {this.state.wrongPassword && <div id="formError"> Incorrect User Name or Password </div>}
-        {this.props.addItemSign && <h1 id="formError" > Please Login or Sign Up<br/> before posting an item</h1>}
+        {this.state.wrongPassword && <h1 id="formError"> Incorrect User Name and Password </h1>}
+        {this.props.addItemSign && <h1 id="formError" > Please Login or Sign Up<br/> before posting an item for sale.</h1>}
         <div>
           <input type='text' ref={r => this.username = r} placeholder="Username" name="username" />
         </div>
@@ -68,6 +69,7 @@ class Login extends Component {
           <button onClick={this.goToSing} className="accountButton" > SIGN UP </button>
         </div>
         {/* {this.state.wrongPassword && <div id="formError"> Incorrect User Name or Password </div>} */}
+      </div>
       </div>
 
     );
