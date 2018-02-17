@@ -176,12 +176,19 @@ background-color: #f2f2f2; */
 
 .gif{
   color: white;
-    margin-top: 35vh;
-    margin-left: 41%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }
-.gifImg{
-  width: 20%;
-  height: 20%
+
+.gifText{
+  FONT-SIZE: 104%;
+}
+.gifImage{
+  margin-top: 44vh;
+  width: 25%;
+
 }
 
 

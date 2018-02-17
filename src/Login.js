@@ -26,7 +26,7 @@ class Login extends Component {
     })
       .then(x => x.text())
       .then(x => {
-   
+
        
         if (x === "success") {
           this.setState({
@@ -34,7 +34,7 @@ class Login extends Component {
             username: usr
           })
           console.log("user",this.state.username)
-          this.props.changeLoginPageState()
+          this.props.changeLoginPageState(this.state.username)
         }
         else {
           this.setState({
@@ -49,6 +49,7 @@ class Login extends Component {
   goToSing = () => {
     this.props.loginToSignIn()
   }
+
 
   render() {
    
@@ -66,7 +67,7 @@ class Login extends Component {
         <button onClick={this.submit} className="accountButton" > LOG IN </button>
         <button onClick={this.goToSing} className="accountButton" > SIGN UP </button>
         {this.state.wrongPassword && <div id="formError"> wrong user name or password </div>}
-
+       
       </div>
 
     );

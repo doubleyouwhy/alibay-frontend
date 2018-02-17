@@ -28,11 +28,11 @@ class App extends Component {
     })
       .then(x => x.text())
       .then(x => {
-        console.log(x)
+       console.log("firstcokie",x)
         if (x !== "fail") {
           
           this.setState({userIsLogin: false,
-                        userName : x
+                        
           })
         }})}
 
@@ -46,7 +46,7 @@ class App extends Component {
           .then(x => {
           
             if (x === "success") {
-              console.log("second consloe",x)
+       
                document.location.reload(true);
               
             }
@@ -93,16 +93,17 @@ class App extends Component {
           }
 
           // remove Login, signIn and addItem page after submit 
-          changeLoginPageState = () => {
+          changeLoginPageState = (x) => {
             this.setState({
               loginPage: false,
               signInPage: false,
               userIsLogin: false,
               addItempage: false,
-              
+              username : x,
               GifLogin: true,
             })
-            setTimeout( this.closeGif, 700);
+            setTimeout( this.closeGif, 2700);
+            console.log(this.state.username )
           }
 
           // Login and add items
@@ -174,7 +175,7 @@ class App extends Component {
                   {this.state.addItempage && <div id="overlay" onClick={this.goToProduct}><  AddItems addItemSignInOff={this.addItemSignInOff} /> </div>}
                   
                   {/* gif */}
-                  {this.state.GifLogin && <div id="overlay" ><  GifLogin   /> </div>}
+                  {this.state.GifLogin && <div id="overlay" ><  GifLogin username={this.state.username}     /> </div>}
                 </div>
               </div>
             )
