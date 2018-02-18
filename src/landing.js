@@ -26,7 +26,7 @@ componentWillMount=()=>{
     .then(y => {
         var keys = Object.keys(y);
 
-        var itemArray = keys.map( element => {
+        var itemArray = keys.map(element => {
             return y[element];
         
         });    
@@ -122,7 +122,7 @@ runSearch =()=>{
                     <div>  
                         <select value={this.state.sortUser} onChange={this.sortSelection}>
                              {/* <option value="Sort by Seller">Sort By Seller</option> */}
-                            {this.state.currentSellers.map(seller => <option value={seller.sellerId}>{seller.sellerName}</option>)}
+                            {this.state.currentSellers.map((seller, index) => <option key= {index} value={seller.sellerId}>{seller.sellerName}</option>)}
                         </select>
                         <select value={this.state.sortPrice} onChange={this.sortByPrice}>
                             <option value="Sort by Price">Sort By Price</option>
@@ -135,7 +135,7 @@ runSearch =()=>{
                                 ?"Displaying: no results found"
                                 :"Displaying: " + this.state.searchValue)}</div>
                     <div className = "gallery">
-                        {this.state.items.map(item => <DrawImage item = {item} goToProductPage={this.props.goToProductPage}  />)}   
+                        {this.state.items.map((item) => <DrawImage item = {item} goToProductPage={this.props.goToProductPage}  />)}   
                     </div>
             </div>       
         )         

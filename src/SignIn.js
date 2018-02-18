@@ -66,8 +66,9 @@ class SignIn extends Component {
             <input maxLength="10" minLength="10" type="number" ref={r => this.phoneNumber = r} placeholder="Phone Number" name="phoneNumber" />
           </div>
 
-          <div>
-            <button id='accountSubmit' onClick={this.submit} className="btn-outline-light accountButton" > SUBMIT </button>
+          <div id="accountSubmit">
+              <button onClick={this.submit} className="btn-outline-light accountButton" > SUBMIT </button>
+              <button onClick={this.props.goToLogin} className="btn-outline-light accountButton" > LOGIN </button>
           </div>
           {this.state.wrongPassword && <div id="formError"> wrong user name or password </div>}
         </div>

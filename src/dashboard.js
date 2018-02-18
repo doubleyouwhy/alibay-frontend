@@ -58,12 +58,15 @@ class Dashboard extends Component{
         })
     }
 
-    deleteItem=()=>{
-        console.log('delete button has been clicked')
+    deleteItem=(itemId)=>{
+        var body = itemId.toString()
+        
+        console.log('here is itemId for delete item' , body)
+      
         fetch('/deleteItem',{
             method: "POST",
             credentials: 'include',
-            body: this.props.item.itemId
+            body: body
         })
         .then(x=>x.text())
         .then(y=>console.log("this is y for delete button ", y))
@@ -84,10 +87,10 @@ class Dashboard extends Component{
                     </div>  
                     <div>Items you've sold</div>
                     <div className="profile-gallery"> 
-                        {this.state.itemsSold.map(item => <DrawItemDelete 
+                        {this.state.itemsSold.map((item,idx) => <div key={idx}><DrawItemDelete 
                             deleteItem = {this.deleteItem}
                             item = {item} 
-                            goToProductPage={this.props.goToProductPage}/>)}   
+                            goToProductPage={this.props.goToProductPage}/></div>)}   
                     </div> 
                     </div>
                     <div>Items you've purchased</div>

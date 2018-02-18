@@ -6,31 +6,30 @@ class DrawItemDelete extends Component {
         this.state={}
     }
 
-// deleteItem=()=>{
-//     console.log('delete button has been clicked')
-//     fetch('/deleteItem',{
-//         method: "POST",
-//         credentials: 'include',
-//         body: this.props.item.itemId
-//     })
-//     .then(x=>x.text())
-//     .then(y=>console.log("this is y for delete button ", y))
-// }
+deleteItem=()=>{
+  console.log("this is inside the delete function", this.props.item.itemId)
+  this.props.deleteItem(this.props.item.itemId)
+}
+
+
+
 render (){
+
   return (
+   
     <div className='product-preview' >
-      <img
+        <img
 
-        onClick={() => {
-          console.log('clicked on product')
-          this.props.goToProductPage(this.props.item)
-        }}
-        className='thumbnail' alt={this.props.item.prodName}
-        src={this.props.item.image} />
+          onClick={() => {
+            console.log('clicked on product')
+            this.props.goToProductPage(this.props.item)
+          }}
+          className='thumbnail' alt={this.props.item.prodName}
+          src={this.props.item.image} />
 
-      <div className ="title" >{this.props.item.prodName}</div>
-      <div>${this.props.item.price}</div>
-      <button onClick= {this.props.deleteItem} >Delete Item</button>
+        <div>{this.props.item.prodName}</div>
+        <div>${this.props.item.price}</div>
+        <button onClick= {this.deleteItem} >Delete Item</button>
     </div>)
 }
 }
