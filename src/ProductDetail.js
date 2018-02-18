@@ -70,10 +70,8 @@ class ProductDetail extends Component {
                                 {this.props.item.isSold ? <button id='soldOut'>SOLD</button> : <button id='ctaButton' onClick={this.buyProduct}>Buy Now</button>}
                             </div>
                             </div>
-                            
                         </div>
                     </div>
-               
             )
         } else { return <Shipping item={this.props.item} /> }
 

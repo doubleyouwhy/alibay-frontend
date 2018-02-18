@@ -134,10 +134,10 @@ runSearch =()=>{
 
                         </div>
                     </div>
-                    <h2>{!this.state.searchValue?null
-                            :(this.state.searchValue && this.state.items===null
-                                ?"Displaying: no results found"
-                                :"Results for " +  this.state.searchValue)}</h2>
+                    <h2>{!this.state.searchValue ? null
+                    : (this.state.searchValue && this.state.items===null
+                    ? "Displaying: no results found"
+                    : <div>Results for <mark>{this.state.searchValue}</mark></div>)}</h2>
                     <div className = "gallery">
                         {this.state.items.map((item) => <DrawImage item = {item} goToProductPage={this.props.goToProductPage}  />)}   
                     </div>

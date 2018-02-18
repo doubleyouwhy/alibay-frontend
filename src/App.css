@@ -44,10 +44,13 @@ background-color: #f2f2f2; */
   width: 100%;
 }
 
-
-#Product img:active{
+.thumbnail:hover{
 opacity: .6;
 }
+
+.thumbnail:active{
+  opacity: 1;
+  }
 
 #cvv {
   width: 40px;
@@ -449,7 +452,7 @@ input{
   border: none;
   margin: 5px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 15px;
   width: 175px;
   background-color: white;
 }
@@ -500,6 +503,7 @@ select:active{
   outline: none;
 }
 
+
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
@@ -509,7 +513,11 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=file]{
 padding:10px;
 background: none;
+font-size: 13px;
+width: 250px;
+margin-left: -25px;
 }
+
 
 /*
 -------------------------
@@ -520,7 +528,7 @@ TYPOGRAPHY & FONTS
 */
 
 p {
-  line-height: 1.8;
+  line-height: 2.2;
   font-size: 16px;
   font-weight: 400;
 }
@@ -570,7 +578,7 @@ mark#right-align{
   position: absolute;
   top: 110px;
   margin: auto;
-  margin-top: 85px;
+  margin-top: 65px;
   padding: 10px;
   padding-left: 35px;
   padding-right: 35px;
@@ -702,6 +710,7 @@ button:active{
 
 .fileUpload{
   width: 400px;
+  text-align: left;
 }
 
 input[type=file]::-webkit-file-upload-button {
@@ -713,6 +722,7 @@ input[type=file]::-webkit-file-upload-button {
   width: 100px;
   margin-right: 10px;
   margin-left: 15px;
+  border: none;
 }
 
 /*
