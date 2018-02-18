@@ -84,10 +84,13 @@ background-color: #f2f2f2; */
   border-color: black;
   border-style: solid;
   border-width: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .search-bar{
-  width: 30%
+  width: 30vw
 }
 
 .header{
@@ -505,6 +508,20 @@ button:focus{
 .paypal-button{
   text-align: center;
   margin-top: 30px;
+}
+
+.fileUpload{
+  width: 400px;
+}
+input[type=file]::-webkit-file-upload-button {
+  background-color: #000000;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  font-weight: 600;
+  width: 100px;
+  margin-right: 10px;
+  margin-left: 15px;
 }
 
 /*

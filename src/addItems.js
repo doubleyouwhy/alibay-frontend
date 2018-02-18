@@ -102,7 +102,11 @@ class AddItems extends Component {
             <div><input type="number" ref={r => this.price = r} placeholder="Price" /> </div>
           </div>
           <div><textarea ref={r => this.description = r} placeholder="Description" /> </div>
-          <input type="file" id="input" onChange={e => this.uploadFile(e.target.files[0])} />
+
+          <div className="fileUpload">
+            <input type="file" id="upload" onChange={e => this.uploadFile(e.target.files[0])} />
+          </div>
+
           <div> <button onClick={this.submit} id='ctaButton' > Submit </button> </div>
         </div>
       </div>
