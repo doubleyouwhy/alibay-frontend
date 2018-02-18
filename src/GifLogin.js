@@ -18,8 +18,8 @@ saveUserName  = () => {
     return (
        
         <div className="gif" >
-       <img className="gifImage" src="https://media.giphy.com/media/eumUGvgRP1H12au9jW/giphy.gif" ></img>
-       <h1 className="gifText"> Welcome back {this.props.username} </h1>
+       <img className="gifImage" src="https://i.imgur.com/er7QYfD.gif" ></img>
+       <h1 className="gifText">Happy Shopping {this.props.username}!</h1>
           </div>
 
           

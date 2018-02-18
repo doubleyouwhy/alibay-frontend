@@ -97,7 +97,7 @@ class Dashboard extends Component {
                             goToProductPage={this.props.goToProductPage} />)}
                     </div>
 
-                    <div className='search-div'><h2>Items you've <mark>sold</mark></h2></div>
+                    <div className='search-div'><h2>Items you've <mark id='sold'>sold</mark></h2></div>
                         <div className='profile-gallery' >
                             {this.state.itemsSold.map((item, idx) => <DrawItemDelete
                             key={idx}
