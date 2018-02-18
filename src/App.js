@@ -126,15 +126,15 @@ class App extends Component {
 
           goToProfile = () => {
 
-            this.setState({ Landing: false })
+            this.setState({ Landing: false, ProductDetail: false })
           }
 
           goToLanding = () => {
-            console.log("icon clicked")
-            this.setState({ Landing: true, displayBanner: true })
+      
+            this.setState({ Landing: true, displayBanner: true , productDetailNav: false})
           }
           goToProductPage = (element) => {
-            this.setState({ Landing: false, ProductDetail: element })
+            this.setState({ Landing: false, productDetailNav: true, ProductDetail: element })
 
           }
 
@@ -144,7 +144,7 @@ class App extends Component {
 
               <div className='App'>
                 {/* non-user nav bar */}
-                <div>< Nav logout={this.logout} goToLogin={this.goToLogin} goToLanding={this.goToLanding} goToProfile={this.goToProfile} goToSignIn={this.goToSignIn} addItem={this.addItem} addItemLogin={this.addItemLogin} userIsLogin={this.state.userIsLogin} Landing={this.state.Landing} /></div>
+                <div>< Nav logout={this.logout} goToLogin={this.goToLogin} goToLanding={this.goToLanding} goToProfile={this.goToProfile} goToSignIn={this.goToSignIn} addItem={this.addItem} addItemLogin={this.addItemLogin} userIsLogin={this.state.userIsLogin} Landing={this.state.Landing} productDetailNav={this.state.productDetailNav} /></div>
 
  
                 {/* NOE I ADDED SOME CONDITIONALS HERE - megan */}

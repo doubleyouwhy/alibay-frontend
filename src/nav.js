@@ -25,8 +25,9 @@ class Nav extends Component {
           {(this.props.userIsLogin) && <button className='addItemButton' onClick={this.props.addItemLogin}>Add Item</button>}
           {(!this.props.userIsLogin) && <button className='addItemButton' onClick={this.props.addItem}>Add Item</button>}
           {(!this.props.userIsLogin && this.props.Landing) && <button className='accountButton' onClick={this.props.goToProfile}>My Profile</button>}
+          {(!this.props.userIsLogin && this.props.productDetailNav) && <button className='accountButton' onClick={this.props.goToProfile}>My Profile</button>}
 
-          {/* A FAIRE */}
+          
           {(!this.props.userIsLogin) && <button className='accountButton' onClick={this.props.logout}>Logout</button>}
 
         </div>

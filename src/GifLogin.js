@@ -14,7 +14,7 @@ saveUserName  = () => {
 }
 
   render() {
-    console.log("lalala" +this.props.username)
+  
     return (
        
         <div className="gif" >
