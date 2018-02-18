@@ -1,3 +1,4 @@
+
 .App {
   text-align: left;
   background-color: #f2f2f2;
@@ -26,6 +27,9 @@ margin: 10px;
 margin-left: auto;
 margin-right: auto;
 margin-top: 75px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: 600;
+
 /* border-style: solid;
 border-color: rgb(212, 212, 212);
 border-width: 1px;
@@ -34,8 +38,12 @@ background-color: #f2f2f2; */
 }
 
 #Product img{
-  width: 344px;
-  height: 266px;
+  width: 100%;
+}
+
+
+#Product img:active{
+opacity: .6;
 }
 
 #cvv {
@@ -62,35 +70,32 @@ background-color: #f2f2f2; */
 
 .gallery{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .product-preview{
   max-width: 30%;
   display: block;
-  text-align: center;
-}
-
-.thumbnail{
-  max-width: 100%;
-  height: auto;
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .search-div{
-  text-align: center;
   padding: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   border-color: black;
   border-style: solid;
-  border-width: 3px;
+  border-width: 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .search-bar{
-  width: 30vw
+  width: 30vw;
+  height: 22px;
 }
 
 .header{
@@ -99,25 +104,82 @@ background-color: #f2f2f2; */
 }
 
 .profile{
-  text-align: center;
+  text-align: left;
 }
 
 .profile-gallery{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  padding: 25px;
+  /* padding: 25px; */
   margin: 10px;
   margin-left: auto;
   margin-right: auto;
-  border-style: solid;
-  border-color: rgb(212, 212, 212);
-  border-width: 1px;
-  border-radius: 10px;
-  background-color: white;
 }
-.sold-out{
-  background-color: grey;
+.img-wrapper {
+  display: flex;
+  align-items: center;
+}
+#sold-out {
+  position: absolute;
+  z-index: 3;
+  background-color: rgb(239, 122, 122);
+  color: white;
+  padding: 10px;
+  letter-spacing: 4px;
+  font-size: 16px;
+  margin-top: 36px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#for-sale{
+  position: absolute;
+  z-index: 2;
+  background-color: #94c89b;
+  color: white;
+  padding: 10px;
+  letter-spacing: 4px;
+  font-size: 16px;
+  margin-top: 36px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.title{
+  line-height: 1.8;
+  font-size: 20px;
+  /* color: #777575; */
+  font-weight: 800;
+  text-align: center;
+  margin-top: 10px;
+  
+}
+#price{
+  color: white;
+  font-weight: bold;
+  position: relative;
+  top: 260px;
+  left: 85px;
+  z-index: 2;
+  opacity: 0.85;
+  padding: 6px;
+  font-size: 22px;
+  
+
+}
+
+/* DASHBOARD PAGE ------ */
+
+.history{
+  line-height: 1.5;
+  font-size: 16px;
+  color: #777575;
+  font-weight: 500;
+  text-align: left;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 /* noe style------------------------------------------------- */
@@ -177,7 +239,6 @@ background-color: #f2f2f2; */
 .gifImage{
   margin-top: 44vh;
   width: 25%;
-
 }
 
 #loginStyle{
@@ -236,7 +297,7 @@ text-align: right;
 /*------------- WESLEY'S STYLING HERE */
 #formError{
   font-size: 14px;
-  color: red;
+  color: rgb(239, 122, 122);
   margin: 5px;
   margin-bottom: 15px;
 }
@@ -289,13 +350,17 @@ text-align: right;
   height: 500px !important;
 }
 
-
 .productInfo{
   padding: 20px;
   padding-left: 40px;
   padding-right: 40px;
-  min-width: 500px;
+  min-width: 30%;
   background-color: white;
+}
+
+#delete{
+  margin-left: 0;
+  margin-top: 15px;
 }
 
 /*
@@ -316,9 +381,14 @@ input{
   background-color: white;
 }
 
+::placeholder{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
 input[type=radio]{
   width: 20px;
-background-color: red;
+background-color: #ff6b6b;
 }
 
 textarea{
@@ -379,7 +449,6 @@ TYPOGRAPHY & FONTS
 p {
   line-height: 1.8;
   font-size: 16px;
-  color: rgb(128, 128, 128);
 }
 
 i{
@@ -388,6 +457,18 @@ i{
   margin-left: 0px;
   opacity: 0.6;
 }
+
+mark {
+  background-color: rgb(243, 243, 243);
+  color: black;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-transform: uppercase;
+}
+
+/* mark#right-align{
+  color: white !important;
+} */
 
 .pf-paypal, .pf-bitcoin{
   font-size: 30px !important;
@@ -407,19 +488,24 @@ i{
   z-index: 2;
   position: absolute;
   top: 110px;
+  margin: 0;
+  margin-top: 45px;
   padding: 10px;
   padding-left: 35px;
   padding-right: 35px;
   background-color: #94c89b;
   color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  
 }
 
 a:link {
-  color: #94c89b
+  color: #bbbbbb
 }
 
 a:visited {
-  color: #94c89b
+  color: #bbbbbb
 }
 
 a:hover {
@@ -435,19 +521,30 @@ BUTTONS
 */
 
 button {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto Mono', monospace;  
   cursor: pointer; /* Add a pointer on hover */
   border-radius: none;
   border: none;
   padding: 10px;
-  font-size: 12px;
-  margin: 5px;
+  font-size: 13px;
   background-color: rgb(235, 235, 235);
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 button:focus{
   outline: none;
+}
+
+button:hover{
+opacity: .7;
+}
+
+button:active{
+  opacity: 1;
+  }
+
+.wide-btn{
+  width: 100%;
 }
 
 .accountButton{
@@ -456,6 +553,7 @@ button:focus{
   text-transform: uppercase;
   color: #000000;
   border-bottom: solid;
+  border-width: 2px;
   padding: 0;
   padding-bottom: 6px;
   margin: 0px 10px 0px 10px;
@@ -473,13 +571,14 @@ button:focus{
 }
 
 #ctaButton {
-  background-color: #94c89b;
-  color: rgb(255, 255, 255);
-  font-size: 14px;
-  font-weight: 600;
-  width: 100px;
-  border-radius: 5px;
-  margin-top: 30px;
+     background-color: #94c89b;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 #ctaButton:hover {
@@ -489,14 +588,15 @@ button:focus{
 }
 
 #soldOut {
-  background-color: #6d94712f !important;
+  background-color: #94c89b7a;
   color: rgb(255, 255, 255);
-  font-size: 14px;
-  font-weight: 600;
-  width: 100px;
+  font-size: 18px;
+  width: 100%;
   border-radius: 5px;
   margin-top: 30px;
   cursor: default; 
+  letter-spacing: 3px;
+  
 }
 
 .paymentRadioButtons{
@@ -513,6 +613,7 @@ button:focus{
 .fileUpload{
   width: 400px;
 }
+
 input[type=file]::-webkit-file-upload-button {
   background-color: #000000;
   border-radius: 5px;
@@ -537,11 +638,14 @@ CONFIRMATION PAGE
   padding: 30px;
   border-radius: 5px;
   width: 275px;
-}
-
-.orderSummary h3{
   margin-top: 10px;
   margin-bottom: 40px;
+  margin-right: 30px;
+}
+
+#orderHistory{
+  width: 90vw;
+  line-height: 3;
 }
 
 #right-align{

@@ -154,7 +154,7 @@ class Shipping extends Component {
                 <h4 className='subTitle'>Tax (15%): <span id='right-align'>${(this.props.item.price * 0.15).toFixed(2)}</span></h4>
                 <h4 className='subTitle'>Shipping: <span id='right-align'>$25.00</span></h4>
                 <h3>Total: <mark id='right-align'>${(this.props.item.price * 1.15 + 25).toFixed(2)}</mark></h3>
-                <button id='ctaButton' onClick={this.formValidation}>Place Order</button>
+                <button className='wide-btn' id='ctaButton' onClick={this.formValidation}>Place Order</button>
               </div>
             </div>
           </div>

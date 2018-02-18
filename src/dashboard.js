@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DrawImage from './DrawImage'
 import DrawItemDelete from './DrawItemDelete'
+import OrderHistory from './OrderHistory';
 
 class Dashboard extends Component{
 
@@ -13,7 +14,8 @@ class Dashboard extends Component{
         }
     }
      componentWillMount=()=>{
-
+        console.log('dashboard props ', this.props)
+        console.log()
         fetch ('/itemsForSale',{
             credentials: 'include'
         })
@@ -58,29 +60,51 @@ class Dashboard extends Component{
         })
     }
 
+    deleteItem=(itemId)=>{
+        var body = itemId.toString()
+        
+        console.log('here is itemId for delete item' , body)
+      
+        fetch('/deleteItem',{
+            method: "POST",
+            credentials: 'include',
+            body: body
+        })
+        .then(x=>x.text())
+        .then(y=>console.log("this is y for delete button ", y))
+    }
+
     render(){
        
         return (
              <div id= 'Product' className = "profile"> 
                     <h1>Your Profile</h1>
-                    <div>Items you're selling</div>
+                    <h2>Items you've <mark>bought</mark></h2>
+
+             <div id='orderHistory'>
+                    <div className="profile-gallery">  
+                        {this.state.itemsBought.map(item => <OrderHistory
+                             item = {item} />)}   
+                    </div> 
+                    </div>
+
+                    <div className="seller">
+                    <h2>Items you're <mark>selling</mark></h2>
                     <div className="profile-gallery"> 
                         {this.state.itemsForSale.map(item => <DrawItemDelete 
+                            deleteItem = {this.deleteItem}
                             item = {item} 
                             goToProductPage={this.props.goToProductPage}/>)}   
                     </div>  
-                    <div>Items you've sold</div>
+                    <h2>Items you've <mark>sold</mark></h2>
                     <div className="profile-gallery"> 
-                        {this.state.itemsSold.map(item => <DrawItemDelete 
+                        {this.state.itemsSold.map((item,idx) => <div key={idx}><DrawItemDelete 
+                            deleteItem = {this.deleteItem}
                             item = {item} 
-                            goToProductPage={this.props.goToProductPage}/>)}   
+                            goToProductPage={this.props.goToProductPage}/></div>)}   
                     </div> 
-                    <div>Items you've purchased</div>
-                    <div className="profile-gallery">  
-                        {this.state.itemsBought.map(item => <DrawImage
-                             item = {item} 
-                             goToProductPage={this.props.goToProductPage}/>)}   
-                    </div>       
+                    </div>
+                          
             </div>
             )
         }

@@ -3,18 +3,18 @@ import React, { Component } from 'react'
 function DrawImage (props) {
   return (
     <div className='product-preview' >
-        <img
+      <div className='img-warpper' >
+        {props.item.isSold ? <h2 id='sold-out' >SOLD</h2> : null}
+        <div id='for-sale'> ${props.item.price} </div>
 
-            onClick={() => {
-              props.goToProductPage(props.item)
-            }}
-            className='thumbnail' alt={props.item.prodName}
-            src={props.item.image} />
+        <img onClick={() => { props.goToProductPage(props.item) }}
 
-        <div>{props.item.prodName}</div>
-        <div>${props.item.price}</div>
-    
-        {props.item.isSold?<div>SOLD OUT</div>:null}
+          className='thumbnail' alt={props.item.prodName}
+          src={props.item.image} />
+
+      </div>
+      <div className='title'>{props.item.prodName}</div>
+
     </div>)
 }
 

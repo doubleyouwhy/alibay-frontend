@@ -7,8 +7,6 @@ import Landing from './landing.js'
 import AddItems from './addItems.js'
 import Dashboard from './dashboard.js'
 import Nav from './nav.js'
-import UserNav from './UserNav.js'
-import DrawImage from './DrawImage'
 import GifLogin from './GifLogin'
 
 class App extends Component {
@@ -66,7 +64,7 @@ class App extends Component {
             })
           }
           goToLogin = () => {
-            this.setState({ loginPage: true })
+            this.setState({ loginPage: true, signInPage:false })
           }
           goToSignIn = () => {
             this.setState({
@@ -168,7 +166,7 @@ class App extends Component {
                   {/*  login */}
                   {this.state.loginPage && <div id="overlay" onClick={this.goToProduct}>    < Login changeLoginPageState={this.changeLoginPageState} loginToSignIn={this.loginToSignIn} addItemSign={this.state.addItemSign} username={this.username} />  </div>}
                   {/* sign in */}
-                  {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn changeLoginPageState={this.changeLoginPageState} /> </div>}
+                  {this.state.signInPage && <div id="overlay" onClick={this.goToProduct}>< SignIn goToLogin={this.goToLogin} changeLoginPageState={this.changeLoginPageState} /> </div>}
                   {/*login and add items*/}
                   {(this.state.addItemSign && this.state.isLoggin) && <div id="overlay" onClick={this.addItemSignInOff}><  AddItems addItemSignInOff={this.addItemSignInOff} /> </div>}
                   {/* add items */}

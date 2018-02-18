@@ -7,30 +7,26 @@ class DrawItemDelete extends Component {
     }
 
 deleteItem=()=>{
-    console.log('delete button has been clicked')
-    fetch('/deleteItem',{
-        method: "POST",
-        credentials: 'include',
-        body: this.props.item.itemId
-    })
-    .then(x=>x.text())
-    .then(y=>y.text)
+  console.log("this is inside the delete function", this.props.item.itemId)
+  this.props.deleteItem(this.props.item.itemId)
 }
+
+
+
 render (){
+
   return (
+   
     <div className='product-preview' >
-      <img
-
-        onClick={() => {
-          console.log('clicked on product')
-          this.props.goToProductPage(this.props.item)
-        }}
-        className='thumbnail' alt={this.props.item.prodName}
-        src={this.props.item.image} />
-
-      <div>{this.props.item.prodName}</div>
-      <div>${this.props.item.price}</div>
-      <button onClick= {this.deleteItem} >Delete Item</button>
+        <img onClick={() => {
+            console.log('clicked on product')
+            this.props.goToProductPage(this.props.item)
+          }}
+          className='thumbnail' alt={this.props.item.prodName}
+          src={this.props.item.image} />
+        <div>${this.props.item.price}</div>
+        <div>{this.props.item.prodName}</div>
+        <button id='delete' className='addItemButton' onClick= {this.deleteItem} >Delete </button>
     </div>)
 }
 }
