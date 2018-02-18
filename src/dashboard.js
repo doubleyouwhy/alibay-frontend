@@ -3,112 +3,113 @@ import DrawImage from './DrawImage'
 import DrawItemDelete from './DrawItemDelete'
 import OrderHistory from './OrderHistory';
 
-class Dashboard extends Component{
+class Dashboard extends Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            itemsForSale:[],
-            itemsSold:[],
-            itemsBought:[]        
+            itemsForSale: [],
+            itemsSold: [],
+            itemsBought: []
         }
     }
-     componentWillMount=()=>{
+    componentWillMount = () => {
         console.log('dashboard props ', this.props)
         console.log()
-        fetch ('/itemsForSale',{
+        fetch('/itemsForSale', {
             credentials: 'include'
         })
-        .then(x => x.json())
-        .then(y =>{
-            console.log(y)
-            var keys = Object.keys(y);
+            .then(x => x.json())
+            .then(y => {
+                console.log(y)
+                var keys = Object.keys(y);
 
-            var itemsForSaleArr = keys.map(element =>{
-                return y[element];
+                var itemsForSaleArr = keys.map(element => {
+                    return y[element];
+                })
+                this.setState({ itemsForSale: itemsForSaleArr })
             })
-            this.setState({ itemsForSale: itemsForSaleArr})
-            })     
 
-        fetch('/itemsSold',{
+        fetch('/itemsSold', {
             credentials: 'include'
         })
-        .then(x => x.json())
-        .then(y => {
-            console.log(y)
-            var keys = Object.keys(y);
+            .then(x => x.json())
+            .then(y => {
+                console.log(y)
+                var keys = Object.keys(y);
 
-            var itemsSoldArr = keys.map(element=>{
-                return y[element];
+                var itemsSoldArr = keys.map(element => {
+                    return y[element];
+                })
+                this.setState({ itemsSold: itemsSoldArr })
             })
-            this.setState({itemsSold: itemsSoldArr })
-        })
 
-        fetch('/itemsBought',{
+        fetch('/itemsBought', {
             credentials: 'include'
         })
-        .then(x => x.json())
-        .then(y => {
-            console.log(y)
-            var keys = Object.keys(y);
+            .then(x => x.json())
+            .then(y => {
+                console.log(y)
+                var keys = Object.keys(y);
 
-            var itemsBoughtArr = keys.map(element=>{
-                return y[element];
+                var itemsBoughtArr = keys.map(element => {
+                    return y[element];
+                })
+                this.setState({ itemsBought: itemsBoughtArr })
+
             })
-            this.setState({itemsBought: itemsBoughtArr})
-        
-        })
     }
 
-    deleteItem=(itemId)=>{
+    deleteItem = (itemId) => {
         var body = itemId.toString()
-        
-        console.log('here is itemId for delete item' , body)
-      
-        fetch('/deleteItem',{
+
+        console.log('here is itemId for delete item', body)
+
+        fetch('/deleteItem', {
             method: "POST",
             credentials: 'include',
             body: body
         })
-        .then(x=>x.text())
-        .then(y=>console.log("this is y for delete button ", y))
+            .then(x => x.text())
+            .then(y => console.log("this is y for delete button ", y))
     }
 
-    render(){
-       
+    render() {
+
         return (
-             <div id= 'Product' className = "profile"> 
-                    <h1 className='search-div'>Your Profile</h1>
-                    <h2>Items you've <mark>bought</mark></h2>
+            <div id='Product' className="profile">
+                <h1>{this.prop}Your Profile</h1>
+                <div className='search-div'><h2>Items you've <mark>bought</mark></h2></div>
 
-             <div id='orderHistory'>
-                    <div className="profile-gallery">  
+                <div id='orderHistory'>
+                    <div className="profile-gallery">
                         {this.state.itemsBought.map(item => <OrderHistory
-                             item = {item} />)}   
-                    </div> 
+                            item={item} />)}
+                    </div>
+                </div>
+
+                <div className="seller">
+                <div className='search-div'><h2>Items you're <mark>selling</mark></h2></div>
+                    <div className="profile-gallery">
+                        {this.state.itemsForSale.map(item => <DrawItemDelete
+                            deleteItem={this.deleteItem}
+                            item={item}
+                            goToProductPage={this.props.goToProductPage} />)}
                     </div>
 
-                    <div className="seller">
-                    <h2>Items you're <mark>selling</mark></h2>
-                    <div className="profile-gallery"> 
-                        {this.state.itemsForSale.map(item => <DrawItemDelete 
-                            deleteItem = {this.deleteItem}
-                            item = {item} 
-                            goToProductPage={this.props.goToProductPage}/>)}   
-                    </div>  
-                    <h2>Items you've <mark>sold</mark></h2>
-                    <div className="profile-gallery"> 
-                        {this.state.itemsSold.map((item,idx) => <div key={idx}><DrawItemDelete 
-                            deleteItem = {this.deleteItem}
-                            item = {item} 
-                            goToProductPage={this.props.goToProductPage}/></div>)}   
-                    </div> 
+                    <div className='search-div'><h2>Items you've <mark>sold</mark></h2></div>
+                        <div className='profile-gallery' >
+                            {this.state.itemsSold.map((item, idx) => <DrawItemDelete
+                            key={idx}
+                                deleteItem={this.deleteItem}
+                                item={item}
+                                goToProductPage={this.props.goToProductPage} />)}
+                        </div>
                     </div>
-                          
             </div>
-            )
-        }
+        )
     }
+}
 
 
 export default Dashboard
