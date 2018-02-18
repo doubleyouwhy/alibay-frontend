@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DrawImage from './DrawImage'
 import DrawItemDelete from './DrawItemDelete'
+import OrderHistory from './OrderHistory';
 
 class Dashboard extends Component{
 
@@ -93,11 +94,10 @@ class Dashboard extends Component{
                             goToProductPage={this.props.goToProductPage}/></div>)}   
                     </div> 
                     </div>
-                    <div>Items you've purchased</div>
+                    <div>Order History</div>
                     <div className="profile-gallery">  
-                        {this.state.itemsBought.map(item => <DrawImage
-                             item = {item} 
-                             goToProductPage={this.props.goToProductPage}/>)}   
+                        {this.state.itemsBought.map(item => <OrderHistory
+                             item = {item} />)}   
                     </div>       
             </div>
             )

@@ -48,8 +48,9 @@ componentWillMount=()=>{
 } 
 
 sortSelection=(event)=>{
+    if (event.target.value !== "Sort by Seller"){
     var body = {sellerId:  event.target.value};
-   
+    this.setState({sortUser : event.target.value})
     //console.log('this is event target value' , id.toString())
  
     fetch('/itemsSoldby',{
@@ -61,7 +62,7 @@ sortSelection=(event)=>{
     .then(y => {
         console.log('this is y for sortSelection', y)
     })
-
+}
 }
 
 sortByPrice=(event)=>{
@@ -121,7 +122,7 @@ runSearch =()=>{
                     </div>
                     <div>  
                         <select value={this.state.sortUser} onChange={this.sortSelection}>
-                             {/* <option value="Sort by Seller">Sort By Seller</option> */}
+                             <option value="Sort by Seller">Sort By Seller</option>
                             {this.state.currentSellers.map((seller, index) => <option key= {index} value={seller.sellerId}>{seller.sellerName}</option>)}
                         </select>
                         <select value={this.state.sortPrice} onChange={this.sortByPrice}>
