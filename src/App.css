@@ -75,7 +75,7 @@ opacity: .6;
 }
 .product-preview{
   max-width: 30%;
-  display: block;
+  display: inline-grid;
   text-align: left;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -107,6 +107,11 @@ opacity: .6;
   text-align: left;
 }
 
+.profile h1{
+  text-align: left;
+  margin-bottom: 40px;
+}
+
 .profile-gallery{
   display: flex;
   justify-content: space-between;
@@ -128,7 +133,7 @@ opacity: .6;
   padding: 10px;
   letter-spacing: 4px;
   font-size: 16px;
-  margin-top: 36px;
+  margin-top: 25px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   width: 65px;
@@ -143,7 +148,20 @@ opacity: .6;
   padding: 10px;
   letter-spacing: 4px;
   font-size: 16px;
-  margin-top: 36px;
+  margin-top: 25px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#dash-for-sale{
+  position: absolute;
+  z-index: 2;
+  background-color: #94c89b;
+  color: white;
+  padding: 10px;
+  letter-spacing: 4px;
+  font-size: 16px;
+  margin-top: 25px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -266,14 +284,19 @@ opacity: .6;
     background-color: #f2f2f2;
     padding: 25px;
     padding-bottom: 40px;
-    margin: 20vh;
+    margin: 13vh;
     margin-left: auto;
     margin-right: auto;
     color: black;
     width: 50vw;
-    height: 380px;
+    height: 410px;
     border-radius: 0;
     border: 0;
+}
+
+.addItemsWrapper{
+  width: 400px;
+  margin: auto;
 }
 
 .btn-outline-light {
@@ -378,6 +401,7 @@ text-align: right;
   display: flex;
   justify-content: space-between;
   margin-right: 20px;
+  
 }
 
 
@@ -421,7 +445,7 @@ textarea{
   height: 100px;
   resize: none;
   border: none;
-  margin: 5px;
+  margin-top: 5px;
   border-radius: 5px;
   font-size: 14px;
   background-color: white;
@@ -473,6 +497,7 @@ TYPOGRAPHY & FONTS
 p {
   line-height: 1.8;
   font-size: 16px;
+  font-weight: 400;
 }
 
 i{
@@ -519,8 +544,8 @@ mark#right-align{
   z-index: 2;
   position: absolute;
   top: 110px;
-  margin: 0;
-  margin-top: 45px;
+  margin: auto;
+  margin-top: 85px;
   padding: 10px;
   padding-left: 35px;
   padding-right: 35px;
@@ -624,9 +649,9 @@ button:active{
   font-size: 18px;
   width: 100%;
   border-radius: 5px;
-  cursor: default; 
+  cursor: default;
   letter-spacing: 3px;
-  
+  font-weight: 500;
 }
 
 #soldOut:hover {

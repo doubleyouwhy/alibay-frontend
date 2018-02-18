@@ -78,7 +78,7 @@ class Dashboard extends Component{
        
         return (
              <div id= 'Product' className = "profile"> 
-                    <h1>Your Profile</h1>
+                    <h1 className='search-div'>Your Profile</h1>
                     <h2>Items you've <mark>bought</mark></h2>
 
              <div id='orderHistory'>

@@ -35,7 +35,7 @@ class Confirmation extends Component {
           <h1>Thank You for shopping {this.props.item.shippingInfo.firstName}!</h1>
           <p>A confirmation email has been sent to <a href='/'>{this.props.item.shippingInfo.email}</a></p>
           <h4>Here's your order <mark>#{this.props.item.shippingInfo.confirmation}</mark></h4>
-          <h4>Placed on: <br/>{fullDate}</h4>
+          <h4>Placed on:<br/>{fullDate}</h4>
           <h4>Total Amount Paid: ${this.props.item.shippingInfo.totalPrice.toFixed(2)}</h4>
           <h3>Items will be shipped to:</h3>
               <li>{this.props.item.shippingInfo.firstName + ' ' + this.props.item.shippingInfo.lastName}</li>

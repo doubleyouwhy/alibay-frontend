@@ -60,8 +60,8 @@ class ProductDetail extends Component {
                         <div className='productInfo'>
                             <div className='sellerInfo'>
                             <div id='topinfo'>
-                            <div>Listing    <a href='http://localhost:3000'>#{this.props.item.itemId}</a></div>
-                            <div> Seller    <a href='http://localhost:3000'>{this.props.item.sellerName}</a></div>
+                            <div>Listing  <a href='http://localhost:3000'>#{this.props.item.itemId}</a></div>
+                            <div>Seller  <a href='http://localhost:3000'>{this.props.item.sellerName}</a></div>
                             </div>
                                 <h1>{this.props.item.prodName}</h1>
                                 <p>{this.props.item.blurb}</p>
