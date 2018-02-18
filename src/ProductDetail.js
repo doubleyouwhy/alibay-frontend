@@ -58,18 +58,22 @@ class ProductDetail extends Component {
                             <img alt='product' src={this.props.item.image} />
                         </div>
                         <div className='productInfo'>
-                            <div>
-                                <span>Seller <a href='http://localhost:3000'>{this.props.item.sellerName}</a></span>
-                                <span>Listing <a href='http://localhost:3000'>#{this.props.item.itemId}</a></span>
+                            <div className='sellerInfo'>
+                            <div id='topinfo'>
+                            <div>Listing    <a href='http://localhost:3000'>#{this.props.item.itemId}</a></div>
+                            <div> Seller    <a href='http://localhost:3000'>{this.props.item.sellerName}</a></div>
+                            </div>
                                 <h1>{this.props.item.prodName}</h1>
                                 <p>{this.props.item.blurb}</p>
-                            </div>
-                            <div>
+                                </div>
+                                <div id='buy-sold-btn'>
                                 {this.props.item.isSold ? <button id='soldOut'>SOLD</button> : <button id='ctaButton' onClick={this.buyProduct}>Buy Now</button>}
                             </div>
+                            </div>
+                            
                         </div>
                     </div>
-                </div>
+               
             )
         } else { return <Shipping item={this.props.item} /> }
 

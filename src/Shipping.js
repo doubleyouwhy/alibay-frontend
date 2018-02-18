@@ -23,6 +23,8 @@ class Shipping extends Component {
   }
 
   shipInfo = () => {
+    let confirmationNumber = Math.floor(Math.random() * 10000)
+
     let shippingInfo = {
       firstName: this.firstName.value,
       lastName: this.lastName.value,
@@ -35,11 +37,9 @@ class Shipping extends Component {
       itemId: this.props.item.itemId,
       sellerId: this.props.item.sellerID,
       orderDate: new Date(),
-      confirmation: this.props.item.confirmation,
+      confirmation: confirmationNumber,
       totalPrice: this.props.item.price * 1.15 + 25
     }
-
-    setTimeout(() => this.setState({ hidden: true, userShipping: { shippingInfo } }), 1500)
 
     fetch('./shipping', {
       method: 'POST',
@@ -55,7 +55,8 @@ class Shipping extends Component {
         email: this.email.value,
         itemId: this.props.item.itemId,
         sellerId: this.props.item.sellerID,
-        orderDate: new Date()
+        orderDate: new Date(),
+        confirmation: confirmationNumber
       })
     }).then(x => x.json())
       .then(y => {
@@ -63,16 +64,20 @@ class Shipping extends Component {
         // this.setState({ hidden: false, userShipping: {shippingInfo} })
       })
       .then(z => this.setState({ shippingInfo: { z } }))
+        console.log('shipping info ', shippingInfo)
+        console.log('state log ', this.state)
+        
+        setTimeout(() => this.setState({ hidden: true, userShipping: { shippingInfo } }), 1500)
 
-    this.sendEmailConfirmation()
 
+    this.sendEmailConfirmation(confirmationNumber)
   }
 
-  sendEmailConfirmation = () => {
+  sendEmailConfirmation = (confirmationNumber) => {
     emailjs.init("user_FNLRvsmgagvJUJfXdNCsP");
 
     emailjs.send("gmail", "template_f1rdYR9G", {
-      order_number: this.props.item.confirmation,
+      order_number: confirmationNumber,
       firstName: this.firstName.value,
       fullName: this.firstName.value + ' ' + this.lastName.value,
       price: (this.props.item.price * 1.15 + 25).toFixed(2),

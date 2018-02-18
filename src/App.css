@@ -21,7 +21,7 @@
 
 #Product {
 width: 90vw;
-padding: 25px;
+padding: 45px;
 padding-bottom: 80px;
 margin: 10px;
 margin-left: auto;
@@ -131,6 +131,8 @@ opacity: .6;
   margin-top: 36px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  width: 65px;
+  text-align: center;
 }
 
 #for-sale{
@@ -153,7 +155,7 @@ opacity: .6;
   font-weight: 800;
   text-align: center;
   margin-top: 10px;
-  
+  text-align: left;
 }
 #price{
   color: white;
@@ -193,7 +195,7 @@ opacity: .6;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.573); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  z-index: 4; /* Specify a stack order in case you're using a different order for other elements */
 }
 
 #NavBar {
@@ -337,6 +339,13 @@ text-align: right;
 .productWrapper{
   display: flex;
   justify-content: center;
+  height: 500px;
+  margin-top: 30px;
+}
+
+.productWrapper h1{
+  margin-top: 50px;
+  font-size: 45px;
 }
 
 .productImage{
@@ -356,7 +365,22 @@ text-align: right;
   padding-right: 40px;
   min-width: 30%;
   background-color: white;
+  overflow: scroll;
 }
+
+.sellerInfo{
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+#topinfo{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+
 
 #delete{
   margin-left: 0;
@@ -459,16 +483,22 @@ i{
 }
 
 mark {
-  background-color: rgb(243, 243, 243);
-  color: black;
-  padding-left: 5px;
-  padding-right: 5px;
+  font-family: 'Roboto Mono', monospace;  
+  letter-spacing: 3px;
+  background-color: #94c89b;
+  color: white;
+  padding: 5px;
   text-transform: uppercase;
 }
 
-/* mark#right-align{
+mark#right-align{
   color: white !important;
-} */
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 500;
+  /* font-family: 'Roboto Mono', monospace !important;   
+  font-weight: 400; */
+}
 
 .pf-paypal, .pf-bitcoin{
   font-size: 30px !important;
@@ -485,6 +515,7 @@ mark {
 }
 
 #productPrice{
+  font-family: 'Roboto Mono', monospace;   
   z-index: 2;
   position: absolute;
   top: 110px;
@@ -497,7 +528,6 @@ mark {
   color: white;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  
 }
 
 a:link {
@@ -579,6 +609,7 @@ button:active{
     margin-top: 30px;
     text-transform: uppercase;
     letter-spacing: 3px;
+    font-weight: 500;
 }
 
 #ctaButton:hover {
@@ -593,9 +624,13 @@ button:active{
   font-size: 18px;
   width: 100%;
   border-radius: 5px;
-  margin-top: 30px;
   cursor: default; 
   letter-spacing: 3px;
+  
+}
+
+#soldOut:hover {
+ opacity: 1;
   
 }
 
