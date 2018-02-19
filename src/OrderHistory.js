@@ -13,10 +13,3 @@ function OrderHistory (props) {
 }
 
 export default OrderHistory
-
-// <div className='orderSummary'>
-//                 <h3>1 x {this.props.item.prodName}</h3>
-//                 <h4 className='subTitle'>Subtotal: <span id='right-align'>${this.props.item.price}</span></h4>
-//                 <h4 className='subTitle'>Tax (15%): <span id='right-align'>${(this.props.item.price * 0.15).toFixed(2)}</span></h4>
-//                 <h4 className='subTitle'>Shipping: <span id='right-align'>$25.00</span></h4>
-//                 <h3>Total: <mark id='right-align'>${(this.props.item.price * 1.15 + 25).toFixed(2)}</mark></h3>

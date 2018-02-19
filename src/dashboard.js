@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import DrawImage from './DrawImage'
 import DrawItemDelete from './DrawItemDelete'
 import OrderHistory from './OrderHistory';
 

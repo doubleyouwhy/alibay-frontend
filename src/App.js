@@ -7,7 +7,8 @@ import Landing from './landing.js'
 import AddItems from './addItems.js'
 import Dashboard from './dashboard.js'
 import Nav from './nav.js'
-import GifLogin from './GifLogin'
+import GifLogin from './GifLogin.js'
+import Footer from './footer.js'
 
 class App extends Component {
   constructor() {
@@ -174,6 +175,7 @@ class App extends Component {
                   
                   {/* gif */}
                   {this.state.GifLogin && <div id="overlay" ><  GifLogin username={this.state.username}     /> </div>}
+                  <Footer/>
                 </div>
               </div>
             )

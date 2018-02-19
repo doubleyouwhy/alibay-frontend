@@ -18,7 +18,7 @@ saveUserName  = () => {
     return (
        
         <div className="gif" >
-       <img className="gifImage" src="https://i.imgur.com/er7QYfD.gif" ></img>
+       <img alt='welcome' className="gifImage" src="https://i.imgur.com/er7QYfD.gif" ></img>
        <h1 className="gifText">Happy Shopping {this.props.username}!</h1>
           </div>
 

@@ -49,7 +49,7 @@ class AddItems extends Component {
       preview.appendChild(list);
       for (var i = 0; i < curFiles.length; i++) {
         var listItem = document.createElement('li');
-        var para = document.createElement('p');
+        // var para = document.createElement('p');
 
         var image = document.createElement('img');
         image.src = window.URL.createObjectURL(curFiles[i]);

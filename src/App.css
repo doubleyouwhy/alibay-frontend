@@ -32,7 +32,7 @@ margin-right: auto;
 margin-top: 50px;
 font-family: Arial, Helvetica, sans-serif;
 font-weight: 600;
-
+min-height: 69vh;
 /* border-style: solid;
 border-color: rgb(212, 212, 212);
 border-width: 1px;
@@ -78,6 +78,7 @@ opacity: .6;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 .product-preview{
   max-width: 30%;
@@ -126,6 +127,7 @@ opacity: .6;
   margin: 10px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 50px;
 }
 
 
@@ -392,6 +394,9 @@ text-align: right;
   justify-content: center;
   height: 500px;
   margin-top: 30px;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .productWrapper h1{
@@ -458,8 +463,8 @@ input{
 }
 
 ::placeholder{
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-family: 'Roboto Mono', monospace;  
+  font-weight: 400;
 }
 
 input[type=radio]{
@@ -798,4 +803,52 @@ CONFIRMATION PAGE
 
 #accountSubmit{
   margin-top: 20px;
+}
+
+.footer-wrapper{
+  width: 100%;
+  background-color: black;
+  color: white;
+  /* padding: 50px; */
+  padding-bottom: 15px;
+  /* bottom: 0; */
+  bottom: 0;
+  height: 60px;
+  position: fixed;
+  z-index: 5;
+  opacity: .9;
+}
+
+.footer-info{
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+/* 
+#footer-mid{
+  padding-right: 45px;
+  padding-left: 20px;
+} */
+
+#underline{
+  font-family: 'Roboto Mono', monospace;  
+border-bottom-style: solid;
+border-bottom-color: white;
+}
+
+#underline:hover{
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+#underline:active{
+  opacity: 1;
 }
